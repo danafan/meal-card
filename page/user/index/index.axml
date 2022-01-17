@@ -1,0 +1,26 @@
+<view>
+  <view class="qrcode_content">
+    <view class="content_head">
+      <view class="head_left">
+        <image class="qr_icon" src="../../../images/qr_icon.png"/>
+        <view class="title">向商家付款</view>
+      </view>
+      <view class="refresh" onTap="refresh">刷新</view>
+    </view>
+    <view class="content_box">
+      <image class="qr_container" src="../../../images/qr_icon.png"/>
+      <view class="text">张三</view>
+      <view class="text">工号:1273263467</view>
+      <view class="text">餐卡号:237382948</view>
+      <view class="text">餐卡余额：2000.00</view>
+    </view>
+  </view>
+  <view class="menu_item">
+    <view class="menu_left">
+      <image class="menu_icon" src="../../../images/bill_icon.png"/>
+      <view class="menu_lable">账单</view>
+    </view>
+    <image class="right_arrow" src="../../../images/right_arrow.png"/>
+  </view>
+  <confirm-dialog title="付款成功" content_1="成功付款20.00" content_2="商家是谁" onConfirmFun="confirm" a:if="{{show_dialog}}"></confirm-dialog>
+</view>

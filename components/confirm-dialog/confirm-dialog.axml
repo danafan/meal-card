@@ -1,0 +1,8 @@
+<view class="dialog_container">
+  <view class="dialog_content">
+    <view class="title">{{title}}</view>
+    <view class="content_row">{{content_1}}</view>
+    <view class="content_row">{{content_2}}</view>
+    <view class="confirm" onTap="confirm">确定</view>
+  </view>
+</view>

@@ -1,0 +1,38 @@
+.dialog_container{
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dialog_content{
+  width: 580rpx;
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+}
+.content_row{
+   margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+.confirm{
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+  font-size: 30rpx;
+  color: #FFA153;
+  font-weight: 600;
+}
