@@ -2,7 +2,8 @@
   "pages": [
     "page/index/index",
     "page/user/index/index",
-    "page/store/index/index"
+    "page/store/index/index",
+    "page/user/user_bill/user_bill"
   ],
   "window": {
     "enableWK": "YES",

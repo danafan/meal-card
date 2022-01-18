@@ -5,7 +5,7 @@ Page({
   },
   onLoad() {
     dd.redirectTo({
-      url: '/page/user/index/index'
+      url: '/page/store/index/index'
     })
   }
 })

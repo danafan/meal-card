@@ -1,3 +1,17 @@
 <view>
-  New Page
+  <view class="form_item">
+    <view class="label">收款金额</view>
+    <input class="input" onInput="checkMoney" placeholder="输入收款金额"/>
+  </view>
+  <view class="content">
+    <view class="confirm_collection">确认收款</view>
+    <view class="menu_item">
+      <view class="menu_left">
+        <image class="menu_icon" src="../../../images/bill_icon.png"/>
+        <view class="menu_lable">账单</view>
+      </view>
+      <image class="right_arrow" src="../../../images/right_arrow.png"/>
+    </view>
+  </view>
+  <confirm-dialog title="收款成功" content_1="成功收款20.00" content_2="餐卡号27634762345" onConfirmFun="confirm" a:if="{{show_dialog}}"></confirm-dialog>
 </view>
