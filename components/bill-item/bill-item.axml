@@ -1,0 +1,15 @@
+<view>
+  <view class="bill_item">
+    <view class="item_left">
+      <view class="left_top">
+        <view class="date">2021-10-21 12:45:44</view>
+        <view class="status">已退款</view>
+      </view>
+      <view class="item_desc">餐卡号213123123</view>
+    </view>
+    <view class="item_right">
+      <view class="return_but" a:if="{{userType == '2'}}" onTap="refund">退款</view>
+      <view class="num">+10</view>
+    </view>
+  </view>
+</view>

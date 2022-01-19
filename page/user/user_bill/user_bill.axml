@@ -1,3 +1,24 @@
 <view>
-  New Page
+  <view class="fixed_container">
+    <view class="tab_box">
+      <view class="tab_item" data-index="0" onTap="checkTab">
+        <view class="tab_name {{active_index == 0?'active_tab_name':''}}">全部</view>
+        <view class="active_line" a:if="{{active_index == 0}}"></view>
+      </view>
+      <view class="tab_item" data-index="1" onTap="checkTab">
+        <view class="tab_name {{active_index == 1?'active_tab_name':''}}">消费</view>
+        <view class="active_line" a:if="{{active_index == 1}}"></view>
+      </view>
+      <view class="tab_item" data-index="2" onTap="checkTab">
+        <view class="tab_name {{active_index == 2?'active_tab_name':''}}">充值</view>
+        <view class="active_line" a:if="{{active_index == 2}}"></view>
+      </view>
+    </view>
+    <date-picker userType="1" consumption="100" topUp="300" onCheckDate="checkDate"></date-picker>
+  </view>
+  <view class="list_content">
+    <scroll-view scroll-y="{{true}}" style="width: 100%">
+      <bill-item userType="1"></bill-item>
+    </scroll-view>
+  </view>
 </view>

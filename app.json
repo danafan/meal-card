@@ -3,7 +3,8 @@
     "page/index/index",
     "page/user/index/index",
     "page/store/index/index",
-    "page/user/user_bill/user_bill"
+    "page/user/user_bill/user_bill",
+    "page/store/store_bill/store_bill"
   ],
   "window": {
     "enableWK": "YES",

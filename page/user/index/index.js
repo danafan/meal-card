@@ -1,15 +1,22 @@
 Page({
   data: {
-    show_dialog:true,   //付款成功弹窗
+    show_dialog: false,   //付款成功弹窗
   },
-  onLoad() {},
-  refresh(){
-    console.log('刷线')
+  onLoad() { },
+  //跳转账单
+  goBill() {
+    dd.navigateTo({
+      url: '/page/user/user_bill/user_bill'
+    })
+  },
+  //刷新付款码
+  refresh() {
+    console.log('刷新')
   },
   //点击确认
-  confirm(){
+  confirm() {
     this.setData({
-      show_dialog:false
+      show_dialog: false
     })
   }
 });

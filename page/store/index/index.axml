@@ -4,8 +4,8 @@
     <input class="input" onInput="checkMoney" placeholder="输入收款金额"/>
   </view>
   <view class="content">
-    <view class="confirm_collection">确认收款</view>
-    <view class="menu_item">
+    <view class="confirm_collection" onTap="collFun">确认收款</view>
+    <view class="menu_item" onTap="goBill">
       <view class="menu_left">
         <image class="menu_icon" src="../../../images/bill_icon.png"/>
         <view class="menu_lable">账单</view>

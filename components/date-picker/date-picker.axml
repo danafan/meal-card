@@ -1,0 +1,17 @@
+<view>
+  <view class="date_picker" onTap="openDatePicker">
+    <view class="date_box">
+      <view>{{year}}年{{month}}月</view>
+      <image class="down_arrow" mode="scaleToFill" src="../../../images/down_arrow.png"/>
+    </view>
+    <!-- 员工 -->
+    <view class="desc_row" a:if="{{userType == '1'}}">
+      <view class="desc_text">消费 {{consumption}}</view>
+      <view>充值 {{topUp}}</view>
+    </view>
+    <!-- 商家 -->
+    <view class="desc_row" a:if="{{userType == '2'}}">
+      <view class="desc_text">收款 {{collection}}</view>
+    </view>
+  </view>
+</view>

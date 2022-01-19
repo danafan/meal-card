@@ -1,4 +1,4 @@
 <view>
-    欢迎
-    
+    <button type="primary" onTap="goUserIndex">员工端</button>
+    <button type="primary" onTap="goStoreIndex">商家端</button>
 </view>

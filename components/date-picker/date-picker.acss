@@ -1,0 +1,30 @@
+.date_picker{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: 150rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.date_box{
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  color:#333333;
+}
+.down_arrow{
+  margin-left: 8rpx;
+  width: 16rpx;
+  height: 12rpx;
+}
+.desc_row{
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #333333;
+}
+.desc_text{
+  margin-right: 88rpx;
+}

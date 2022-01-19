@@ -1,10 +1,18 @@
 let app = getApp();
 Page({
   data: {
-    
+
   },
   onLoad() {
-    dd.redirectTo({
+
+  },
+  goUserIndex() {
+    dd.navigateTo({
+      url: '/page/user/index/index'
+    })
+  },
+  goStoreIndex() {
+    dd.navigateTo({
       url: '/page/store/index/index'
     })
   }

@@ -15,7 +15,7 @@
       <view class="text">餐卡余额：2000.00</view>
     </view>
   </view>
-  <view class="menu_item">
+  <view class="menu_item" onTap="goBill">
     <view class="menu_left">
       <image class="menu_icon" src="../../../images/bill_icon.png"/>
       <view class="menu_lable">账单</view>

@@ -1,0 +1,40 @@
+.fixed_container{
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.tab_box{
+  margin-bottom: 20rpx;
+  width:100%;
+  height: 76rpx;
+  display: flex;
+  justify-content: space-around;
+}
+.tab_item{
+  position: relative;
+  width: 96rpx;
+  height: 76rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tab_name{
+  font-size: 28rpx;
+  color: #333333;
+}
+.active_tab_name{
+  color: #F17B0E;
+}
+.active_line{
+  background: #F17B0E;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4rpx;
+}
+.list_content{
+  padding-top: 246rpx;
+}
