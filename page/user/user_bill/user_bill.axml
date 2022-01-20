@@ -1,4 +1,4 @@
-<view>
+<view class="container">
   <view class="fixed_container">
     <view class="tab_box">
       <view class="tab_item" data-index="0" onTap="checkTab">
@@ -14,11 +14,9 @@
         <view class="active_line" a:if="{{active_index == 2}}"></view>
       </view>
     </view>
-    <date-picker userType="1" consumption="100" topUp="300" onCheckDate="checkDate"></date-picker>
+    <date-picker userType="1" consumption="{{consumption}}" topUp="{{recharge}}" onCheckDate="checkDate"></date-picker>
   </view>
-  <view class="list_content">
-    <scroll-view scroll-y="{{true}}" style="width: 100%">
-      <bill-item userType="1"></bill-item>
-    </scroll-view>
-  </view>
+  <scroll-view scroll-y="{{true}}" class="list_content" onScrollToLower="loadMore">
+    <bill-item userType="1" a:for="{{data_list}}" itemInfo="{{item}}" a:key="*this"></bill-item>
+  </scroll-view>
 </view>

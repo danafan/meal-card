@@ -5,14 +5,14 @@
         <image class="qr_icon" src="../../../images/qr_icon.png"/>
         <view class="title">向商家付款</view>
       </view>
-      <view class="refresh" onTap="refresh">刷新</view>
+      <view class="refresh" onTap="getQrCode">刷新</view>
     </view>
     <view class="content_box">
-      <image class="qr_container" src="../../../images/qr_icon.png"/>
-      <view class="text">张三</view>
-      <view class="text">工号:1273263467</view>
-      <view class="text">餐卡号:237382948</view>
-      <view class="text">餐卡余额：2000.00</view>
+      <image class="qr_container" src="{{qr_code_url}}" onTap="getQrCode"/>
+      <view class="text">{{card_info.real_name}}</view>
+      <view class="text">工号：{{card_info.job_no}}</view>
+      <view class="text">餐卡号：{{card_info.card_id}}</view>
+      <view class="text">餐卡余额：{{card_info.balance}}</view>
     </view>
   </view>
   <view class="menu_item" onTap="goBill">
@@ -22,5 +22,5 @@
     </view>
     <image class="right_arrow" src="../../../images/right_arrow.png"/>
   </view>
-  <confirm-dialog title="付款成功" content_1="成功付款20.00" content_2="商家是谁" onConfirmFun="confirm" a:if="{{show_dialog}}"></confirm-dialog>
+  <confirm-dialog title="付款成功" content_1="成功付款{{amount}}" content_2="{{store_name}}" onConfirmFun="confirm" a:if="{{show_dialog}}"></confirm-dialog>
 </view>

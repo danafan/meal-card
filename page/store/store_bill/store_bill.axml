@@ -1,19 +1,17 @@
-<view>
+<view class="container">
   <view class="fixed_container">
     <view class="export_container">
-      <view class="export_but">导出账单</view>
+      <view class="export_but" onTap="exportFun">导出账单</view>
     </view>
-    <date-picker userType="2" collection="100" onCheckDate="checkDate"></date-picker>
+    <date-picker userType="2" collection="{{collection}}" onCheckDate="checkDate"></date-picker>
   </view>
-  <view class="list_content">
-    <scroll-view scroll-y="{{true}}" style="width: 100%">
-      <bill-item userType="2" onRefundFun="refundFun"></bill-item>
-    </scroll-view>
-  </view>
+  <scroll-view scroll-y="{{true}}" class="list_content" onScrollToLower="loadMore">
+    <bill-item userType="2" a:for="{{data_list}}" itemInfo="{{item}}" a:key="*this" onRefundFun="refundFun"></bill-item>
+  </scroll-view>
   <view class="dialog_container" a:if="{{showRefund}}">
     <view class="dialog_content">
-      <view class="title">退款 10.00</view>
-      <view class="content_row {{active_index == index?'active_value':''}}" a:for="{{why_list}}" data-index="{{index}}" onTap="checkWhy">退款原因1</view>
+      <view class="title">退款 {{amount}}</view>
+      <view class="content_row {{active_index == index?'active_value':''}}" a:for="{{why_list}}" data-index="{{index}}" onTap="checkWhy">{{item.reason}}</view>
       <view class="but_box">
         <view class="but cancel" onTap="cancel">取消</view>
         <view class="but confirm" onTap="confirm">确定</view>
