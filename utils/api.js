@@ -5,6 +5,10 @@ const POST = 'POST';
 const baseUrl = "https://house.92nu.com/user/";       //请求地址
 
 function request(method, url, data) {
+  var data = data ? data : {};
+  if (app.globalData.token) {
+    data.token = app.globalData.token;
+  }
   dd.showLoading({
     content: '加载中...',
   });
@@ -21,23 +25,15 @@ function request(method, url, data) {
         //请求成功
         if (res.data.status == 1) {
           resolve(res.data);
+          dd.hideLoading();
         } else {
           dd.showToast({
             type: 'none',
             content: res.data.msg,
             duration: 2000
           });
-          //其他异常
-          // reject('运行时错误,请稍后再试');
         }
       },
-      fail(err) {
-        //请求失败
-        reject(err)
-      },
-      complete: function(res) {
-        dd.hideLoading();
-      }
     })
   })
 }
@@ -50,7 +46,6 @@ const API = {
   getStoreRecord: (data) => request(GET, 'store/getstorerecord', data),         //商家账单
   getRefundReason: (data) => request(GET, 'store/getrefundreason', data),         //获取退款原因
   refundMoney: (data) => request(POST, 'store/refund', data),         //退款
-  exportStoreRecord: (data) => request(GET, 'store/exportstorerecord', data),         //导出
 };
 module.exports = {
   API: API

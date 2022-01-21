@@ -33,31 +33,6 @@ Page({
     //获取列表
     this.getData();
   },
-  //导出账单
-  exportFun() {
-    dd.confirm({
-      title: '提示',
-      content: '确认导出账单？',
-      confirmButtonText: '确认',
-      cancelButtonText: '取消',
-      success: (result) => {
-        if (result.confirm) {
-          dd.downloadFile({
-            url: app.globalData.userUrl + 'store/exportstorerecord?month=' + this.data.month + '&store_id=' + getApp().globalData.user_info.store_id,
-            success({ filePath }) {
-              console.log(filePath)
-              dd.showToast({
-                type: 'none',
-                content: '文件以保存至' + filePath,
-                duration: 2000
-              });
-            }
-          });
-        }
-      },
-    });
-
-  },
   //上拉加载
   loadMore(e) {
     if (this.data.isLoad == false) {

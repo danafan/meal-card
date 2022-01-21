@@ -2,23 +2,13 @@
   "pages": [
     "page/index/index",
     "page/user/index/index",
-    "page/store/index/index",
     "page/user/user_bill/user_bill",
+    "page/store/index/index",
     "page/store/store_bill/store_bill"
   ],
   "window": {
-    "enableWK": "YES",
-    "enableDSL": true,
-    "defaultTitle": "餐卡管理",
-    "backgroundColor": "#F5F5F9",
-    "pullRefresh": false,
-    "allowsBounceVertical": true
-  },
-  "tabBar": {
-    "textColor": "#404040",
-    "selectedColor": "#108ee9",
-    "backgroundColor": "#F5F5F9",
-    "items": []
+    "defaultTitle": "餐卡",
+    "backgroundColor": "#F5F5F9"
   },
   "debug": true
 }

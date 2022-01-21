@@ -5,5 +5,6 @@ App({
     user_info:{
       user_type:1
     },                                 //用户信息
+    token:""
   },
 });

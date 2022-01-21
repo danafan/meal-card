@@ -7,7 +7,9 @@ Page({
     amount:"",
     card_id:""
   },
-  onLoad() { },
+  onLoad() {
+   
+   },
   //确认收款
   collFun() {
     if (this.data.money == '') {
@@ -16,7 +18,13 @@ Page({
         content: '请输入收款金额',
         duration: 2000
       });
-    } else {
+    } else if(!/^(([1-9]{1}\d*)|(0{1}))(\.\d{1,2})?$/.test(this.data.money)){
+      dd.showToast({
+        type: 'none',
+        content: '请输入正确的收款金额',
+        duration: 2000
+      });
+    }else {
       dd.scan({
         type: 'qr',
         success: (res) => {
@@ -35,6 +43,7 @@ Page({
       amount: this.data.money
     }
     resource.storePayment(arg).then(res => {
+      dd.vibrate();
       this.setData({
         show_dialog: true,
         amount:res.data.amount,

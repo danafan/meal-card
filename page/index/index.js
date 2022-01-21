@@ -21,6 +21,7 @@ Page({
       code: authCode
     }).then(res => {
       getApp().globalData.user_info = res.data;
+      getApp().globalData.token = res.token;
       if (res.user_type == 1) { //用户
         dd.redirectTo({
           url: '/page/user/index/index'

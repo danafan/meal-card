@@ -1,8 +1,5 @@
 <view class="container">
   <view class="fixed_container">
-    <view class="export_container">
-      <view class="export_but" onTap="exportFun">导出账单</view>
-    </view>
     <date-picker userType="2" collection="{{collection}}" onCheckDate="checkDate"></date-picker>
   </view>
   <scroll-view scroll-y="{{true}}" class="list_content" onScrollToLower="loadMore">

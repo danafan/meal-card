@@ -10,24 +10,6 @@
 .fixed_container{
   background: #fff;
 }
-.export_container{
-  height: 112rpx;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 30rpx;
-}
-.export_but{
-  background: #F17B0E;
-  width: 160rpx;
-  text-align: center;
-  height: 52rpx;
-  line-height: 52rpx;
-  border-radius: 26rpx;
-  font-size: 28rpx;
-  color: #FFFFFF;
-}
 .dialog_container{
   background: rgba(0, 0, 0, 0.3);
   position: fixed;
