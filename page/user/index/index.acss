@@ -10,13 +10,19 @@ page {
   padding-left: 30rpx;
   padding-right: 30rpx;
 }
-
+.set_timeout{
+  padding-top: 36rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: #F17B0E;
+  font-weight: 600;
+}
 .content_head {
   border-bottom: 1rpx solid #EEEEEE;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 30rpx;
   padding-bottom: 30rpx;
 }
 

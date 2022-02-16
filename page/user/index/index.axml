@@ -1,5 +1,6 @@
 <view>
   <view class="qrcode_content">
+    <view class="set_timeout">付款码将在{{time}}秒后刷新</view>
     <view class="content_head">
       <view class="head_left">
         <image class="qr_icon" src="../../../images/qr_icon.png"/>

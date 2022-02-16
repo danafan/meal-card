@@ -6,6 +6,7 @@ Page({
     show_dialog: false,   //付款成功弹窗
     card_info: {},         //餐卡信息
     set_interval: null,    //一分钟计时
+    time: 60,
     send_interval: null,     //三秒钟计时
     amount: "",
     store_name: ""
@@ -82,11 +83,22 @@ Page({
   },
   //每分钟刷新付款码
   refreshQrCode() {
+    // this.setData({
+    //   set_interval: setInterval(() => {
+    //     //获取付款码
+    //     this.getQrCode();
+    //   }, 60000)
+    // })
     this.setData({
       set_interval: setInterval(() => {
-        //获取付款码
-        this.getQrCode();
-      }, 60000)
+        this.setData({
+          time: this.data.time - 1
+        })
+        if (this.data.time == 0) {
+          //获取付款码
+          this.getQrCode();
+        }
+      }, 1000)
     })
   },
   //每三秒发送一次信息
@@ -118,7 +130,8 @@ Page({
     resource.getQrCode().then(res => {
       this.setData({
         qr_code_url: res.payment_code,
-        card_info: res.data
+        card_info: res.data,
+        time: 60
       })
     })
   },
