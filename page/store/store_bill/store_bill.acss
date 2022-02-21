@@ -1,4 +1,4 @@
-.container{
+.container {
   position: absolute;
   top: 0;
   left: 0;
@@ -7,10 +7,39 @@
   display: flex;
   flex-direction: column;
 }
-.fixed_container{
+
+.top_box {
+  background: #ffffff;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 30rpx;
+}
+
+.check_date {
+  width: 160rpx;
+  height: 52rpx;
+  background: #F17B0E;
+  border-radius: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #ffffff;
+}
+
+.check_icon{
+  margin-left: 8rpx;
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.fixed_container {
   background: #fff;
 }
-.dialog_container{
+
+.dialog_container {
   background: rgba(0, 0, 0, 0.3);
   position: fixed;
   top: 0;
@@ -21,7 +50,8 @@
   align-items: center;
   justify-content: center;
 }
-.dialog_content{
+
+.dialog_content {
   width: 580rpx;
   background-color: #ffffff;
   border-radius: 12rpx;
@@ -29,14 +59,16 @@
   flex-direction: column;
   align-items: center;
 }
-.title{
+
+.title {
   margin-top: 30rpx;
   margin-bottom: 30rpx;
   font-size: 32rpx;
   font-weight: 500;
   color: #333333;
 }
-.content_row{
+
+.content_row {
   width: 100%;
   text-align: center;
   height: 100rpx;
@@ -44,14 +76,17 @@
   font-size: 28rpx;
   color: #333333;
 }
-.active_value{
+
+.active_value {
   color: #F17B0E;
 }
-.but_box{
-  width:100%;
+
+.but_box {
+  width: 100%;
   display: flex;
 }
-.but{
+
+.but {
   width: 50%;
   text-align: center;
   height: 84rpx;
@@ -59,12 +94,15 @@
   font-size: 30rpx;
   font-weight: 600;
 }
-.cancel{
+
+.cancel {
   color: #999999;
 }
-.confirm{
+
+.confirm {
   color: #FFA153;
 }
-.list_content{
+
+.list_content {
   flex: 1;
 }

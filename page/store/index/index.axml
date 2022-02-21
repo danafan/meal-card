@@ -1,7 +1,19 @@
 <view>
   <view class="form_item">
     <view class="label">收款金额</view>
-    <input class="input" type="number" onInput="checkMoney" placeholder="输入收款金额"/>
+    <input class="input" type="number" value="{{money}}" onInput="checkMoney" placeholder="输入收款金额"/>
+  </view>
+  <view class="options_box">
+    <view class="money_list">
+      <view class="money_item" data-val="10" onTap="clickMoney">10元</view>
+      <view class="money_item" data-val="11" onTap="clickMoney">11元</view>
+      <view class="money_item" data-val="12" onTap="clickMoney">12元</view>
+    </view>
+    <view class="money_list">
+      <view class="money_item" data-val="13" onTap="clickMoney">13元</view>
+      <view class="money_item" data-val="14" onTap="clickMoney">14元</view>
+      <view class="money_item" data-val="15" onTap="clickMoney">15元</view>
+    </view>
   </view>
   <view class="content">
     <view class="confirm_collection" onTap="collFun">确认收款</view>

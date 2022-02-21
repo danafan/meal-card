@@ -1,6 +1,12 @@
 <view class="container">
+  <view class="top_box">
+    <view class="check_date" onTap="checkDateType">
+      <view>{{dateType == '1'?'月':'日'}}账单</view>
+      <image class="check_icon" mode="scaleToFill" src="../../../images/check_icon.png"/>
+    </view>
+  </view>
   <view class="fixed_container">
-    <date-picker userType="2" collection="{{collection}}" onCheckDate="checkDate"></date-picker>
+    <date-picker userType="2" dateType="{{dateType}}" collection="{{collection}}" num="{{num}}" onCheckDate="checkDate" month="{{month}}" date="{{date}}"></date-picker>
   </view>
   <scroll-view scroll-y="{{true}}" class="list_content" onScrollToLower="loadMore">
     <bill-item userType="2" a:for="{{data_list}}" itemInfo="{{item}}" a:key="*this" onRefundFun="refundFun"></bill-item>

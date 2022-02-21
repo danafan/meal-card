@@ -3,30 +3,57 @@ let app = getApp();
 Page({
   data: {
     showRefund: false,   //申请退款弹窗
-    why_list: [],                 //所有原因列表
+    dateType: '1',       //1:月账单；2:日账单
+    why_list: [],        //所有原因列表
     active_index: 0,     //选中的下标
     page: 1,             //页码
-    month: "",           //日期
+    month: "",           //月账单所需参数
+    date: "",            //日账单所需参数
     data_list: [],       //列表数据
     isLoad: true,
     collection: "",
+    num: "",
     amount: "",      //点击退款的标题（钱数）
     id: "",          //点击退款的ID
   },
   onLoad() {
     var now = new Date(); 				    //当前日期  
+    var nowDay = now.getDate();      //当前日
     var nowMonth = now.getMonth() + 1 < 10 ? '0' + (now.getMonth() + 1).toString() : now.getMonth() + 1; 		//当前月 
     var nowYear = now.getFullYear(); 		  //当前年 
     this.setData({
-      month: nowYear + '-' + nowMonth
+      month: nowYear + '-' + nowMonth,
+      date: nowYear + '-' + nowMonth + '-' + nowDay
+    })
+    //获取列表
+    this.getData();
+  },
+  //切换时间类型
+  checkDateType() {
+    this.setData({
+      dateType: this.data.dateType == '1' ? '2' : '1',
+      page: 1,
+      data_list: [],
+      collection: "",
+      num: ""
     })
     //获取列表
     this.getData();
   },
   //监听日期切换
   checkDate(date) {
+    if (this.data.dateType == '1') {
+      this.setData({
+        month: date
+      })
+    } else if (this.data.dateType == '2') {
+      this.setData({
+        date: date
+      })
+    }
     this.setData({
-      month: date,
+      collection: "",
+      num: "",
       data_list: [],
       page: 1
     })
@@ -48,7 +75,12 @@ Page({
   getData() {
     let arg = {
       page: this.data.page,
-      month: this.data.month,
+      type: this.data.dateType
+    }
+    if (this.data.dateType == '1') {
+      arg.month = this.data.month
+    } else if (this.data.dateType == '2') {
+      arg.date = this.data.date
     }
     resource.getStoreRecord(arg).then(res => {
       let data = res.data;
@@ -69,6 +101,7 @@ Page({
       this.setData({
         data_list: this.data.data_list.concat(Array.from(data.data)),
         collection: res.collection,
+        num: res.num
       });
       if (data.last_page == this.data.page) {
         this.setData({

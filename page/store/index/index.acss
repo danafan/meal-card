@@ -7,6 +7,27 @@
   height: 110rpx;
 }
 
+.options_box {
+  padding-top: 60rpx;
+  padding-bottom: 20rpx;
+  background: #ffffff;
+}
+
+.money_list {
+  margin-bottom: 40rpx;
+  display: flex;
+}
+
+.money_item {
+  flex: 1;
+  text-align: center;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #6D6C6C;
+}
+
 .label {
   margin-right: 60rpx;
   color: #333333;

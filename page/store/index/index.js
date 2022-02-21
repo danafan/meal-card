@@ -4,12 +4,15 @@ Page({
     money: "",
     code: "",
     show_dialog: false,   //收款款成功弹窗
-    amount:"",
-    card_id:""
+    amount: "",
+    card_id: ""
   },
-  onLoad() {
-   
-   },
+  //选择某一个金额
+  clickMoney(v) {
+    this.setData({
+      money:v.target.dataset.val
+    })
+  },
   //确认收款
   collFun() {
     if (this.data.money == '') {
@@ -18,13 +21,13 @@ Page({
         content: '请输入收款金额',
         duration: 2000
       });
-    } else if(!/^(([1-9]{1}\d*)|(0{1}))(\.\d{1,2})?$/.test(this.data.money)){
+    } else if (!/^(([1-9]{1}\d*)|(0{1}))(\.\d{1,2})?$/.test(this.data.money)) {
       dd.showToast({
         type: 'none',
         content: '请输入正确的收款金额',
         duration: 2000
       });
-    }else {
+    } else {
       dd.scan({
         type: 'qr',
         success: (res) => {
@@ -46,8 +49,8 @@ Page({
       dd.vibrate();
       this.setData({
         show_dialog: true,
-        amount:res.data.amount,
-        card_id:res.data.card_id
+        amount: res.data.amount,
+        card_id: res.data.card_id
       })
     });
   },

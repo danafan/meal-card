@@ -83,12 +83,6 @@ Page({
   },
   //每分钟刷新付款码
   refreshQrCode() {
-    // this.setData({
-    //   set_interval: setInterval(() => {
-    //     //获取付款码
-    //     this.getQrCode();
-    //   }, 60000)
-    // })
     this.setData({
       set_interval: setInterval(() => {
         this.setData({
