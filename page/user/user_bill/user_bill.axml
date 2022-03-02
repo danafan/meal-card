@@ -14,7 +14,7 @@
         <view class="active_line" a:if="{{active_index == 2}}"></view>
       </view>
     </view>
-    <date-picker userType="1" consumption="{{consumption}}" topUp="{{recharge}}" onCheckDate="checkDate"></date-picker>
+    <date-picker userType="1" consumption="{{consumption}}" topUp="{{recharge}}" onCheckDate="checkDate" month="{{month}}" date="{{date}}"></date-picker>
   </view>
   <scroll-view scroll-y="{{true}}" class="list_content" onScrollToLower="loadMore">
     <bill-item userType="1" a:for="{{data_list}}" itemInfo="{{item}}" a:key="*this"></bill-item>

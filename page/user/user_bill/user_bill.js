@@ -4,6 +4,7 @@ Page({
     active_index: 1,     //当前选中的tab下标
     page: 1,             //页码
     month: "",           //日期
+    date:"",
     data_list: [],       //列表数据
     isLoad: true,
     consumption: "",     //已消费
@@ -11,10 +12,12 @@ Page({
   },
   onLoad() {
     var now = new Date(); 				    //当前日期  
+     var nowDay = now.getDate();      //当前日
     var nowMonth = now.getMonth() + 1 < 10 ? '0' + (now.getMonth() + 1).toString() : now.getMonth() + 1; 		//当前月 
     var nowYear = now.getFullYear(); 		  //当前年 
     this.setData({
-      month: nowYear + '-' + nowMonth
+      month: nowYear + '-' + nowMonth,
+      date: nowYear + '-' + nowMonth + '-' + nowDay
     })
     //获取列表
     this.getData();
