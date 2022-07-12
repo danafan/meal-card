@@ -1,0 +1,31 @@
+.page_top_container {
+  margin-bottom: 30rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.row_content{
+  background: #ffffff;
+  width: 100%;
+  padding: 15rpx 30rpx;
+  font-size: 32rpx;
+}
+.row {
+  padding-bottom: 15rpx;
+  padding-top: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lable {
+  font-weight: 500;
+  color: #333333;
+}
+
+.value {
+  font-weight: 400;
+  color: #FF9C3D;
+}
+.stop_time{
+  color: #FF4C3D;
+}

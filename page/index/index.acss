@@ -1,0 +1,43 @@
+.index_container {
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app_item {
+  margin-bottom: 40rpx;
+  position: relative;
+  width: 100%;
+  height: 240rpx;
+}
+
+.app_title {
+  position: absolute;
+  top: 48rpx;
+  left: 64rpx;
+  font-size: 68rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #ffffff;
+  z-index: 1;
+}
+
+.app_img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scan_confirm {
+  width: 290rpx;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  border: 2rpx solid #FF9C3D;
+  font-size: 28rpx;
+  color: #FF9C3D;
+}

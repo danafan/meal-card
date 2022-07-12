@@ -17,13 +17,6 @@
   </view>
   <view class="content">
     <view class="confirm_collection" onTap="collFun">确认收款</view>
-    <view class="menu_item" onTap="goBill">
-      <view class="menu_left">
-        <image class="menu_icon" src="../../../images/bill_icon.png"/>
-        <view class="menu_lable">账单</view>
-      </view>
-      <image class="right_arrow" src="../../../images/right_arrow.png"/>
-    </view>
   </view>
   <confirm-dialog title="收款成功" content_1="成功收款{{amount}}" content_2="餐卡号{{card_id}}" onConfirmFun="confirm" a:if="{{show_dialog}}"></confirm-dialog>
 </view>

@@ -1,0 +1,46 @@
+.menu_item {
+  margin-bottom: 30rpx;
+  border-radius: 8rpx;
+  background: #ffffff;
+  width: 100%;
+  height: 256rpx;
+  display: flex;
+  padding: 30rpx 16rpx;
+}
+
+.menu_img {
+  width: 196rpx;
+  height: 196rpx;
+}
+
+.menu_content {
+  margin-left: 30rpx;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.menu_name {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.menu_price {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #FB4E44;
+}
+.add_menu_box{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.add_menu{
+  width: 52rpx;
+  height: 52rpx;
+}

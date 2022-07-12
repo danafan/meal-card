@@ -1,0 +1,16 @@
+<view class="page_top_container">
+  <view class="row_content">
+    <view class="row">
+      <view class="lable">送餐日期:</view>
+      <view class="value">选择日期</view>
+    </view>
+    <view class="row">
+      <view class="lable">哪一餐:</view>
+      <view class="value">午餐</view>
+    </view>
+    <view class="row">
+      <view class="lable">截止订餐时间:</view>
+      <view class="value stop_time">07-08 15:00</view>
+    </view>
+  </view>
+</view>

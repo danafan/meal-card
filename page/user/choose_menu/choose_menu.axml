@@ -1,0 +1,12 @@
+<view class="choose_menu_container">
+  <page-top></page-top>
+  <scroll-view scroll-y="{{true}}" class="menu_list">
+    <menu-item type="add_menu"></menu-item>
+    <menu-item type="add_menu"></menu-item>
+    <menu-item type="add_menu"></menu-item>
+    <menu-item type="add_menu"></menu-item>
+    <menu-item type="add_menu"></menu-item>
+    <menu-item type="add_menu"></menu-item>
+  </scroll-view>
+  <shop-car></shop-car>
+</view>

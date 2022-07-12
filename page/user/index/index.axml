@@ -16,12 +16,5 @@
       <view class="text">餐卡余额：{{card_info.balance}}</view>
     </view>
   </view>
-  <view class="menu_item" onTap="goBill">
-    <view class="menu_left">
-      <image class="menu_icon" src="../../../images/bill_icon.png"/>
-      <view class="menu_lable">账单</view>
-    </view>
-    <image class="right_arrow" src="../../../images/right_arrow.png"/>
-  </view>
   <confirm-dialog title="付款成功" content_1="成功付款{{amount}}" content_2="{{store_name}}" onConfirmFun="confirm" a:if="{{show_dialog}}"></confirm-dialog>
 </view>

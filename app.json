@@ -3,8 +3,13 @@
     "page/index/index",
     "page/user/index/index",
     "page/user/user_bill/user_bill",
+    "page/user/user_order/user_order",
+    "page/user/choose_menu/choose_menu",
     "page/store/index/index",
-    "page/store/store_bill/store_bill"
+    "page/store/store_bill/store_bill",
+    "page/store/up_menu/up_menu",
+    "page/store/store_order/store_order",
+    "page/store/menu_management/menu_management"
   ],
   "window": {
     "defaultTitle": "餐卡",
