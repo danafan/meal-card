@@ -1,11 +1,11 @@
 <view class="menu_item">
   <image class="menu_img" src="../../../images/dc_back.png"/>
   <view class="menu_content">
-    <view class="menu_name">鱼香肉丝</view>
-    <view class="menu_price">¥ 18.00</view>
+    <view class="menu_name">{{item.name}}</view>
+    <view class="menu_price">¥ {{item.price}}</view>
   </view>
   <!-- 用户点餐 -->
   <view class="add_menu_box" a:if="{{type == 'add_menu'}}">
-    <image class="add_menu" src="../../../images/add_menu.png"/>
+    <image class="add_menu" src="../../../images/add_menu.png" onTap="addmenu"/>
   </view>
 </view>

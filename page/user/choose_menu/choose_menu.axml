@@ -1,12 +1,65 @@
 <view class="choose_menu_container">
-  <page-top></page-top>
-  <scroll-view scroll-y="{{true}}" class="menu_list">
-    <menu-item type="add_menu"></menu-item>
-    <menu-item type="add_menu"></menu-item>
-    <menu-item type="add_menu"></menu-item>
-    <menu-item type="add_menu"></menu-item>
-    <menu-item type="add_menu"></menu-item>
-    <menu-item type="add_menu"></menu-item>
-  </scroll-view>
-  <shop-car></shop-car>
+  <view class="menu_container_top">
+    <page-top></page-top>
+    <scroll-view scroll-y="{{true}}" class="menu_list">
+      <menu-item type="add_menu" item="{{item}}" a:for="{{menu_list}}" onAddFn="addFn"></menu-item>
+    </scroll-view>
+    <view class="car_model" a:if="{{showModel}}">
+      <view class="model_content"></view>
+      <view class="shop_list">
+        <view class="clear_list">清除已选</view>
+        <scroll-view scroll-y="{{true}}" class="select_list">
+          <view class="select_menu">
+            <image class="select_menu_img" src="../../../images/dc_back.png"/>
+            <view class="select_menu_content">
+              <view class="select_menu_name">鱼香肉丝</view>
+              <view class="select_menu_price">¥ 18.80</view>
+            </view>
+            <view class="check_num_row">
+              <view class="check reduce">-</view>
+              <view class="num">2</view>
+              <view class="check add">+</view>
+            </view>
+          </view>
+          <view class="select_menu">
+            <image class="select_menu_img" src="../../../images/dc_back.png"/>
+            <view class="select_menu_content">
+              <view class="select_menu_name">鱼香肉丝</view>
+              <view class="select_menu_price">¥ 18.80</view>
+            </view>
+            <view class="check_num_row">
+              <view class="check reduce">-</view>
+              <view class="num">2</view>
+              <view class="check add">+</view>
+            </view>
+          </view>
+          <view class="select_menu">
+            <image class="select_menu_img" src="../../../images/dc_back.png"/>
+            <view class="select_menu_content">
+              <view class="select_menu_name">鱼香肉丝</view>
+              <view class="select_menu_price">¥ 18.80</view>
+            </view>
+            <view class="check_num_row">
+              <view class="check reduce">-</view>
+              <view class="num">2</view>
+              <view class="check add">+</view>
+            </view>
+          </view>
+          <view class="select_menu">
+            <image class="select_menu_img" src="../../../images/dc_back.png"/>
+            <view class="select_menu_content">
+              <view class="select_menu_name">鱼香肉丝</view>
+              <view class="select_menu_price">¥ 18.80</view>
+            </view>
+            <view class="check_num_row">
+              <view class="check reduce">-</view>
+              <view class="num">2</view>
+              <view class="check add">+</view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+  <shop-car total_price="{{total_price}}"></shop-car>
 </view>
