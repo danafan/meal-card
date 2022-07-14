@@ -24,6 +24,7 @@ require('../../components/bill-item/bill-item');
 require('../../components/menu-item/menu-item');
 require('../../components/page-top/page-top');
 require('../../components/shop-car/shop-car');
+require('../../components/empty/empty');
 require('../../page/index/index');
 require('../../page/user/index/index');
 require('../../page/user/user_bill/user_bill');

@@ -1,7 +1,7 @@
 <view class="shop_car_container">
   <view class="content_row">
     <view class="left_content">
-      <image class="shop_car_icon" src="../../../images/shop_car_icon.png"/>
+      <image class="shop_car_icon" src="../../../images/shop_car_icon.png" onTap="checkShowCar"/>
       <view class="price">¥ {{total_price}}</view>
     </view>
     <view class="right_content">去结算</view>

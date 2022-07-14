@@ -7,5 +7,10 @@ Component({
   didMount() {},
   didUpdate() {},
   didUnmount() {},
-  methods: {},
+  methods: {
+    // 点击购物车按钮
+    checkShowCar(){
+      this.props.onCheckShowCar();
+    }
+  },
 });

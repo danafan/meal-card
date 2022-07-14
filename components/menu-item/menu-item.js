@@ -9,9 +9,10 @@ Component({
   didUpdate() {},
   didUnmount() {},
   methods: {
-    //点击添加菜品
-    addmenu(){
-      this.props.onAddFn(this.props.item);
+    //点击添加或删除菜品
+    checkmenu(v){
+      let type = v.target.dataset.type;
+      this.props.onCheckFn(this.props.item.id,type);
     }
   },
 });

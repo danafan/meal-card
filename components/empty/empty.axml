@@ -1,0 +1,4 @@
+<view class="empty_container">
+  <image class="hbd_icon" src="../../../images/hbd_icon.png"/>
+  <view class="toast_text">{{toast_text}}</view>
+</view>

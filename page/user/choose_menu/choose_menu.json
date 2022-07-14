@@ -3,6 +3,7 @@
   "usingComponents":{
     "menu-item":"../../../components/menu-item/menu-item",
     "page-top":"../../../components/page-top/page-top",
-    "shop-car":"../../../components/shop-car/shop-car"
+    "shop-car":"../../../components/shop-car/shop-car",
+    "empty":"../../../components/empty/empty"
   }
 }
