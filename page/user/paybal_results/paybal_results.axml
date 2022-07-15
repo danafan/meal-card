@@ -1,0 +1,3 @@
+<view class="paybal_result">
+  <empty page_type="paybal_results" toast_text="{{toast_text}}" result_type="{{result_type}}"></empty>
+</view>

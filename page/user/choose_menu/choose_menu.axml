@@ -4,7 +4,7 @@
     <scroll-view scroll-y="{{true}}" class="menu_list" a:if="{{menu_list.length > 0}}">
       <menu-item type="add_menu" item="{{item}}" a:for="{{menu_list}}" onCheckFn="checkFn"></menu-item>
     </scroll-view>
-    <empty toast_text="商家还没有上传菜品哦" a:else></empty>
+    <empty page_type="choose_menu" toast_text="商家还没有上传菜品哦" a:else></empty>
     <view class="car_model" a:if="{{showModel}}">
       <view class="model_content"></view>
       <view class="shop_list">
@@ -26,5 +26,5 @@
       </view>
     </view>
   </view>
-  <shop-car total_price="{{total_price}}" onCheckShowCar="checkShowCar"></shop-car>
+  <shop-car total_price="{{total_price}}" page_type="choose_menu" onCheckShowCar="checkShowCar" onConfirmOrder="confirmOrder"></shop-car>
 </view>

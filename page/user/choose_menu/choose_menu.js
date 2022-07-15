@@ -114,10 +114,24 @@ Page({
       confirmButtonText: '确认',
       cancelButtonText: '取消',
       success: (result) => {
-        if(result.confirm){
+        if (result.confirm) {
           this.checkFn('1', '1', 'clear');
         }
       },
     });
+  },
+  //点击去结算
+  confirmOrder() {
+    if (this.data.car_list.length > 0) {
+      dd.navigateTo({
+        url: '/page/user/confirm_order/confirm_order'
+      })
+    } else {
+      dd.showToast({
+        type: 'none',
+        content: '购物车内还没有菜品哦～',
+        duration: 2000,
+      });
+    }
   }
 });

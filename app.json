@@ -9,7 +9,9 @@
     "page/store/store_bill/store_bill",
     "page/store/up_menu/up_menu",
     "page/store/store_order/store_order",
-    "page/store/menu_management/menu_management"
+    "page/store/menu_management/menu_management",
+    "page/user/confirm_order/confirm_order",
+    "page/user/paybal_results/paybal_results"
   ],
   "window": {
     "defaultTitle": "餐卡",

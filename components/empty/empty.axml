@@ -1,4 +1,6 @@
 <view class="empty_container">
-  <image class="hbd_icon" src="../../../images/hbd_icon.png"/>
+  <image class="hbd_icon" src="../../../images/hbd_icon.png" a:if="{{page_type == 'choose_menu'}}"/>
+  <image class="hbd_icon" src="../../../images/paybal_success.png" a:if="{{page_type == 'paybal_results' && result_type == '1'}}"/>
+  <image class="hbd_icon" src="../../../images/paybal_fail.png" a:if="{{page_type == 'paybal_results' && result_type == '2'}}"/>
   <view class="toast_text">{{toast_text}}</view>
 </view>

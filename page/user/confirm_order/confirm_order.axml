@@ -1,0 +1,16 @@
+<view class="confirm_order_page">
+  <page-top></page-top>
+  <scroll-view scroll-y="{{true}}" class="car_list">
+    <view class="menu_item" a:for="{{order_list}}">
+      <image class="menu_img" src="../../../images/dc_back.png"/>
+      <view class="menu_content">
+        <view class="menu_name">油焖大虾</view>
+        <view class="menu_num">x1</view>
+      </view>
+      <view class="menu_price">¥18.80</view>
+    </view>
+    <view class="remark_lable">备注：</view>
+    <textarea class="remark_input" onInput="checkInput" auto-height placeholder="请输入备注" />
+  </scroll-view>
+  <shop-car total_price="{{total_price}}" page_type="confirm_order" onPaybalFn="paybalFn"></shop-car>
+</view>

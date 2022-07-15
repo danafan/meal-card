@@ -1,0 +1,71 @@
+.confirm_order_page {
+  background: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.car_list {
+  box-sizing: border-box;
+  flex: 1;
+  width: 100%;
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+}
+
+.menu_item {
+  box-sizing: border-box;
+  height: 132rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu_img {
+  margin-right: 20rpx;
+  width: 92rpx;
+  height: 92rpx;
+}
+
+.menu_content {
+  flex: 1;
+  height: 92rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu_name {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.menu_num {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.menu_price {
+  height: 92rpx;
+  line-height: 92rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #FF4A26;
+}
+.remark_lable{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+}
+.remark_input{
+  font-size: 32rpx;
+  color: #333333;
+}

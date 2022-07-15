@@ -1,0 +1,7 @@
+{
+"defaultTitle": "点餐",
+  "usingComponents":{
+    "page-top":"../../../components/page-top/page-top",
+    "shop-car":"../../../components/shop-car/shop-car"
+  }
+}

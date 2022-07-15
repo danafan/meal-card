@@ -18,3 +18,5 @@ require('../../page/store/store_bill/store_bill');
 require('../../page/store/up_menu/up_menu');
 require('../../page/store/store_order/store_order');
 require('../../page/store/menu_management/menu_management');
+require('../../page/user/confirm_order/confirm_order');
+require('../../page/user/paybal_results/paybal_results');
