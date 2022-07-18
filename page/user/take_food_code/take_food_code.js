@@ -3,7 +3,6 @@ const resource = require('../../../utils/api.js').API;
 Page({
   data: {
     qr_code_url: '',
-    show_dialog: false,   //付款成功弹窗
     card_info: {},         //餐卡信息
     set_interval: null,    //一分钟计时
     time: 60,
@@ -129,12 +128,4 @@ Page({
       })
     })
   },
-  //点击确认
-  confirm() {
-    this.setData({
-      show_dialog: false
-    })
-    //获取付款码
-    this.getQrCode();
-  }
 });

@@ -1,0 +1,11 @@
+<view>
+  <view class="qrcode_content">
+    <view class="page_title">7月5日午餐取餐码</view>
+    <image class="qr_container" src="{{qr_code_url}}" onTap="getQrCode"/>
+    <view class="reload_toast">
+      <image class="reload_icon" src="../../../images/reload_icon.png" onTap="getQrCode"/>
+      <view class="text">每分钟自动更新</view>
+    </view>
+    <view class="go_bcak">返回</view>
+  </view>
+</view>

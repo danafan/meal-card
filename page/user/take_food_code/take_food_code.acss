@@ -1,0 +1,65 @@
+page {
+  box-sizing: border-box;
+  background-color: #FFA153;
+  padding: 30rpx;
+}
+
+.qrcode_content {
+  border-radius: 12rpx;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60rpx;
+  padding-bottom: 92rpx;
+}
+
+.page_title {
+  margin-bottom: 52rpx;
+  font-size: 42rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.qr_container {
+  margin-bottom: 46rpx;
+  width: 360rpx;
+  height: 360rpx;
+}
+
+.reload_toast {
+  margin-bottom: 80rpx;
+  display: flex;
+  align-items: center;
+}
+
+.content_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0 24rpx;
+}
+
+.reload_icon {
+  margin-right: 10rpx;
+  width: 32rpx;
+  height: 28rpx;
+}
+
+.text {
+  font-weight: 500;
+  color: #333333;
+  font-size: 32rpx;
+}
+
+.go_bcak {
+  border: 1rpx solid #FF9C3D;
+  border-radius: 40rpx;
+  width: 290rpx;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28;
+  font-weight: 500;
+  color: #FF9C3D;
+}
