@@ -34,6 +34,8 @@ Page({
   },
   //保存
   save() {
+    //保存提交
+    this.confirmSave();
     if (this.data.menu_name == '') {
       dd.showToast({
         type: 'none',
@@ -83,7 +85,7 @@ Page({
     }
   },
   //保存提交
-  confirmSave(arg) {
+  confirmSave() {
     dd.confirm({
       title: '温馨提示',
       content: '确定要保存菜品吗?',
@@ -91,10 +93,14 @@ Page({
       cancelButtonText: '否',
       success: (result) => {
         if (result.confirm) {
-          dd.navigateTo({
-            url: '/page/user/paybal_results/paybal_results'
+          this.setData({
+            img_url: "",       //上传的图片地址
+            menu_name: "",   //菜品名称
+            menu_price: "",    //菜品价格
           })
-          // console.log(arg)
+          dd.navigateTo({
+            url: '/page/user/paybal_results/paybal_results?result_type=1&toast_text=保存成功&show_back=1'
+          })
         };
       },
     });

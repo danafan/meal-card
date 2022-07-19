@@ -13,7 +13,8 @@
     "page/user/confirm_order/confirm_order",
     "page/user/paybal_results/paybal_results",
     "page/user/take_food_code/take_food_code",
-    "page/store/create_menu/create_menu"
+    "page/store/create_menu/create_menu",
+    "page/store/confirm_order/confirm_order"
   ],
   "window": {
     "defaultTitle": "餐卡",

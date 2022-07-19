@@ -1,0 +1,49 @@
+.top_content{
+  background: #ffffff;
+  padding: 20rpx 30rpx;
+}
+.item_row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 32rpx;
+  padding-top: 16rpx;
+  padding-bottom: 16rpx;
+}
+
+.lable {
+  color: #666666;
+}
+
+.value {
+  color: #333333;
+}
+
+.status{
+  color: #FF9C3D;
+}
+
+.bottom_box{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #ffffff;
+  width: 100%;
+  height: 152rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+}
+
+.confirm_button{
+  border-radius: 46rpx;
+  background: #FF9C3D;
+  width: 100%;
+  text-align: center;
+  height: 92rpx;
+  line-height: 92rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #FFFFFF; 
+}

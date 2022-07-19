@@ -13,9 +13,9 @@ Page({
   },
   //点击免密支付
   paybalFn() {
-    console.log(this.data.remark)
+    let toast_text = '支付成功';
     dd.navigateTo({
-      url: '/page/user/paybal_results/paybal_results'
+      url: '/page/user/paybal_results/paybal_results?result_type=1&toast_text=' + toast_text
     })
   },
 });

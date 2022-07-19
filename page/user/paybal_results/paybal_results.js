@@ -1,11 +1,16 @@
 Page({
   data: {
-    result_type:'2',    // 1: 成功；2:失败
+    result_type:'',    // 0:空；1: 成功
     toast_text:"",      //提示文字
+    show_back:"",       //不为空则显示返回按钮
+    show_scan:"",       //不为空则显示继续扫码按钮
   },
-  onLoad() {
+  onLoad(e) {
     this.setData({
-      toast_text:this.data.result_type == '1'?'支付成功':'支付失败'
+      result_type:e.result_type,
+      toast_text:e.toast_text,
+      show_back:e.show_back,
+      show_scan:e.show_scan
     })
   },
 });

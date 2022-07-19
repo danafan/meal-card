@@ -8,7 +8,7 @@ Page({
     //   user_type: 1
     // })
     dd.navigateTo({
-      url: '/page/store/create_menu/create_menu'
+      url: '/page/store/confirm_order/confirm_order'
     })
     //钉钉获取用户信息
     // this.getDingInfo();
@@ -85,6 +85,12 @@ Page({
   menuFn() {
     dd.navigateTo({
       url: '/page/store/menu_management/menu_management'
+    })
+  },
+  //扫码确认
+  scanConfirm(){
+    dd.navigateTo({
+      url: '/page/store/confirm_order/confirm_order'
     })
   }
 

@@ -1,0 +1,35 @@
+<view>
+  <view class="top_content">
+    <view class="item_row">
+      <view class="lable">日期</view>
+      <view class="value">2022/07/05</view>
+    </view>
+    <view class="item_row">
+      <view class="lable">哪一餐</view>
+      <view class="value">午餐</view>
+    </view>
+    <view class="item_row">
+      <view class="lable">订餐人</view>
+      <view class="value">西西</view>
+    </view>
+    <view class="item_row">
+      <view class="lable">菜品2</view>
+      <view class="value">30份</view>
+    </view>
+    <view class="item_row">
+      <view class="lable">备注</view>
+      <view class="value">多盛点白米饭</view>
+    </view>
+    <view class="item_row">
+      <view class="lable">合计</view>
+      <view class="value">￥36</view>
+    </view>
+    <view class="item_row">
+      <view class="lable">当前状态</view>
+      <view class="value status">待确认</view>
+    </view>
+  </view>
+  <view class="bottom_box">
+    <view class="confirm_button" onTap="confirmGet">确认取餐</view>
+  </view>
+</view>
