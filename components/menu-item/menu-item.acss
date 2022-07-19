@@ -53,3 +53,17 @@
   width: 52rpx;
   height: 52rpx;
 }
+.edit_delete{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.edit_menu_icon{
+  width: 32rpx;
+  height: 32rpx;
+}
+.delete_menu_icon{
+  width: 36rpx;
+  height: 40rpx;
+}

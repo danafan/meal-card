@@ -1,15 +1,15 @@
 const resource = require('../../utils/api.js').API;
 Page({
   data: {
-    user_type: 1,    //1:用户；商家
+    user_type: 2,    //1:用户；商家
   },
   onLoad() {
     // this.setData({
     //   user_type: 1
     // })
     dd.navigateTo({
-        url: '/page/user/user_order/user_order'
-      })
+      url: '/page/store/create_menu/create_menu'
+    })
     //钉钉获取用户信息
     // this.getDingInfo();
   },

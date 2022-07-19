@@ -1,0 +1,22 @@
+<view>
+  <view class="content">
+    <view class="upload_box" onTap="chooseImg" a:if="{{img_url == ''}}">
+      <image class="upload_image" src="../../../images/upload_image.png"/>
+    </view>
+    <image class="chooseImg" src="{{img_url}}" onTap="chooseImg" a:else/>
+    <view class="toast">点击上传图片</view>
+    <view class="input_row">
+      <view class="lable">
+        <text class="tag">*</text>菜品名称</view>
+      <input class="input" value="{{menu_name}}" data-type="menu_name" onInput='onInput' placeholder="请输入菜品名称" />
+    </view>
+    <view class="input_row">
+      <view class="lable">
+        <text class="tag">*</text>菜品价格</view>
+      <input class="input" type="digit" value="{{menu_price}}" data-type="menu_price" onInput='onInput' placeholder="请输入菜品价格" />
+    </view>
+  </view>
+  <view class="bottom_box">
+    <view class="save" onTap="save">保存</view>
+  </view>
+</view>

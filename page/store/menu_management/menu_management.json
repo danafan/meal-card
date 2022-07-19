@@ -1,1 +1,8 @@
-{}
+{
+  "defaultTitle": "菜品管理",
+  "usingComponents":{
+    "menu-item":"../../../components/menu-item/menu-item",
+    "empty":"../../../components/empty/empty"
+  }
+  
+}

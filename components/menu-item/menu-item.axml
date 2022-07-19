@@ -10,4 +10,9 @@
     <view class="menu_num" a:if="{{item.num > 0}}">{{item.num}}</view>
     <image class="check_icon" src="../../../images/add_menu.png" data-type="2" onTap="checkmenu"/>
   </view>
+  <!-- 商家菜品管理 -->
+  <view class="edit_delete" a:if="{{type == 'menu_management'}}">
+    <image class="edit_menu_icon" src="../../../images/edit_menu_icon.png" data-id="{{item.id}}" onTap="onEdit"/>
+    <image class="delete_menu_icon" src="../../../images/delete_menu_icon.png" data-id="{{item.id}}" data-name="{{item.name}}" onTap="onDelete"/>
+  </view>
 </view>

@@ -21,3 +21,4 @@ require('../../page/store/menu_management/menu_management');
 require('../../page/user/confirm_order/confirm_order');
 require('../../page/user/paybal_results/paybal_results');
 require('../../page/user/take_food_code/take_food_code');
+require('../../page/store/create_menu/create_menu');

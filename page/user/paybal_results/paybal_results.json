@@ -1,5 +1,5 @@
 {
-"defaultTitle": "支付结果",
+"defaultTitle": "提示",
   "usingComponents":{
     "empty":"../../../components/empty/empty"
   }

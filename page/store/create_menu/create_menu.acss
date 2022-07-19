@@ -1,0 +1,75 @@
+.content {
+  padding: 20rpx 30rpx;
+  background: #ffffff;
+}
+
+.upload_box {
+  border-radius: 12rpx;
+  border: 1px solid #FF9C3D;
+  width: 100%;
+  height: 300rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload_image {
+  width: 124rpx;
+  height: 106rpx;
+}
+
+.toast {
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #FF9C3D;
+}
+
+.input_row{
+  width: 100%;
+  height: 76rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 32rpx;
+}
+
+.lable{
+  color: #666666;
+}
+text{
+  color: red;
+}
+.input{
+  text-align: end;
+  color: #FF9C3D;
+}
+
+.bottom_box{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #ffffff;
+  width: 100%;
+  height: 152rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+}
+
+.save{
+  border-radius: 46rpx;
+  background: #FF9C3D;
+  width: 100%;
+  text-align: center;
+  height: 92rpx;
+  line-height: 92rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #FFFFFF; 
+}

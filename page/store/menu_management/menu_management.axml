@@ -1,3 +1,9 @@
-<view>
-  商家菜单管理
+<view class="menu_management">
+  <scroll-view scroll-y="{{true}}" class="menu_list" a:if="{{menu_list.length > 0}}">
+    <menu-item type="menu_management" item="{{item}}" a:for="{{menu_list}}" onEdit="onEdit" onDelete="onDelete"></menu-item>
+  </scroll-view>
+  <empty page_type="choose_menu" toast_text="您还没有上传菜品哦" a:else></empty>
+  <view class="bottom_box">
+    <view class="add_button" onTap="addmenu">新增菜品</view>
+  </view>
 </view>
