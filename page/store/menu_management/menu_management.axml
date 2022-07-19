@@ -6,4 +6,5 @@
   <view class="bottom_box">
     <view class="add_button" onTap="addmenu">新增菜品</view>
   </view>
+  <message-box message_text="{{message_text}}" onTapFn="onTapFn" a:if="{{show_message}}"></message-box>
 </view>

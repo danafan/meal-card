@@ -3,6 +3,8 @@ Page({
     img_url: "",       //上传的图片地址
     menu_name: "",   //菜品名称
     menu_price: "",    //菜品价格
+    show_message: false,   //保存弹窗
+    message_text: "",      //弹窗内容
   },
   onLoad(e) {
     if (e.id) { //编辑
@@ -34,8 +36,7 @@ Page({
   },
   //保存
   save() {
-    //保存提交
-    this.confirmSave();
+   
     if (this.data.menu_name == '') {
       dd.showToast({
         type: 'none',
@@ -49,7 +50,10 @@ Page({
         duration: 2000
       });
     } else {
+      //保存提交
+      this.confirmSave();
       if (this.data.img_url != '') {
+         
         // dd.uploadFile({
         //   url: getApp().globalData.baseurl + 'supplier/upload_evidence',
         //   fileType: 'image',
@@ -86,23 +90,24 @@ Page({
   },
   //保存提交
   confirmSave() {
-    dd.confirm({
-      title: '温馨提示',
-      content: '确定要保存菜品吗?',
-      confirmButtonText: '是',
-      cancelButtonText: '否',
-      success: (result) => {
-        if (result.confirm) {
-          this.setData({
-            img_url: "",       //上传的图片地址
-            menu_name: "",   //菜品名称
-            menu_price: "",    //菜品价格
-          })
-          dd.navigateTo({
-            url: '/page/user/paybal_results/paybal_results?result_type=1&toast_text=保存成功&show_back=1'
-          })
-        };
-      },
-    });
+    console.log('asdasd')
+    this.setData({
+      message_text: '确定要保存菜品吗？',
+      show_message: true
+    })
+  },
+  //弹窗按钮
+  onTapFn(type) { //0:否；1:是
+    this.setData({
+      show_message: false
+    })
+    this.setData({
+      img_url: "",        //上传的图片地址
+      menu_name: "",      //菜品名称
+      menu_price: "",     //菜品价格
+    })
+    dd.navigateTo({
+      url: '/page/user/paybal_results/paybal_results?result_type=1&toast_text=保存成功&show_back=1'
+    })
   }
 });

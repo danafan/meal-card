@@ -2,7 +2,8 @@
   "defaultTitle": "菜品管理",
   "usingComponents":{
     "menu-item":"../../../components/menu-item/menu-item",
-    "empty":"../../../components/empty/empty"
+    "empty":"../../../components/empty/empty",
+    "message-box":"../../../components/message-box/message-box"
   }
   
 }

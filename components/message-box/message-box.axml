@@ -1,0 +1,10 @@
+<view class="message_box">
+  <view class="message_content">
+    <view class="top_content">{{message_text}}</view>
+    <view class="button_box">
+      <view class="button_item" data-type="0" onTap="tapFn">否</view>
+      <view class="line"></view>
+      <view class="button_item" data-type="1" onTap="tapFn">是</view>
+    </view>
+  </view>
+</view>

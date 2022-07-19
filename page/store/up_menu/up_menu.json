@@ -3,6 +3,7 @@
   "usingComponents":{
     "menu-item":"../../../components/menu-item/menu-item",
     "page-top":"../../../components/page-top/page-top",
-    "empty":"../../../components/empty/empty"
+    "empty":"../../../components/empty/empty",
+    "message-box":"../../../components/message-box/message-box"
   }
 }

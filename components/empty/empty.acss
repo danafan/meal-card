@@ -1,5 +1,4 @@
 .empty_container {
-  border:1px solid red;
   flex: 1;
   width: 100%;
   display: flex;

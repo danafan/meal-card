@@ -19,4 +19,5 @@
   <view class="bottom_box">
     <view class="save" onTap="save">保存</view>
   </view>
+  <message-box message_text="{{message_text}}" onTapFn="onTapFn" a:if="{{show_message}}"></message-box>
 </view>

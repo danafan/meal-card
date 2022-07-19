@@ -26,6 +26,8 @@ Page({
       num: 0,
       price: 36
     }],                   //菜单
+    show_message:false,   //删除弹窗
+    message_text:""
   },
   onLoad() { },
   //点击某一条的编辑
@@ -42,16 +44,15 @@ Page({
   },
   //点击某一条的删除
   onDelete(id, name) {
-    dd.confirm({
-      title: '温馨提示',
-      content: `确定要把${name}从列表中删除吗?`,
-      confirmButtonText: '是',
-      cancelButtonText: '否',
-      success: (result) => {
-        if (result.confirm) {
-          console.log(id)
-        };
-      },
-    });
+    this.setData({
+      message_text:`确定要把${name}从列表中删除吗?`,
+      show_message:true
+    })
   },
+   //弹窗按钮
+  onTapFn() { //0:否；1:是
+    this.setData({
+      show_message:false
+    })
+  }
 });
