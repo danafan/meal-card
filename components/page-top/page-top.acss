@@ -1,5 +1,5 @@
 .page_top_container {
-  margin-bottom: 30rpx;
+  background: #ffffff;
   padding-left: 30rpx;
   padding-right: 30rpx;
 }

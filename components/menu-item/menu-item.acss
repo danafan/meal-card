@@ -7,6 +7,9 @@
   display: flex;
   padding: 30rpx 16rpx;
 }
+.border{
+  border: 1rpx solid #FF9C3D;
+}
 
 .menu_img {
   width: 196rpx;
@@ -66,4 +69,21 @@
 .delete_menu_icon{
   width: 36rpx;
   height: 40rpx;
+}
+
+.down_menu{
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.down_button{
+  border-radius: 24rpx;
+  border: 1rpx solid #FF9C3D;
+  width: 144rpx;
+  text-align: center;
+  height: 48rpx;
+  line-height: 48rpx;
+  font-size: 28rpx;
+  color: #FF9C3D;
 }

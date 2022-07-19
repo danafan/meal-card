@@ -1,1 +1,8 @@
-{}
+{
+  "defaultTitle": "菜品上架",
+  "usingComponents":{
+    "menu-item":"../../../components/menu-item/menu-item",
+    "page-top":"../../../components/page-top/page-top",
+    "empty":"../../../components/empty/empty"
+  }
+}

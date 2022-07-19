@@ -8,7 +8,7 @@ Page({
     //   user_type: 1
     // })
     dd.navigateTo({
-      url: '/page/store/confirm_order/confirm_order'
+      url: '/page/store/up_menu/up_menu'
     })
     //钉钉获取用户信息
     // this.getDingInfo();

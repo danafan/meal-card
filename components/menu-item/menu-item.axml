@@ -1,4 +1,4 @@
-<view class="menu_item">
+<view class="menu_item {{item.is_checked?'border':''}}" onTap="changeMenu">
   <image class="menu_img" src="../../../images/dc_back.png"/>
   <view class="menu_content">
     <view class="menu_name">{{item.name}}</view>
@@ -14,5 +14,9 @@
   <view class="edit_delete" a:if="{{type == 'menu_management'}}">
     <image class="edit_menu_icon" src="../../../images/edit_menu_icon.png" data-id="{{item.id}}" onTap="onEdit"/>
     <image class="delete_menu_icon" src="../../../images/delete_menu_icon.png" data-id="{{item.id}}" data-name="{{item.name}}" onTap="onDelete"/>
+  </view>
+  <!-- 商家下架 -->
+  <view class="down_menu" a:if="{{type == 'down_menu'}}">
+    <view class="down_button" onTap="downMenu">下架</view>
   </view>
 </view>
