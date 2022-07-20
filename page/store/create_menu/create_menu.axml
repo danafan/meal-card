@@ -3,7 +3,7 @@
     <view class="upload_box" onTap="chooseImg" a:if="{{img_url == ''}}">
       <image class="upload_image" src="../../../images/upload_image.png"/>
     </view>
-    <image class="chooseImg" src="{{img_url}}" onTap="chooseImg" a:else/>
+    <image class="show_img" src="{{img_url}}" onTap="chooseImg" a:else/>
     <view class="toast">点击上传图片</view>
     <view class="input_row">
       <view class="lable">

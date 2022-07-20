@@ -7,11 +7,11 @@ Page({
     // this.setData({
     //   user_type: 1
     // })
-    dd.navigateTo({
-      url: '/page/store/up_menu/up_menu'
-    })
+    // dd.navigateTo({
+    //   url: '/page/store/up_menu/up_menu'
+    // })
     //钉钉获取用户信息
-    // this.getDingInfo();
+    this.getDingInfo();
   },
   //钉钉获取用户信息
   getDingInfo() {

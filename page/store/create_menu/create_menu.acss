@@ -13,6 +13,12 @@
   justify-content: center;
 }
 
+.show_img{
+  border-radius: 12rpx;
+  width: 100%;
+  height: 300rpx;
+}
+
 .upload_image {
   width: 124rpx;
   height: 106rpx;
