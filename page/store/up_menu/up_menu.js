@@ -70,9 +70,6 @@ Page({
       end_time: v.end_time
     })
     if (v.is_request == '1') {    //重新请求
-      // this.setData({
-      //   up_menu_list: []
-      // })
       //获取已上架的菜单列表
       this.getMenuInfo()
     }

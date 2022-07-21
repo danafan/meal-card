@@ -56,6 +56,8 @@ const API = {
   getMenuInfo: (data) => request(GET, 'store/get_menu_info', data),         //已上架的菜单列表
   addMenu: (data) => request(POST, 'store/add_menu', data),         //创建菜单
   editMenu: (data) => request(POST, 'store/edit_menu', data),         //编辑菜单
+  storeOrderTotal: (data) => request(GET, 'store/order_total', data),         //商家订单页头部列表
+  storeOrderDishesList: (data) => request(GET, 'store/order_dishes_list', data),         //商家订单页底部列表
 
 
   
