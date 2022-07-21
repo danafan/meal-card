@@ -13,7 +13,7 @@ Page({
     day: "",
     type: 1,
     end_time: "",
-    menu_id:"",
+    menu_id: "",
     dishes_ids: []
   },
   onLoad() {
@@ -149,18 +149,27 @@ Page({
   onChecked(id) {
     let new_menu_list = JSON.parse(JSON.stringify(this.data.menu_list));
     var new_up_menu_list = JSON.parse(JSON.stringify(this.data.up_menu_list));    //已上架的商品列表
-    new_menu_list.map(item => {
-      if (item.dishes_id == id) {
-        item.is_checked = !item.is_checked;
-        //处理已上架商品列表
-        if (item.is_checked) {
-          new_up_menu_list.push(item);
-        } else {
-          let index = new_up_menu_list.findIndex(item => item.dishes_id == id);
-          new_up_menu_list.splice(index, 1);
-        }
-      }
+    //判断已上架的菜品是否存在于菜单列表（当前列表未加载问题）
+    let contains_list = new_menu_list.filter(iii => {
+      return iii.dishes_id == id;
     })
+    if (contains_list.length > 0) {
+      new_menu_list.map(item => {
+        if (item.dishes_id == id) {
+          item.is_checked = !item.is_checked;
+          //处理已上架商品列表
+          if (item.is_checked) {
+            new_up_menu_list.push(item);
+          } else {
+            let index = new_up_menu_list.findIndex(item => item.dishes_id == id);
+            new_up_menu_list.splice(index, 1);
+          }
+        }
+      })
+    } else {
+      let index = new_up_menu_list.findIndex(item => item.dishes_id == id);
+      new_up_menu_list.splice(index, 1);
+    }
     this.setData({
       menu_list: new_menu_list,
       up_menu_list: new_up_menu_list

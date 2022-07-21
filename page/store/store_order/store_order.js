@@ -6,7 +6,7 @@ Page({
     up_menu_list: [],    //头部列表
     address_list: [], //地址列表
     index: 0,                //选中的地址下标
-    address_id:"",            //选中的地址下标ID
+    address_id: "",            //选中的地址下标ID
     status_index: '0',       //打包状态选项
     page: 1,                        //页码
     isLoad: true,
@@ -34,7 +34,7 @@ Page({
       success: (res) => {
         if (res.date) {
           this.setData({
-            page:1,
+            page: 1,
             date: res.date
           })
           //获取头部列表
@@ -65,13 +65,13 @@ Page({
     resource.storeOrderTotal(arg).then(res => {
       let address_list = res.data.address_list;
       let all_obj = {
-        name:'全部',
-        id:''
+        name: '全部',
+        id: ''
       }
       address_list.unshift(all_obj)
       this.setData({
         up_menu_list: res.data.list,
-        address_list:address_list
+        address_list: address_list
       })
     });
   },
@@ -89,7 +89,7 @@ Page({
     this.setData({
       page: 1,
       index: e.detail.value,
-      address_id:this.data.address_list[e.detail.value].id
+      address_id: this.data.address_list[e.detail.value].id
     });
     //获取底部列表接口
     this.storeOrderDishesList()
@@ -112,12 +112,16 @@ Page({
       type: this.data.active_index,
       package_status: this.data.status_index
     }
-    if(this.data.index != 0){
+    if (this.data.index != 0) {
       arg.address_type = this.data.address_id;
     }
     resource.storeOrderDishesList(arg).then(res => {
       let data = res.data;
-      if(data.length == 0){
+      if (data.length == 0) {
+        this.setData({
+          total_number: 0,
+          order_list: []
+        });
         return;
       };
       this.setData({
@@ -133,6 +137,25 @@ Page({
           isLoad: true
         })
       }
+    });
+  },
+  //点击确认打包
+  setPackage(v) {
+    let arg = {
+      order_id: v.target.dataset.id
+    }
+    resource.setPackage(arg).then(res => {
+      dd.showToast({
+        type: 'none',
+        content: '打包成功',
+        duration: 2000
+      });
+      let new_order_list = JSON.parse(JSON.stringify(this.data.order_list));
+      let index = v.target.dataset.index;
+      new_order_list.splice(index, 1);
+      this.setData({
+        order_list: new_order_list
+      })
     });
   }
 });

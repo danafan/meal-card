@@ -1,20 +1,22 @@
 <view class="up_menu">
-  <page-top stop_date="{{end_time}}" onChange="onChange"></page-top>
-  <view class="menu_type_box">
-    <view class="type_row">
-      <view class="type_item not {{active_index == '0'?'active_item':''}}" data-index="0" onTap="checkType">菜单</view>
-      <view class="type_item already {{active_index == '1'?'active_item':''}}" data-index="1" onTap="checkType">已上架</view>
+  <scroll-view scroll-y="{{true}}" class="scroll_content" onScrollToLower="loadMore">
+    <page-top show_address="{{false}}" stop_date="{{end_time}}" onChange="onChange"></page-top>
+    <view class="menu_type_box">
+      <view class="type_row">
+        <view class="type_item not {{active_index == '0'?'active_item':''}}" data-index="0" onTap="checkType">菜单</view>
+        <view class="type_item already {{active_index == '1'?'active_item':''}}" data-index="1" onTap="checkType">已上架</view>
+      </view>
+      <view class="search_row" a:if="{{active_index == '0'}}">
+        <image class="search_icon" src="../../../images/search_icon.png"/>
+        <input class="input" value="{{search_value}}" onInput="changeSearch" placeholder="请输入您想查找的内容" />
+      </view>
     </view>
-  </view>
-  <view class="search_row" a:if="{{active_index == '0'}}">
-    <image class="search_icon" src="../../../images/search_icon.png"/>
-    <input class="input" value="{{search_value}}" onInput="changeSearch" placeholder="请输入您想查找的内容" />
-  </view>
-  <scroll-view scroll-y="{{true}}" class="list_content" a:if="{{active_index == '0' && menu_list.length > 0}}" onScrollToLower="loadMore">
-    <menu-item type="up_menu" item="{{item}}" a:for="{{menu_list}}" onChecked="onChecked"></menu-item>
-  </scroll-view>
-  <scroll-view scroll-y="{{true}}" class="list_content" a:if="{{active_index == '1' && up_menu_list.length > 0}}">
-    <menu-item type="down_menu" item="{{item}}" a:for="{{up_menu_list}}" onChecked="onChecked"></menu-item>
+    <scroll-view scroll-y="{{true}}" class="list_content" a:if="{{active_index == '0' && menu_list.length > 0}}">
+      <menu-item type="up_menu" item="{{item}}" a:for="{{menu_list}}" onChecked="onChecked"></menu-item>
+    </scroll-view>
+    <scroll-view scroll-y="{{true}}" class="list_content" a:if="{{active_index == '1' && up_menu_list.length > 0}}">
+      <menu-item type="down_menu" item="{{item}}" a:for="{{up_menu_list}}" onChecked="onChecked"></menu-item>
+    </scroll-view>
   </scroll-view>
   <empty result_type="0" toast_text="{{active_index == '0'?'您还没有上传菜品哦':'还没有上架的商品哦'}}" a:if="{{(active_index == '0' && menu_list.length == 0) || (active_index == '1' && up_menu_list.length == 0)}}"></empty>
   <view class="bottom_box">
