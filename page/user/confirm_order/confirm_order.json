@@ -1,7 +1,7 @@
 {
-"defaultTitle": "点餐",
+"defaultTitle": "结算",
   "usingComponents":{
-    "page-top":"../../../components/page-top/page-top",
-    "shop-car":"../../../components/shop-car/shop-car"
+    "shop-car":"../../../components/shop-car/shop-car",
+     "message-box":"../../../components/message-box/message-box"
   }
 }

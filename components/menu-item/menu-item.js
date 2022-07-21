@@ -13,7 +13,7 @@ Component({
     //用户点击菜品加减
     checkmenu(v) {
       let type = v.target.dataset.type;
-      this.props.onCheckFn(this.props.item.id, type);
+      this.props.onCheckFn(this.props.item.dishes_id, type);
     },
     //商家点击编辑菜品
     onEdit() {

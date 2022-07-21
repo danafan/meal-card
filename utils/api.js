@@ -43,7 +43,7 @@ const API = {
   getUserInfo: (data) => request(GET, 'login/login', data),         //获取用户信息
   getCardInfo: (data) => request(GET, 'card/getcardinfo', data),    //获取餐卡信息
   getQrCode: (data) => request(GET, 'card/getpaymentcode', data),   //获取付款码
-  userCardRecord: (data) => request(GET, 'card/getcardrecord', data),   //员工账单s
+  userCardRecord: (data) => request(GET, 'card/getcardrecord', data),   //员工账单
   storePayment: (data) => request(POST, 'store/payment', data),         //商家扫码提交
   getStoreRecord: (data) => request(GET, 'store/getstorerecord', data),         //商家账单
   getRefundReason: (data) => request(GET, 'store/getrefundreason', data),         //获取退款原因
@@ -58,6 +58,10 @@ const API = {
   editMenu: (data) => request(POST, 'store/edit_menu', data),         //编辑菜单
   storeOrderTotal: (data) => request(GET, 'store/order_total', data),         //商家订单页头部列表
   storeOrderDishesList: (data) => request(GET, 'store/order_dishes_list', data),         //商家订单页底部列表
+  userMenuList: (data) => request(GET, 'meal/get_menu', data),         //用户获取菜单
+  userCreateOrder: (data) => request(POST, 'meal/order', data),         //用户下单
+  userOrderList: (data) => request(GET, 'meal/get_order_list', data),         //用户订单列表
+  getMealCode: (data) => request(GET, 'meal/get_meal_code', data),         //用户获取取餐码
 
 
   

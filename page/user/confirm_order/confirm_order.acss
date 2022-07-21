@@ -10,6 +10,34 @@
   flex-direction: column;
 }
 
+.page_top_container {
+  background: #ffffff;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.row_content{
+  background: #ffffff;
+  width: 100%;
+  padding: 15rpx 30rpx;
+  font-size: 32rpx;
+}
+.row {
+  padding-bottom: 15rpx;
+  padding-top: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #333333;
+}
+
+.lable {
+  font-weight: 500;
+}
+
+.value {
+  font-weight: 400;
+}
+
 .car_list {
   box-sizing: border-box;
   flex: 1;

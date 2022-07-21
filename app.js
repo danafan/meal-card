@@ -5,6 +5,14 @@ App({
     user_info:{
       user_type:1
     },                                 //用户信息
-    token:""
+    token:"",
+    address_list:[{
+      id:'1',
+      name:'大王椰'
+    },{
+      id:'2',
+      name:'国泰'
+    }],                           //送餐地址列表
+    car_info:{},                  //订单内容内容
   },
 });

@@ -1,3 +1,6 @@
 {
-  "defaultTitle": "我的订单"
+  "defaultTitle": "我的订单",
+  "usingComponents":{
+    "empty":"../../../components/empty/empty"
+  }
 }

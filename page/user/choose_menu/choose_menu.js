@@ -1,44 +1,49 @@
+const resource = require('../../../utils/api.js').API;
 Page({
   data: {
-    menu_list: [{
-      id: '1',
-      name: '鱼香肉丝',
-      num: 0,
-      price: 12
-    }, {
-      id: '2',
-      name: '红烧肉',
-      num: 0,
-      price: 18
-    }, {
-      id: '3',
-      name: '四喜丸子',
-      num: 0,
-      price: 22
-    }, {
-      id: '4',
-      name: '酱香猪蹄',
-      num: 0,
-      price: 32
-    }, {
-      id: '5',
-      name: '烧花鸭',
-      num: 0,
-      price: 36
-    }],                   //菜单
+    stop_date: '',          //订单截止时间
+    menu_list: [],         //菜单列表
     showModel: false,      //购物车弹窗
     car_list: [],          //购物车菜单
     total_price: 0,        //购物车总金额
+    arg: {},               //顶部传回来的数据
   },
   onLoad() { },
+  //切换顶部选项
+  onChange(arg) {
+    if (arg.is_request == '1') {
+      //获取菜单列表
+      this.userMenuList(arg);
+    }
+  },
+  //获取菜单列表
+  userMenuList(arg) {
+    let req = {
+      day: arg.day,
+      type: arg.type
+    }
+    resource.userMenuList(req).then(res => {
+      let data = res.data;
+      let list = data.list;
+      list.map(item => {
+        item.num = 0;
+      })
+      this.setData({
+        arg: arg,
+        stop_date: data.end_time,
+        menu_list: list
+      })
+    });
+  },
   //点击某一个菜品的加或减
   checkFn(id, type, clear) {
     var new_menu_list = JSON.parse(JSON.stringify(this.data.menu_list));
+    var car_list = [];
     new_menu_list.map(new_item => {
       if (clear) {
         new_item.num = 0;
       } else {
-        if (new_item.id == id) {
+        if (new_item.dishes_id == id) {
           if (type == '1') {
             if (new_item.num >= 1) {
               new_item.num -= 1;
@@ -50,7 +55,6 @@ Page({
           }
         }
       }
-
     });
     this.setData({
       total_price: 0,
@@ -66,7 +70,7 @@ Page({
     this.data.menu_list.map(item => {
       if (item.num > 0) {
         car_list.push(item);
-        total_price += item.num * item.price;
+        total_price += item.num * parseFloat(item.dishes_price);
       }
     })
     this.setData({
@@ -123,6 +127,14 @@ Page({
   //点击去结算
   confirmOrder() {
     if (this.data.car_list.length > 0) {
+      let car_info = this.data.arg;
+      car_info.end_time = this.data.stop_date;
+      car_info.total_price = this.data.total_price
+      //将当前页面的内容保存到公共区域
+      getApp().globalData.car_info = {
+        info:car_info,
+        list:this.data.car_list
+      };
       dd.navigateTo({
         url: '/page/user/confirm_order/confirm_order'
       })
