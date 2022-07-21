@@ -18,13 +18,13 @@
   <view class="empty_list" a:else>暂无数据</view>
   <view class="list_top">
     <view class="address_row">
-      <picker onChange="bindPickerChange" value="{{index}}" range="{{address_list}}">
+      <picker onChange="bindPickerChange" value="{{index}}" range="{{address_list}}" range-key="name">
         <view class="check_address">
-          <view>{{address_list[index]}}</view>
+          <view>{{address_list[index].name}}</view>
           <image class="down_arrow" mode="scaleToFill" src="../../../images/down_arrow.png"/>
         </view>
       </picker>
-      <view class="total_num">合计：109盒</view>
+      <view class="total_num">合计：{{total_number}}盒</view>
     </view>
     <view class="status_row">
       <view class="status_item not {{status_index == '0'?'active_item':''}}" data-index="0" onTap="checkStatus">未打包</view>

@@ -22,7 +22,7 @@ function request(method, url, data) {
       method: method,
       data: data,
       header: header,
-      success(res) {
+      success:(res) => {
         //请求成功
         if (res.data.status == 1 || res.data.code == 1) {
           resolve(res.data);
