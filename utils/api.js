@@ -53,6 +53,12 @@ const API = {
   menuDetail: (data) => request(GET, 'store/edit_dishes', data),         //菜品详情
   editMenu: (data) => request(POST, 'store/edit_dishes', data),         //编辑菜品
   deleteMenu: (data) => request(POST, 'store/del_dishes', data),         //删除菜品
+  getMenuInfo: (data) => request(GET, 'store/get_menu_info', data),         //已上架的菜单列表
+  addMenu: (data) => request(POST, 'store/add_menu', data),         //创建菜单
+  editMenu: (data) => request(POST, 'store/edit_menu', data),         //编辑菜单
+
+
+  
   
   
 

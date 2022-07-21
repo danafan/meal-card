@@ -1,5 +1,5 @@
 <view class="up_menu">
-  <page-top onChange="onChange"></page-top>
+  <page-top stop_date="{{end_time}}" onChange="onChange"></page-top>
   <view class="menu_type_box">
     <view class="type_row">
       <view class="type_item not {{active_index == '0'?'active_item':''}}" data-index="0" onTap="checkType">菜单</view>

@@ -3,16 +3,21 @@ Page({
   data: {
     active_index: '0',     //选中的菜单类型
     search_value: "",      //输入的搜索内容
-    page: 1,                        //页码
+    page: 1,               //页码
     isLoad: true,
-    menu_list: [],                   //菜单
+    menu_list: [],         //菜单
     up_menu_list: [],      //已上架列表
-    timer: null,          //防抖计时器
+    timer: null,           //防抖计时器
     show_message: false,   //保存弹窗
     message_text: "",      //弹窗内容
+    day: "",
+    type: 1,
+    end_time: "",
+    menu_id:"",
+    dishes_ids: []
   },
   onLoad() {
-    //获取列表
+    //获取菜品列表
     this.getMenuList();
   },
   //切换菜单类型
@@ -37,9 +42,9 @@ Page({
     this.setData({
       timer: setTimeout(() => {
         this.setData({
-          page: 1,                       
+          page: 1,
           isLoad: true,
-          menu_list: [],                  
+          menu_list: [],
         })
         //获取列表
         this.getMenuList();
@@ -58,10 +63,21 @@ Page({
     this.getMenuList()
   },
   //切换顶部筛选条件
-  onChange(v){
-    console.log(v);
+  onChange(v) {
+    this.setData({
+      day: v.day,
+      type: v.type,
+      end_time: v.end_time
+    })
+    if (v.is_request == '1') {    //重新请求
+      // this.setData({
+      //   up_menu_list: []
+      // })
+      //获取已上架的菜单列表
+      this.getMenuInfo()
+    }
   },
-  //获取列表
+  //获取菜品列表
   getMenuList() {
     let arg = {
       name: this.data.search_value,
@@ -75,9 +91,9 @@ Page({
         let list = this.data.up_menu_list.filter(i => {
           return item.dishes_id == i.dishes_id;
         })
-        if(list.length > 0){
+        if (list.length > 0) {
           item.is_checked = true;
-        }else{
+        } else {
           item.is_checked = false;
         }
       })
@@ -95,6 +111,43 @@ Page({
       }
     });
   },
+  //获取已上架的菜单列表
+  getMenuInfo() {
+    let arg = {
+      day: this.data.day,
+      type: this.data.type
+    }
+    resource.getMenuInfo(arg).then(res => {
+      let data = res.data;
+      if (data.length == 0) {
+        this.setData({
+          menu_id: '',
+          up_menu_list: [],
+          end_time: '选择时间'
+        })
+      } else {
+        this.setData({
+          menu_id: data.menu_info.menu_id,
+          up_menu_list: data.list,
+          end_time: data.menu_info.end_time
+        })
+      }
+      let menu_list = JSON.parse(JSON.stringify(this.data.menu_list));
+      menu_list.map(item => {
+        let list = this.data.up_menu_list.filter(i => {
+          return item.dishes_id == i.dishes_id;
+        })
+        if (list.length > 0) {
+          item.is_checked = true;
+        } else {
+          item.is_checked = false;
+        }
+      })
+      this.setData({
+        menu_list: menu_list
+      });
+    });
+  },
   //上架或下架
   onChecked(id) {
     let new_menu_list = JSON.parse(JSON.stringify(this.data.menu_list));
@@ -105,9 +158,9 @@ Page({
         //处理已上架商品列表
         if (item.is_checked) {
           new_up_menu_list.push(item);
-        }else{
+        } else {
           let index = new_up_menu_list.findIndex(item => item.dishes_id == id);
-          new_up_menu_list.splice(index,1);
+          new_up_menu_list.splice(index, 1);
         }
       }
     })
@@ -118,16 +171,71 @@ Page({
   },
   //保存
   save() {
-    console.log(this.data.up_menu_list);
+    if (this.data.up_menu_list.length == 0) {
+      dd.showToast({
+        type: 'none',
+        content: '您还没有选择菜品哦～',
+        duration: 2000
+      });
+      return;
+    };
+    if (this.data.end_time == '选择时间') {
+      dd.showToast({
+        type: 'none',
+        content: '请选择订餐截止时间！',
+        duration: 2000
+      });
+      return;
+    }
+    let name_list = [];
+    let dishes_ids = JSON.parse(JSON.stringify(this.data.dishes_ids));
+    this.data.up_menu_list.map(item => {
+      name_list.push(item.dishes_name);
+      dishes_ids.push(item.dishes_id);
+    })
     this.setData({
-      message_text: '07月6日上架午餐：阳澄湖大闸蟹、酸菜猪肉炖粉条、剁椒鱼头、三七汽锅鸡、手把羊肉、尖椒干豆腐、小鸡炖蘑菇、红烧蹄膀、豆腐灌蛋、清蒸鲈鱼、拔丝地瓜、重庆辣子鸡.',
+      dishes_ids: dishes_ids,
+      message_text: `${this.data.day}上架${this.data.type == '1' ? '午餐' : '晚餐'}：${name_list.join(',')}.`,
       show_message: true
     })
   },
   //弹窗按钮
   onTapFn(type) { //0:否；1:是
-    this.setData({
-      show_message: false
-    })
+    if (type == '1') {
+      var arg = {
+        day: this.data.day,
+        type: this.data.type,
+        end_time: this.data.end_time,
+        dishes_ids: this.data.dishes_ids.join(',')
+      }
+      if (this.data.menu_id == '') {
+        resource.addMenu(arg).then(res => {
+          dd.showToast({
+            type: 'none',
+            content: '上架成功',
+            duration: 2000
+          });
+          this.setData({
+            show_message: false
+          })
+        });
+      } else {
+        arg.menu_id = this.data.menu_id;
+        resource.editMenu(arg).then(res => {
+          dd.showToast({
+            type: 'none',
+            content: '编辑成功',
+            duration: 2000
+          });
+          this.setData({
+            show_message: false
+          })
+        });
+      }
+    } else {
+      this.setData({
+        show_message: false
+      })
+    }
   }
 });

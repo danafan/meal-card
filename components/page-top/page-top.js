@@ -3,13 +3,14 @@ Component({
   data: {
     current_date: "",        //当前日期
     set_date: "",           //送餐日期
+    end_time:"",
     index: 0,                //选中的下标
     meal_list: ['午餐', '晚餐'],
-    stop_date: "",          //截止订餐时间
   },
   props: {
     show_address: false,         //是否显示送餐地址
     is_check: false,             //是否可选择
+    stop_date:""
   },
   didMount() {
     let date = new Date();
@@ -25,9 +26,10 @@ Component({
     let current_date = year + "-" + month + "-" + day;
     this.setData({
       current_date: current_date,
-      set_date: current_date,
-      stop_date: current_date + ' 12:00'
+      set_date: current_date
     })
+    //监听切换
+    this.onChange('1');
   },
   methods: {
     //切换送餐日期或截止订餐时间
@@ -41,13 +43,16 @@ Component({
             this.setData({
               set_date: res.date
             })
+            //监听切换
+            this.onChange('1');
           } else {
             this.setData({
-              stop_date: res.date
+              end_time: res.date
             })
+            //监听切换
+            this.onChange('0');
           }
-          //监听切换
-          this.onChange();
+
         },
       });
     },
@@ -57,14 +62,15 @@ Component({
         index: e.detail.value,
       });
       //监听切换
-      this.onChange();
+      this.onChange('1');
     },
     //监听切换
-    onChange() {
+    onChange(type) {  //1:发送请求；2:不请求
       let arg = {
+        is_request:type,
         day: this.data.set_date,
         type: this.data.index + 1,
-        end_time: this.data.stop_date
+        end_time: this.data.end_time
       }
       this.props.onChange(arg)
     }
