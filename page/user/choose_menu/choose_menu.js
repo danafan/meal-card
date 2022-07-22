@@ -24,6 +24,9 @@ Page({
     }
     resource.userMenuList(req).then(res => {
       let data = res.data;
+      if(data.length == 0){
+        return;
+      }
       let list = data.list;
       list.map(item => {
         item.num = 0;

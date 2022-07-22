@@ -23,10 +23,25 @@ function request(method, url, data) {
       data: data,
       header: header,
       success: (res) => {
-        //请求成功
-        if (res.data.status == 1 || res.data.code == 1) {
+        if (res.data.code == 1) {  //请求成功
           resolve(res.data);
           dd.hideLoading();
+        } else if (res.data.code == 2) {   //无权限访问
+          dd.hideLoading();
+          dd.redirectTo({
+            url: '/page/user/paybal_results/paybal_results?result_type=2&toast_text=' + res.data.msg
+          })
+        } else if (res.data.code == 3) {   //扫码核销失败
+          dd.hideLoading();
+          if (getCurrentPages().length > 1) { //判断是首页还是结果页扫码
+            dd.redirectTo({
+              url: '/page/user/paybal_results/paybal_results?result_type=2&toast_text=' + res.data.msg + '&show_scan=1'
+            })
+          } else {
+            dd.navigateTo({
+              url: '/page/user/paybal_results/paybal_results?result_type=2&toast_text=' + res.data.msg + '&show_scan=1'
+            })
+          }
         } else {
           dd.showToast({
             type: 'none',
@@ -62,6 +77,7 @@ const API = {
   userOrderList: (data) => request(GET, 'meal/get_order_list', data),           //用户订单列表
   getMealCode: (data) => request(GET, 'meal/get_meal_code', data),              //用户获取取餐码
   setPackage: (data) => request(POST, 'store/package', data),                   //确认打包
+  receiveMeal: (data) => request(POST, 'store/receive_meal', data),             //商家扫码核销
 
 };
 module.exports = {

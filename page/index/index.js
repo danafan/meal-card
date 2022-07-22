@@ -88,10 +88,29 @@ Page({
     })
   },
   //扫码确认
-  scanConfirm(){
-    dd.navigateTo({
-      url: '/page/store/confirm_order/confirm_order'
+  scanConfirm() {
+    dd.scan({
+      type: 'qr',
+      success: (res) => {
+        //核销
+        this.receiveMeal(res.code);
+      }
+    })
+
+  },
+  //核销
+  receiveMeal(code) {
+    let arg = {
+      code: code
+    }
+    resource.receiveMeal(arg).then(res => {
+      dd.showToast({
+        type: 'none',
+        content: res.data.msg,
+        duration: 2000
+      });
     })
   }
+
 
 })
