@@ -21,7 +21,7 @@ Component({
     },
     //点击删除某一个菜品
     onDelete() {
-      this.props.onDelete(this.props.item.dishes_id, this.props.item.dishes_name, this.props.index);
+      this.props.onDelete(this.props.item.dishes_id, this.props.item.dishes_name);
     },
     //商家点击某一个菜品(商家上传菜品菜单选择)
     changeMenu() {

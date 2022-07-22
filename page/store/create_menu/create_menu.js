@@ -141,7 +141,7 @@ Page({
       });
     } else {  //编辑  
       arg.id = this.data.id;
-      resource.editMenu(arg).then(res => {
+      resource.editDishes(arg).then(res => {
         dd.redirectTo({
           url: '/page/user/paybal_results/paybal_results?result_type=1&toast_text=菜品编辑成功&show_back=1'
         })

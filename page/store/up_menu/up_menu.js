@@ -194,11 +194,14 @@ Page({
       return;
     }
     let name_list = [];
-    let dishes_ids = JSON.parse(JSON.stringify(this.data.dishes_ids));
-    this.data.up_menu_list.map(item => {
-      name_list.push(item.dishes_name);
-      dishes_ids.push(item.dishes_id);
+    let dishes_ids = [];
+    this.data.menu_list.map(item => {
+      if (item.is_checked) {
+        name_list.push(item.dishes_name);
+        dishes_ids.push(item.dishes_id);
+      }
     })
+
     this.setData({
       dishes_ids: dishes_ids,
       message_text: `${this.data.day}上架${this.data.type == '1' ? '午餐' : '晚餐'}：${name_list.join(',')}.`,

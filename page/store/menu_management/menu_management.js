@@ -67,7 +67,10 @@ Page({
     })
   },
   //点击某一条的删除
-  onDelete(id, name,index) {
+  onDelete(id, name) {
+    let index = this.data.menu_list.findIndex((item)=>{
+      return item.dishes_id == id;
+    })
     this.setData({
       message_text: `确定要把${name}从列表中删除吗?`,
       id: id,

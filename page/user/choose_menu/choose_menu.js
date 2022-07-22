@@ -11,6 +11,9 @@ Page({
   onLoad() { },
   //切换顶部选项
   onChange(arg) {
+    this.setData({
+      arg: arg
+    })
     if (arg.is_request == '1') {
       //获取菜单列表
       this.userMenuList(arg);
@@ -24,7 +27,7 @@ Page({
     }
     resource.userMenuList(req).then(res => {
       let data = res.data;
-      if(data.length == 0){
+      if (data.length == 0) {
         return;
       }
       let list = data.list;
@@ -32,7 +35,6 @@ Page({
         item.num = 0;
       })
       this.setData({
-        arg: arg,
         stop_date: data.end_time,
         menu_list: list
       })
@@ -135,8 +137,8 @@ Page({
       car_info.total_price = this.data.total_price
       //将当前页面的内容保存到公共区域
       getApp().globalData.car_info = {
-        info:car_info,
-        list:this.data.car_list
+        info: car_info,
+        list: this.data.car_list
       };
       dd.navigateTo({
         url: '/page/user/confirm_order/confirm_order'
