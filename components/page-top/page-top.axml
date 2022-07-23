@@ -18,9 +18,6 @@
       </picker>
       <view class="value" a:else>{{meal_list[index]}}</view>
     </view>
-    <view class="row">
-      <view class="lable">截止订餐时间:</view>
-      <view class="value stop_time" onTap="checkStopFn">{{stop_date}}</view>
-    </view>
+    <view class="page_top_toast">截止订餐时间：（午餐）送餐当日{{lunch_date}}；（晚餐）送餐当日{{dinner_date}}</view>
   </view>
 </view>

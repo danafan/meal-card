@@ -6,16 +6,15 @@ Component({
     address_name: "",         //选中的地址名称
     current_date: "",        //当前日期
     set_date: "",            //送餐日期
-    end_time: "",
-    index: 0,                //选中的下标
     meal_list: ['午餐', '晚餐'],
+    lunch_date:getApp().globalData.lunch_date,                          //商家午餐和晚餐的截止时间
+    dinner_date:getApp().globalData.dinner_date, 
+    index: 0,                //选中的下标
   },
   props: {
     show_address: true,         //是否显示送餐地址
     is_check_address: true,     //是否可切换送餐地址
-    is_check: true,             //是否可送餐日期和哪一餐
-    stop_date: "",
-    is_check_stop_date: true,    //是否可切换截止订餐时间
+    is_check: true,             //是否可切换送餐日期和哪一餐
   },
   didMount() {
     let date = new Date();
@@ -29,7 +28,9 @@ Component({
       day = "0" + day;
     }
     let current_date = year + "-" + month + "-" + day;
+    let time = current_date + ' ' + this.data.lunch_date;
     this.setData({
+      index:new Date().getTime() > Date.parse(time)?1:0,
       address_name: this.data.address_list[this.data.address_index].name,
       current_date: current_date,
       set_date: current_date
@@ -81,23 +82,6 @@ Component({
       //监听切换
       this.onChange('1');
     },
-    //切换订单截止日期
-    checkStopFn() {
-      if (this.props.is_check_stop_date == 'false') {
-        return;
-      }
-      dd.datePicker({
-        format: 'yyyy-MM-dd HH:mm',
-        currentDate: this.data.current_date + ' 12:00',
-        success: (res) => {
-          this.setData({
-            end_time: res.date
-          })
-          //监听切换
-          this.onChange('0');
-        },
-      });
-    },
     //监听切换
     onChange(type) {  //1:发送请求；2:不请求
       let arg = {
@@ -107,8 +91,7 @@ Component({
         address_text: this.data.address_list[this.data.address_index].name,
         day: this.data.set_date,
         type: this.data.index + 1,
-        type_text: this.data.meal_list[this.data.index],
-        end_time: this.data.end_time
+        type_text: this.data.meal_list[this.data.index]
       }
       this.props.onChange(arg)
     }

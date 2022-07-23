@@ -26,6 +26,9 @@
   font-weight: 400;
   color: #FF9C3D;
 }
-.stop_time{
+.page_top_toast{
+  padding-top: 15rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
   color: #FF4C3D;
 }

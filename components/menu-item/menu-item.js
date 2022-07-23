@@ -11,7 +11,7 @@ Component({
   didUnmount() { },
   methods: {
     //用户点击菜品加减
-    checkmenu(v) {
+    checkMenu(v) {
       let type = v.target.dataset.type;
       this.props.onCheckFn(this.props.item.dishes_id, type);
     },
@@ -31,7 +31,7 @@ Component({
     },
     //下架菜品
     downMenu() {
-      this.props.onChecked(this.props.item.dishes_id)
+      this.props.onShelves(this.props.item)
     }
   },
 });

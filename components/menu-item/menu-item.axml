@@ -6,9 +6,9 @@
   </view>
   <!-- 用户点餐 -->
   <view class="check_menu_row" a:if="{{type == 'add_menu'}}">
-    <image class="check_icon" src="../../../images/reduce_menu.png" data-type="1" onTap="checkmenu" a:if="{{item.num > 0}}"/>
+    <image class="check_icon" src="../../../images/reduce_menu.png" data-type="1" onTap="checkMenu" a:if="{{item.num > 0}}"/>
     <view class="menu_num" a:if="{{item.num > 0}}">{{item.num}}</view>
-    <image class="check_icon" src="../../../images/add_menu.png" data-type="2" onTap="checkmenu"/>
+    <image class="check_icon" src="../../../images/add_menu.png" data-type="2" onTap="checkMenu"/>
   </view>
   <!-- 商家菜品管理 -->
   <view class="edit_delete" a:if="{{type == 'menu_management'}}">
