@@ -4,7 +4,7 @@
       <image class="shop_car_icon" src="../../../images/shop_car_icon.png" onTap="checkShowCar"/>
       <view class="price">¥ {{total_price}}</view>
     </view>
-    <view class="right_content" onTap="confirmOrder" a:if="{{page_type == 'choose_menu'}}">去结算</view>
+    <view class="right_content {{no_click?'no_click':''}}" onTap="confirmOrder" a:if="{{page_type == 'choose_menu'}}">去结算</view>
     <view class="right_content" onTap="paybalFn" a:if="{{page_type == 'confirm_order'}}">免密支付</view>
   </view>
 </view>

@@ -44,3 +44,6 @@
   color: #FFFFFF;
   font-size: 32rpx;
 }
+.no_click{
+  background: #cccccc;
+}

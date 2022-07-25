@@ -26,5 +26,5 @@
       </view>
     </view>
   </view>
-  <shop-car total_price="{{total_price}}" page_type="choose_menu" onCheckShowCar="checkShowCar" onConfirmOrder="confirmOrder"></shop-car>
+  <shop-car total_price="{{total_price}}" no_click="{{no_click}}" page_type="choose_menu" onCheckShowCar="checkShowCar" onConfirmOrder="confirmOrder"></shop-car>
 </view>

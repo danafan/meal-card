@@ -54,48 +54,6 @@
           <view class="get_code" data-id="{{item.order_id}}" data-index="{{index}}" onTap="setPackage">确认打包</view>
         </view>
       </view>
-      <view class="order_info" a:for="{{order_list}}">
-        <view class="item_row">
-          <view class="lable">订餐人</view>
-          <view class="value">{{item.user_name}}</view>
-        </view>
-        <view class="item_row">
-          <view class="lable">送餐地址</view>
-          <view class="value">{{item.address_type == '1'?'大王椰':'国泰'}}</view>
-        </view>
-        <view class="item_row" a:for-item="menu_item" a:for="{{item.list}}">
-          <view class="lable">{{menu_item.dishes_name}}</view>
-          <view class="value">x{{menu_item.num}}</view>
-        </view>
-        <view class="item_row">
-          <view class="lable">备注</view>
-          <view class="value">{{item.remark}}</view>
-        </view>
-        <view class="button_row" a:if="{{item.package_status == 0}}">
-          <view class="get_code" data-id="{{item.order_id}}" data-index="{{index}}" onTap="setPackage">确认打包</view>
-        </view>
-      </view>
-      <view class="order_info" a:for="{{order_list}}">
-        <view class="item_row">
-          <view class="lable">订餐人</view>
-          <view class="value">{{item.user_name}}</view>
-        </view>
-        <view class="item_row">
-          <view class="lable">送餐地址</view>
-          <view class="value">{{item.address_type == '1'?'大王椰':'国泰'}}</view>
-        </view>
-        <view class="item_row" a:for-item="menu_item" a:for="{{item.list}}">
-          <view class="lable">{{menu_item.dishes_name}}</view>
-          <view class="value">x{{menu_item.num}}</view>
-        </view>
-        <view class="item_row">
-          <view class="lable">备注</view>
-          <view class="value">{{item.remark}}</view>
-        </view>
-        <view class="button_row" a:if="{{item.package_status == 0}}">
-          <view class="get_code" data-id="{{item.order_id}}" data-index="{{index}}" onTap="setPackage">确认打包</view>
-        </view>
-      </view>
     </scroll-view>
   </scroll-view>
   <empty result_type="0" toast_text="暂无订单" a:if="{{order_list.length == 0}}"></empty>

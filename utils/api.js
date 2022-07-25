@@ -43,6 +43,7 @@ function request(method, url, data) {
             })
           }
         } else {
+          dd.hideLoading();
           dd.showToast({
             type: 'none',
             content: res.data.msg,

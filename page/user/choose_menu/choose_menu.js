@@ -1,12 +1,12 @@
 const resource = require('../../../utils/api.js').API;
 Page({
   data: {
-    stop_date: '',          //订单截止时间
     menu_list: [],         //菜单列表
     showModel: false,      //购物车弹窗
     car_list: [],          //购物车菜单
     total_price: 0,        //购物车总金额
     arg: {},               //顶部传回来的数据
+    no_click: false,        //去结算按钮是否可点击
   },
   onLoad() { },
   //切换顶部选项
@@ -14,10 +14,15 @@ Page({
     this.setData({
       arg: arg
     })
+    //判断是否请求
     if (arg.is_request == '1') {
       //获取菜单列表
       this.userMenuList(arg);
     }
+    //判断去结算按钮是否置灰
+    this.setData({
+      no_click: new Date().getTime() > Date.parse(arg.day + ' ' + arg.end_time)
+    })
   },
   //获取菜单列表
   userMenuList(arg) {
@@ -35,7 +40,6 @@ Page({
         item.num = 0;
       })
       this.setData({
-        stop_date: data.end_time,
         menu_list: list
       })
     });
@@ -133,7 +137,6 @@ Page({
   confirmOrder() {
     if (this.data.car_list.length > 0) {
       let car_info = this.data.arg;
-      car_info.end_time = this.data.stop_date;
       car_info.total_price = this.data.total_price
       //将当前页面的内容保存到公共区域
       getApp().globalData.car_info = {

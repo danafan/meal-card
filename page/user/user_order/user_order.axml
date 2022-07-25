@@ -11,13 +11,9 @@
   </view>
   <scroll-view scroll-y="{{true}}" class="list_content" a:if="{{order_list.length > 0}}">
     <view class="order_item" a:for="{{order_list}}">
-      <!-- <view class="item_row">
-        <view class="lable">日期</view>
-        <view class="value">2022/07/05</view>
-      </view> -->
       <view class="item_row">
         <view class="lable">哪一餐</view>
-        <view class="value">{{item.meal_type?'午餐':'晚餐'}}</view>
+        <view class="value">{{item.meal_type == 1?'午餐':'晚餐'}}</view>
       </view>
       <view class="item_row">
         <view class="lable">订餐人</view>
@@ -35,10 +31,6 @@
         <view class="lable">合计</view>
         <view class="value">¥{{item.order_amount}}</view>
       </view>
-      <!-- <view class="item_row">
-        <view class="lable">当前状态</view>
-        <view class="value status">待确认</view>
-      </view> -->
       <view class="button_row" a:if="{{item.status == 0}}">
         <view class="get_code" data-id="{{item.order_id}}" data-type="{{item.meal_type}}" onTap="takeFoodCode">取餐码</view>
       </view>

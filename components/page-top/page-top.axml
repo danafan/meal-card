@@ -13,8 +13,8 @@
     </view>
     <view class="row">
       <view class="lable">哪一餐:</view>
-      <picker onChange="bindPickerChange" value="{{index}}" range="{{meal_list}}" a:if="{{is_check}}">
-        <view class="value">{{meal_list[index]}}</view>
+       <picker onChange="bindPickerChange" value="{{index}}" range="{{meal_list}}" range-key="name" a:if="{{is_check}}">
+        <view class="value">{{meal_name}}</view>
       </picker>
       <view class="value" a:else>{{meal_list[index]}}</view>
     </view>

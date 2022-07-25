@@ -3,7 +3,7 @@ let app = getApp();
 Page({
   data: {
     id: "",                            //点击删除的ID
-    index:0,                        //点击删除的下标
+    index: 0,                        //点击删除的下标
     page: 1,                        //页码
     isLoad: true,
     menu_list: [],                  //菜单
@@ -56,9 +56,14 @@ Page({
   },
   //点击某一条的编辑
   onEdit(id) {
-    dd.navigateTo({
-      url: '/page/store/create_menu/create_menu?id=' + id
-    })
+    let arg = {
+      id:id
+    }
+    resource.menuDetail(arg).then(res => {
+      dd.navigateTo({
+        url: '/page/store/create_menu/create_menu?id=' + id
+      })
+    });
   },
   //点击新增菜品
   addmenu() {
@@ -68,13 +73,13 @@ Page({
   },
   //点击某一条的删除
   onDelete(id, name) {
-    let index = this.data.menu_list.findIndex((item)=>{
+    let index = this.data.menu_list.findIndex((item) => {
       return item.dishes_id == id;
     })
     this.setData({
       message_text: `确定要把${name}从列表中删除吗?`,
       id: id,
-      index:index,
+      index: index,
       show_message: true
     })
   },
@@ -91,7 +96,7 @@ Page({
           duration: 2000
         });
         let new_menu_list = JSON.parse(JSON.stringify(this.data.menu_list));
-        new_menu_list.splice(this.data.index,1);
+        new_menu_list.splice(this.data.index, 1);
         this.setData({
           show_message: false,
           menu_list: new_menu_list
