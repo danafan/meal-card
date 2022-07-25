@@ -20,8 +20,9 @@ Page({
       this.userMenuList(arg);
     }
     //判断去结算按钮是否置灰
+    let current_date = arg.day + ' ' + arg.end_time;
     this.setData({
-      no_click: new Date().getTime() > Date.parse(arg.day + ' ' + arg.end_time)
+      no_click: new Date().getTime() >  Date.parse(current_date.replace(/-/g, '/'))
     })
   },
   //获取菜单列表
@@ -92,7 +93,7 @@ Page({
     })
     this.setData({
       car_list: car_list,
-      total_price: total_price
+      total_price: total_price.toFixed(2)
     })
     if (this.data.showModel == true && car_list.length == 0) {
       this.setData({

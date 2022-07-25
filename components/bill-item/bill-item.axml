@@ -8,7 +8,7 @@
       <view class="item_desc">{{itemInfo.desc}}</view>
     </view>
     <view class="item_right">
-      <view class="return_but" a:if="{{userType == '2' && itemInfo.is_show}}" data-id="{{itemInfo.store_record_id}}" data-amount="{{itemInfo.amount}}" onTap="refund">退款</view>
+      <view class="return_but" a:if="{{userType == '2' && itemInfo.is_show && itemInfo.order_type == 0}}" data-id="{{itemInfo.store_record_id}}" data-amount="{{itemInfo.amount}}" onTap="refund">退款</view>
       <view class="num">{{itemInfo.amount}}</view>
     </view>
   </view>

@@ -126,7 +126,7 @@ Page({
       };
       this.setData({
         total_number: data.total,
-        order_list: this.data.order_list.concat(Array.from(data.data))
+        order_list: data.data
       });
       if (data.last_page == this.data.page) {
         this.setData({
