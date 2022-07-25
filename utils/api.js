@@ -24,8 +24,8 @@ function request(method, url, data) {
       header: header,
       success: (res) => {
         if (res.data.code == 1) {  //请求成功
+        dd.hideLoading();
           resolve(res.data);
-          dd.hideLoading();
         } else if (res.data.code == 2) {   //无权限访问
           dd.hideLoading();
           dd.redirectTo({
@@ -53,7 +53,7 @@ function request(method, url, data) {
       },
       fail: (err) => {
         dd.hideLoading();
-        dd.alert({content: JSON.stringify(err)});
+        dd.alert({ content: JSON.stringify(err) });
       }
     })
   })

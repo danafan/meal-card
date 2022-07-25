@@ -6,7 +6,7 @@ Page({
     car_list: [],          //购物车菜单
     total_price: 0,        //购物车总金额
     arg: {},               //顶部传回来的数据
-    no_click: false,        //去结算按钮是否可点击
+    no_click: false,       //去结算按钮是否可点击
   },
   onLoad() { },
   //切换顶部选项
@@ -32,7 +32,13 @@ Page({
     }
     resource.userMenuList(req).then(res => {
       let data = res.data;
+
       if (data.length == 0) {
+        this.setData({
+          menu_list: [],
+          car_list: [],
+          total_price: 0
+        })
         return;
       }
       let list = data.list;
@@ -40,7 +46,9 @@ Page({
         item.num = 0;
       })
       this.setData({
-        menu_list: list
+        menu_list: list,
+        car_list: [],
+        total_price: 0
       })
     });
   },

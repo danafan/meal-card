@@ -104,11 +104,9 @@ Page({
       code: code
     }
     resource.receiveMeal(arg).then(res => {
-      dd.showToast({
-        type: 'none',
-        content: res.data.msg,
-        duration: 2000
-      });
+      dd.navigateTo({
+        url: '/page/user/paybal_results/paybal_results?result_type=1&toast_text=确认成功&show_scan=1'
+      })
     })
   }
 

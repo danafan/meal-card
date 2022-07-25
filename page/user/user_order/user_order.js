@@ -13,7 +13,9 @@ Page({
     this.setData({
       date: nowYear + '-' + nowMonth + '-' + nowDay
     })
-    //获取订单列表
+  },
+  onShow(){
+     //获取订单列表
     this.userOrderList();
   },
   //获取订单列表
