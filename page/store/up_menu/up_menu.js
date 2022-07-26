@@ -17,14 +17,10 @@ Page({
     dishes_id: "",         //单个下架选中的菜品ID
 
   },
-  onLoad() {
-    //获取未上架菜品列表
-    this.offDishesList();
-  },
   //切换顶部筛选条件
   onChange(v) {
     this.setData({
-      page:1,
+      page: 1,
       menu_list: [],
       day: v.day,
       type: v.type
@@ -39,7 +35,7 @@ Page({
   //切换菜单类型
   checkType(e) {
     this.setData({
-      page:1,
+      page: 1,
       menu_list: [],
       active_index: e.target.dataset.index
     })
@@ -90,8 +86,8 @@ Page({
   //获取未上架菜品列表
   offDishesList() {
     let arg = {
-      day:this.data.day,
-      type:this.data.type,
+      day: this.data.day,
+      type: this.data.type,
       name: this.data.search_value,
       page: this.data.page,
       pagesize: 10
@@ -187,6 +183,13 @@ Page({
           dishes_ids: this.data.dishes_ids.join(',')
         }
         resource.addMenu(arg).then(res => {
+          this.setData({
+            page: 1,
+            isLoad: true,
+            menu_list: [],
+          })
+          //获取列表
+          this.offDishesList();
           dd.showToast({
             type: 'none',
             content: '上架成功',
