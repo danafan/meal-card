@@ -1,5 +1,5 @@
 <view class="store_order">
-  <scroll-view scroll-y="{{true}}">
+  <scroll-view scroll-y="{{true}}" onScrollToLower="loadMore">
     <view class="top_content">
       <view class="check_date" onTap="openDatePicker">
         <view >{{date.split('-')[0]}}年{{date.split('-')[1]}}月{{date.split('-')[2]}}日</view>

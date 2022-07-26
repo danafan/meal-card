@@ -9,37 +9,43 @@ Page({
     up_menu_list: [],      //已上架列表
     timer: null,           //防抖计时器
     show_message: false,   //保存弹窗
-    message_type: '1',      //弹窗类型（1:上架；2:下架）
+    message_type: '1',     //弹窗类型（1:上架；2:下架）
     message_text: "",      //弹窗内容
-    day: "",
-    type: 1,
-    dishes_ids: [],       //批量上架选中的菜品ID列表
+    day: "",               //送餐日期
+    type: 1,               //1:午餐；2:晚餐
+    dishes_ids: [],        //批量上架选中的菜品ID列表
     dishes_id: "",         //单个下架选中的菜品ID
 
   },
   onLoad() {
-    //获取菜品列表
-    this.getMenuList();
+    //获取未上架菜品列表
+    this.offDishesList();
   },
   //切换顶部筛选条件
   onChange(v) {
     this.setData({
+      page:1,
+      menu_list: [],
       day: v.day,
       type: v.type
     })
     if (v.is_request == '1') {    //重新请求
       //获取已上架的菜单列表
       this.getMenuInfo();
+      //获取未上架菜品列表
+      this.offDishesList();
     }
   },
   //切换菜单类型
   checkType(e) {
     this.setData({
+      page:1,
+      menu_list: [],
       active_index: e.target.dataset.index
     })
     if (this.data.active_index == '0') {
-      //处理菜单列表已选中状态
-      this.handleStatus();
+      //获取未上架菜品列表
+      this.offDishesList();
     } else {
       //获取已上架的菜单列表
       this.getMenuInfo();
@@ -66,7 +72,7 @@ Page({
           menu_list: [],
         })
         //获取列表
-        this.getMenuList();
+        this.offDishesList();
       }, 1000)
     })
   },
@@ -79,20 +85,22 @@ Page({
       page: this.data.page + 1
     });
     //获取列表
-    this.getMenuList()
+    this.offDishesList()
   },
-  //获取菜品列表
-  getMenuList() {
+  //获取未上架菜品列表
+  offDishesList() {
     let arg = {
+      day:this.data.day,
+      type:this.data.type,
       name: this.data.search_value,
       page: this.data.page,
       pagesize: 10
     }
-    resource.getMenuList(arg).then(res => {
+    resource.offDishesList(arg).then(res => {
       let data = res.data;
-      let arr = data.data;    //菜单列表
-      //处理菜单列表已选中状态
-      this.handleStatus(arr);
+      this.setData({
+        menu_list: this.data.menu_list.concat(Array.from(data.data))
+      })
       if (data.last_page == this.data.page) {
         this.setData({
           isLoad: false
@@ -121,26 +129,6 @@ Page({
           up_menu_list: data.list
         })
       }
-      //处理菜单列表已选中状态
-      this.handleStatus();
-    });
-  },
-  //处理菜单列表已选中状态
-  handleStatus(arr) {
-    let new_menu_list = arr ? arr : this.data.menu_list;
-    let menu_list = JSON.parse(JSON.stringify(new_menu_list));
-    menu_list.map(item => {
-      let list = this.data.up_menu_list.filter(i => {
-        return item.dishes_id == i.dishes_id;
-      })
-      if (list.length > 0) {
-        item.is_checked = true;
-      } else {
-        item.is_checked = false;
-      }
-    })
-    this.setData({
-      menu_list: arr ? this.data.menu_list.concat(Array.from(menu_list)) : menu_list
     });
   },
   //切换菜单列表选中状态

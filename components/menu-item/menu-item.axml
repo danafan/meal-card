@@ -1,4 +1,6 @@
-<view class="menu_item {{item.is_checked && type == 'up_menu'?'border':''}}" onTap="changeMenu">
+<view class="menu_item" onTap="changeMenu">
+  <image class="check_icon" src="../../../images/is_check_icon.png" a:if="{{item.is_checked && type == 'up_menu'}}"/>
+  <image class="check_icon" src="../../../images/un_check_icon.png" a:if="{{!item.is_checked && type == 'up_menu'}}"/>
   <image class="menu_img" src="{{item.domain + item.image}}"/>
   <view class="menu_content">
     <view class="menu_name">{{item.dishes_name}}</view>

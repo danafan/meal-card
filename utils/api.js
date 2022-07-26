@@ -68,6 +68,7 @@ const API = {
   getRefundReason: (data) => request(GET, 'store/getrefundreason', data),       //获取退款原因
   refundMoney: (data) => request(POST, 'store/refund', data),                   //退款
   getMenuList: (data) => request(GET, 'store/dishes_list', data),               //获取所有菜品列表
+  offDishesList: (data) => request(GET, 'store/off_dishes_list', data),         //获取未上架菜品列表
   createMenu: (data) => request(POST, 'store/add_dishes', data),                //创建菜品
   menuDetail: (data) => request(GET, 'store/edit_dishes', data),                //菜品详情
   editDishes: (data) => request(POST, 'store/edit_dishes', data),                //编辑菜品

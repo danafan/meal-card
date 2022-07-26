@@ -128,6 +128,15 @@ Page({
   },
   //提交
   confirmFn() {
+    let isZzs = /^(([0-9]+)|([0-9]+\.[0-9]{0,2}))$/;
+    if(!isZzs.test(this.data.menu_price)){
+      dd.showToast({
+        type: 'none',
+        content: '菜品价格必须大于0且最多两位小数!',
+        duration: 2000
+      });
+       return;
+    }
     var arg = {
       image: this.data.name,
       name: this.data.menu_name,

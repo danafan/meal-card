@@ -3,7 +3,7 @@
     <page-top show_address="{{false}}" onChange="onChange"></page-top>
     <view class="menu_type_box">
       <view class="type_row">
-        <view class="type_item not {{active_index == '0'?'active_item':''}}" data-index="0" onTap="checkType">菜单</view>
+        <view class="type_item not {{active_index == '0'?'active_item':''}}" data-index="0" onTap="checkType">待上架</view>
         <view class="type_item already {{active_index == '1'?'active_item':''}}" data-index="1" onTap="checkType">已上架</view>
       </view>
       <view class="search_row" a:if="{{active_index == '0'}}">
