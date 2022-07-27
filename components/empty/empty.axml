@@ -5,4 +5,5 @@
   <view class="toast_text">{{toast_text}}</view>
   <view class="button" a:if="{{show_back}}" onTap="goBack">返回</view>
   <view class="button" a:if="{{show_scan}}" onTap="scanFn">继续扫码</view>
+  <view class="button" a:if="{{show_index}}" onTap="goIndex">返回首页</view>
 </view>

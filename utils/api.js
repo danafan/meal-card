@@ -53,7 +53,7 @@ function request(method, url, data) {
       },
       fail: (err) => {
         dd.hideLoading();
-        dd.alert({ content: JSON.stringify(err) });
+        // dd.alert({ content: JSON.stringify(err) });
       }
     })
   })

@@ -41,8 +41,8 @@ Page({
       }
       resource.userCreateOrder(arg).then(res => {
         let toast_text = '支付成功';
-        dd.redirectTo({
-          url: '/page/user/paybal_results/paybal_results?result_type=1&toast_text=' + toast_text
+        dd.reLaunch({
+          url: '/page/user/paybal_results/paybal_results?result_type=1&toast_text=' + toast_text + '&show_index=1'
         })
       });
     } else {

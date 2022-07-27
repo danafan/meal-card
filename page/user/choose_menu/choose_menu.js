@@ -8,7 +8,6 @@ Page({
     arg: {},               //顶部传回来的数据
     no_click: false,       //去结算按钮是否可点击
   },
-  onLoad() { },
   //切换顶部选项
   onChange(arg) {
     this.setData({

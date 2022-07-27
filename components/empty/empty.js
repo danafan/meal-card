@@ -6,6 +6,7 @@ Component({
     toast_text: "",      //提示
     show_back: "",       //不为空则显示返回按钮
     show_scan: '',        //不为空则显示继续扫码按钮
+    show_index: '',        //不为空则显示返回首页按钮
   },
   didMount() { },
   didUpdate() { },
@@ -26,6 +27,12 @@ Component({
             url: '/page/store/confirm_order/confirm_order?code=' + res.code
           })
         }
+      })
+    },
+    //返回首页
+    goIndex() {
+      dd.redirectTo({
+        url: '/page/index/index'
       })
     }
   },
