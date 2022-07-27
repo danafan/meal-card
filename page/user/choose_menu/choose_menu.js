@@ -22,7 +22,7 @@ Page({
     //判断去结算按钮是否置灰
     let current_date = arg.day + ' ' + arg.end_time;
     this.setData({
-      no_click: new Date().getTime() >  Date.parse(current_date.replace(/-/g, '/'))
+      no_click: new Date().getTime() > Date.parse(current_date.replace(/-/g, '/'))
     })
   },
   //获取菜单列表
@@ -145,6 +145,18 @@ Page({
   //点击去结算
   confirmOrder() {
     if (this.data.car_list.length > 0) {
+      let car_list = this.data.car_list;
+      let total_number = car_list.reduce((total, item) => {
+        return total + item.num
+      }, 0)
+      if (total_number > 4) {
+        dd.showToast({
+          type: 'none',
+          content: '最多只能选四个菜哦～',
+          duration: 2000,
+        });
+        return;
+      }
       let car_info = this.data.arg;
       car_info.total_price = this.data.total_price
       //将当前页面的内容保存到公共区域

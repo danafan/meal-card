@@ -4,12 +4,6 @@ Page({
     user_type: 2,    //1:用户；商家
   },
   onLoad() {
-    // this.setData({
-    //   user_type: 1
-    // })
-    // dd.navigateTo({
-    //   url: '/page/store/up_menu/up_menu'
-    // })
     //钉钉获取用户信息
     this.getDingInfo();
   },
@@ -92,23 +86,14 @@ Page({
     dd.scan({
       type: 'qr',
       success: (res) => {
-        //核销
-        this.receiveMeal(res.code);
+        dd.navigateTo({
+          url: '/page/store/confirm_order/confirm_order?code=' + res.code
+        })
       }
     })
 
   },
-  //核销
-  receiveMeal(code) {
-    let arg = {
-      code: code
-    }
-    resource.receiveMeal(arg).then(res => {
-      dd.navigateTo({
-        url: '/page/user/paybal_results/paybal_results?result_type=1&toast_text=确认成功&show_scan=1'
-      })
-    })
-  }
+  
 
 
 })

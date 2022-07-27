@@ -52,9 +52,8 @@ Page({
   },
   //上传图片
   uploadImg(file_path) {
-    let uploadUrl = getApp().globalData.uploadUrl;
     dd.uploadFile({
-      url: uploadUrl + 'common/addimage',
+      url: resource.uploadUrl + '/common/addimage',
       fileType: 'image',
       fileName: 'file',
       filePath: file_path,

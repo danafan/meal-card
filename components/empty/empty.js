@@ -1,4 +1,3 @@
-const resource = require('../../utils/api.js').API;
 Component({
   mixins: [],
   data: {},
@@ -23,22 +22,10 @@ Component({
       dd.scan({
         type: 'qr',
         success: (res) => {
-          //核销
-          this.receiveMeal(res.code);
+          dd.redirectTo({
+            url: '/page/store/confirm_order/confirm_order?code=' + res.code
+          })
         }
-      })
-    },
-    //核销
-    receiveMeal(code) {
-      let arg = {
-        code: code
-      }
-      resource.receiveMeal(arg).then(res => {
-        dd.showToast({
-          type: 'none',
-          content: res.data.msg,
-          duration: 2000
-        });
       })
     }
   },

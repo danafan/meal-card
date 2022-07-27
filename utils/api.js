@@ -59,6 +59,7 @@ function request(method, url, data) {
   })
 }
 const API = {
+  uploadUrl: baseUrl.split('/user/')[0],      //上传图片地址
   getUserInfo: (data) => request(GET, 'login/login', data),                     //获取用户信息
   getCardInfo: (data) => request(GET, 'card/getcardinfo', data),                //获取餐卡信息
   getQrCode: (data) => request(GET, 'card/getpaymentcode', data),               //获取付款码
@@ -71,7 +72,7 @@ const API = {
   offDishesList: (data) => request(GET, 'store/off_dishes_list', data),         //获取未上架菜品列表
   createMenu: (data) => request(POST, 'store/add_dishes', data),                //创建菜品
   menuDetail: (data) => request(GET, 'store/edit_dishes', data),                //菜品详情
-  editDishes: (data) => request(POST, 'store/edit_dishes', data),                //编辑菜品
+  editDishes: (data) => request(POST, 'store/edit_dishes', data),               //编辑菜品
   deleteMenu: (data) => request(POST, 'store/del_dishes', data),                //删除菜品
   getMenuInfo: (data) => request(GET, 'store/get_menu_info', data),             //已上架的菜单列表
   addMenu: (data) => request(POST, 'store/add_menu', data),                     //上架菜品
@@ -83,6 +84,7 @@ const API = {
   userOrderList: (data) => request(GET, 'meal/get_order_list', data),           //用户订单列表
   getMealCode: (data) => request(GET, 'meal/get_meal_code', data),              //用户获取取餐码
   setPackage: (data) => request(POST, 'store/package', data),                   //确认打包
+  getOrderInfo: (data) => request(GET, 'store/get_order_info', data),            //商家获取订单详情
   receiveMeal: (data) => request(POST, 'store/receive_meal', data),             //商家扫码核销
 
 };
