@@ -148,10 +148,10 @@ Page({
       let total_number = car_list.reduce((total, item) => {
         return total + item.num
       }, 0)
-      if (total_number > 4) {
+      if (total_number > getApp().globalData.limit_num) {
         dd.showToast({
           type: 'none',
-          content: '最多只能选四个菜哦～',
+          content: `最多只能选${getApp().globalData.limit_num}个菜哦～`,
           duration: 2000,
         });
         return;

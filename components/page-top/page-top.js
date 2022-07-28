@@ -14,8 +14,8 @@ Component({
       name:'晚餐'
     }],                                             //哪一餐列表
     meal_name:"",                                   //选中的哪一餐名称
-    lunch_date:getApp().globalData.lunch_date,                          //商家午餐和晚餐的截止时间
-    dinner_date:getApp().globalData.dinner_date, 
+    lunch_date:'',
+    dinner_date:'', 
     index: 0,                //选中的下标
   },
   props: {
@@ -42,7 +42,9 @@ Component({
       meal_name:this.data.meal_list[meal_index].name,
       address_name: this.data.address_list[this.data.address_index].name,
       current_date: current_date,
-      set_date: current_date
+      set_date: current_date,
+      lunch_date:getApp().globalData.lunch_date,                          
+      dinner_date:getApp().globalData.dinner_date, 
     })
     //监听切换
     this.onChange('1');

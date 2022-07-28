@@ -22,6 +22,9 @@ Page({
     }).then(res => {
       getApp().globalData.user_info = res.data;
       getApp().globalData.token = res.token;
+      getApp().globalData.lunch_date = res.config.lunch;
+      getApp().globalData.dinner_date = res.config.dinner;
+      getApp().globalData.limit_num = parseInt(res.config.limit_num);
       this.setData({
         user_type: res.user_type
       })

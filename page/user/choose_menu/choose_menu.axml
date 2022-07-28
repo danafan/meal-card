@@ -1,29 +1,27 @@
 <view class="choose_menu_container">
-  <view class="menu_container_top">
-    <page-top is_check_stop_date="false" onChange="onChange" stop_date="{{stop_date}}"></page-top>
-    <scroll-view scroll-y="{{true}}" class="menu_list" a:if="{{menu_list.length > 0}}">
-      <menu-item type="add_menu" item="{{item}}" a:for="{{menu_list}}" onCheckFn="checkFn"></menu-item>
-    </scroll-view>
-    <empty result_type="0" toast_text="商家还没有上传菜品哦" a:else></empty>
-    <view class="car_model" a:if="{{showModel}}">
-      <view class="model_content" onTap="checkShowCar"></view>
-      <view class="shop_list">
-        <view class="clear_list" onTap="clearShopCar">清除已选</view>
-        <scroll-view scroll-y="{{true}}" class="select_list">
-          <view class="select_menu" a:for="{{car_list}}">
-            <image class="select_menu_img" src="{{item.domain + item.image}}"/>
-            <view class="select_menu_content">
-              <view class="select_menu_name">{{item.dishes_name}}</view>
-              <view class="select_menu_price">¥ {{item.dishes_price}}</view>
-            </view>
-            <view class="check_num_row">
-              <view class="check reduce" data-id="{{item.dishes_id}}" data-type="1" onTap="checkNum">-</view>
-              <view class="num">{{item.num}}</view>
-              <view class="check add" data-id="{{item.dishes_id}}" data-type="2" onTap="checkNum">+</view>
-            </view>
+  <page-top is_check_stop_date="false" onChange="onChange" stop_date="{{stop_date}}"></page-top>
+  <scroll-view scroll-y="{{true}}" class="menu_list" a:if="{{menu_list.length > 0}}">
+    <menu-item type="add_menu" item="{{item}}" a:for="{{menu_list}}" onCheckFn="checkFn"></menu-item>
+  </scroll-view>
+  <empty result_type="0" toast_text="商家还没有上传菜品哦" a:else></empty>
+  <view class="car_model" a:if="{{showModel}}">
+    <view class="model_content" onTap="checkShowCar"></view>
+    <view class="shop_list">
+      <view class="clear_list" onTap="clearShopCar">清除已选</view>
+      <scroll-view scroll-y="{{true}}" class="select_list">
+        <view class="select_menu" a:for="{{car_list}}">
+          <image class="select_menu_img" src="{{item.domain + item.image}}"/>
+          <view class="select_menu_content">
+            <view class="select_menu_name">{{item.dishes_name}}</view>
+            <view class="select_menu_price">¥ {{item.dishes_price}}</view>
           </view>
-        </scroll-view>
-      </view>
+          <view class="check_num_row">
+            <view class="check reduce" data-id="{{item.dishes_id}}" data-type="1" onTap="checkNum">-</view>
+            <view class="num">{{item.num}}</view>
+            <view class="check add" data-id="{{item.dishes_id}}" data-type="2" onTap="checkNum">+</view>
+          </view>
+        </view>
+      </scroll-view>
     </view>
   </view>
   <shop-car total_price="{{total_price}}" no_click="{{no_click}}" page_type="choose_menu" onCheckShowCar="checkShowCar" onConfirmOrder="confirmOrder"></shop-car>
