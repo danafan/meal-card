@@ -56,6 +56,8 @@ Page({
   checkFn(id, type, clear) {
     var new_menu_list = JSON.parse(JSON.stringify(this.data.menu_list));
     var car_list = [];
+    //是否可增加
+    var is_add = true;
     new_menu_list.map(new_item => {
       if (clear) {
         new_item.num = 0;
@@ -68,17 +70,32 @@ Page({
               new_item.num = 0;
             }
           } else {
+            let car_list = this.data.car_list;
+            let total_number = car_list.reduce((total, item) => {
+              return total + item.num
+            }, 0)
+            if (total_number == getApp().globalData.limit_num) {
+              dd.showToast({
+                type: 'none',
+                content: `最多只能选${getApp().globalData.limit_num}个菜哦～`,
+                duration: 2000,
+              });
+              is_add = false;
+              return;
+            }
             new_item.num += 1;
           }
         }
       }
     });
-    this.setData({
-      total_price: 0,
-      menu_list: new_menu_list
-    })
-    //处理购物车
-    this.getTotalPrice();
+    if (is_add) {
+      this.setData({
+        total_price: 0,
+        menu_list: new_menu_list
+      })
+      //处理购物车
+      this.getTotalPrice();
+    }
   },
   //处理购物车
   getTotalPrice() {
@@ -144,18 +161,6 @@ Page({
   //点击去结算
   confirmOrder() {
     if (this.data.car_list.length > 0) {
-      let car_list = this.data.car_list;
-      let total_number = car_list.reduce((total, item) => {
-        return total + item.num
-      }, 0)
-      if (total_number > getApp().globalData.limit_num) {
-        dd.showToast({
-          type: 'none',
-          content: `最多只能选${getApp().globalData.limit_num}个菜哦～`,
-          duration: 2000,
-        });
-        return;
-      }
       let car_info = this.data.arg;
       car_info.total_price = this.data.total_price
       //将当前页面的内容保存到公共区域
