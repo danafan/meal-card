@@ -1,24 +1,41 @@
 <view class="index_container">
   <scroll-view scroll-y="{{true}}" class="app_content">
-    <view class="app_item" onTap="fkmFn">
-      <view class="app_title">{{user_type == '1'?'付款码':'商家收款'}}</view>
-      <image class="app_img" src="../../images/fkm_back.png"/>
-    </view>
-    <view class="app_item" onTap="goBill">
-      <view class="app_title">账单</view>
-      <image class="app_img" src="../../images/zd_back.png"/>
-    </view>
-    <view class="app_item" onTap="dcFn">
-      <view class="app_title">{{user_type == '1'?'点餐':'上架菜品'}}</view>
+    <view class="app_item" onTap="dcFn" a:if="{{user_type == '1'}}">
+      <view class="app_title">点餐</view>
       <image class="app_img" src="../../images/dc_back.png"/>
     </view>
-    <view class="app_item" onTap="orderFn">
+    <view class="app_item" onTap="orderFn" a:if="{{user_type == '1'}}">
       <view class="app_title">我的订单</view>
       <image class="app_img" src="../../images/wddd_back.png"/>
     </view>
-    <view class="app_item" a:if="{{user_type == '2'}}" onTap="menuFn">
+    <view class="app_item" onTap="fkmFn" a:if="{{user_type == '1'}}">
+      <view class="app_title">付款码</view>
+      <image class="app_img" src="../../images/fkm_back.png"/>
+    </view>
+    <view class="app_item" onTap="goBill" a:if="{{user_type == '1'}}">
+      <view class="app_title">账单</view>
+      <image class="app_img" src="../../images/zd_back.png"/>
+    </view>
+    
+    <view class="app_item" onTap="dcFn" a:if="{{user_type == '2'}}">
+      <view class="app_title">上架菜品</view>
+      <image class="app_img" src="../../images/dc_back.png"/>
+    </view>
+    <view class="app_item" onTap="orderFn" a:if="{{user_type == '2'}}">
+      <view class="app_title">我的订单</view>
+      <image class="app_img" src="../../images/wddd_back.png"/>
+    </view>
+    <view class="app_item" onTap="menuFn" a:if="{{user_type == '2'}}">
       <view class="app_title">菜单管理</view>
       <image class="app_img" src="../../images/cdgl_back.png"/>
+    </view>
+    <view class="app_item" onTap="fkmFn" a:if="{{user_type == '2'}}">
+      <view class="app_title">商家收款</view>
+      <image class="app_img" src="../../images/fkm_back.png"/>
+    </view>
+    <view class="app_item" onTap="goBill" a:if="{{user_type == '2'}}">
+      <view class="app_title">账单</view>
+      <image class="app_img" src="../../images/zd_back.png"/>
     </view>
   </scroll-view>
   <view class="bottom_box" a:if="{{user_type == '2'}}">

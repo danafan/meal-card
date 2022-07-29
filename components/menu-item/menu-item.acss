@@ -56,7 +56,7 @@
   color: #333333;
   font-size: 28rpx;
 }
-.check_icon{
+.change_icon{
   width: 52rpx;
   height: 52rpx;
 }
