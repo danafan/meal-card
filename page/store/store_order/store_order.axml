@@ -15,6 +15,14 @@
         <view class="lable">{{item.dishes_name}}</view>
         <view class="value">{{item.num}}份</view>
       </view>
+      <view class="item_row" a:for="{{up_menu_list}}">
+        <view class="lable">{{item.dishes_name}}</view>
+        <view class="value">{{item.num}}份</view>
+      </view>
+      <view class="item_row" a:for="{{up_menu_list}}">
+        <view class="lable">{{item.dishes_name}}</view>
+        <view class="value">{{item.num}}份</view>
+      </view>
     </view>
     <view class="empty_list" a:else>暂无数据</view>
     <view class="list_top">
@@ -55,6 +63,10 @@
         </view>
       </view>
     </scroll-view>
+    <view class="empty_div" a:if="{{order_list.length == 0}}">
+    <empty result_type="0" toast_text="暂无订单"></empty>
+  </view>
   </scroll-view>
-  <empty result_type="0" toast_text="暂无订单" a:if="{{order_list.length == 0}}"></empty>
+  
+  
 </view>

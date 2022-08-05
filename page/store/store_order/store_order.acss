@@ -143,3 +143,9 @@
   font-weight: 500;
   color: #FF9C3D;
 }
+.empty_div{
+  height: 500rpx;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+}

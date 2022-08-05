@@ -35,7 +35,7 @@ Component({
       day = "0" + day;
     }
     let current_date = year + "-" + month + "-" + day;
-    let time = current_date + ' ' + this.data.lunch_date;
+    let time = current_date + ' ' + getApp().globalData.lunch_date;
     let meal_index = new Date().getTime() > Date.parse(time.replace(/-/g, '/'))?1:0;
     this.setData({
       index:meal_index,
