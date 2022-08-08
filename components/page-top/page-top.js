@@ -1,7 +1,7 @@
 Component({
   mixins: [],
   data: {
-    address_list: getApp().globalData.address_list,   // 所有地址列表
+    address_list: [],   // 所有地址列表
     address_index: 0,         //选中的地址下标
     address_name: "",         //选中的地址名称
     current_date: "",        //当前日期
@@ -40,7 +40,8 @@ Component({
     this.setData({
       index:meal_index,
       meal_name:this.data.meal_list[meal_index].name,
-      address_name: this.data.address_list[this.data.address_index].name,
+      address_list:getApp().globalData.address_list,
+      address_name: getApp().globalData.address_list[this.data.address_index].name,
       current_date: current_date,
       set_date: current_date,
       lunch_date:getApp().globalData.lunch_date,                          

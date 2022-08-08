@@ -61,6 +61,7 @@ function request(method, url, data) {
 const API = {
   uploadUrl: baseUrl.split('/user/')[0],      //上传图片地址
   getUserInfo: (data) => request(GET, 'login/login', data),                     //获取用户信息
+  ajaxAddress: (data) => request(GET, 'store/ajax_address', data),              //获取送餐地址列表
   getCardInfo: (data) => request(GET, 'card/getcardinfo', data),                //获取餐卡信息
   getQrCode: (data) => request(GET, 'card/getpaymentcode', data),               //获取付款码
   userCardRecord: (data) => request(GET, 'card/getcardrecord', data),           //员工账单

@@ -6,6 +6,8 @@ Page({
   onLoad() {
     //钉钉获取用户信息
     this.getDingInfo();
+    //获取送餐地址
+    this.ajaxAddress();
     const updateManager = dd.getUpdateManager()
     updateManager.onCheckForUpdate(function(res) {
       if (res.hasUpdate) {
@@ -44,6 +46,12 @@ Page({
       this.setData({
         user_type: res.user_type
       })
+    })
+  },
+  //获取送餐地址
+  ajaxAddress() {
+    resource.ajaxAddress().then(res => {
+      getApp().globalData.address_list = res.data;
     })
   },
   //付款码或商家收款
