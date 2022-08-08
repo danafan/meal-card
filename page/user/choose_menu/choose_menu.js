@@ -74,6 +74,7 @@ Page({
             let total_number = car_list.reduce((total, item) => {
               return total + item.num
             }, 0)
+            //菜品数量限制
             if (total_number == getApp().globalData.limit_num) {
               dd.showToast({
                 type: 'none',
@@ -160,23 +161,36 @@ Page({
   },
   //点击去结算
   confirmOrder() {
-    if (this.data.car_list.length > 0) {
-      let car_info = this.data.arg;
-      car_info.total_price = this.data.total_price
-      //将当前页面的内容保存到公共区域
-      getApp().globalData.car_info = {
-        info: car_info,
-        list: this.data.car_list
-      };
-      dd.navigateTo({
-        url: '/page/user/confirm_order/confirm_order'
-      })
-    } else {
+    if (this.data.car_list.length == 0) {
       dd.showToast({
         type: 'none',
         content: '购物车内还没有菜品哦～',
         duration: 2000,
       });
+    } else {
+      let car_list = this.data.car_list;
+      let total_price = car_list.reduce((total, item) => {
+        return total + item.num * item.dishes_price
+      }, 0)
+      //最低消费限制
+      if (total_price < getApp().globalData.min_price) {
+        dd.showToast({
+          type: 'none',
+          content: `最低消费不少于${getApp().globalData.min_price}元～`,
+          duration: 2000,
+        });
+      } else {
+        let car_info = this.data.arg;
+        car_info.total_price = this.data.total_price
+        //将当前页面的内容保存到公共区域
+        getApp().globalData.car_info = {
+          info: car_info,
+          list: this.data.car_list
+        };
+        dd.navigateTo({
+          url: '/page/user/confirm_order/confirm_order'
+        })
+      }
     }
   }
 });
