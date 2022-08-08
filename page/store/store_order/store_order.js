@@ -18,8 +18,16 @@ Page({
     var nowDay = now.getDate();      //当前日
     var nowMonth = now.getMonth() + 1 < 10 ? '0' + (now.getMonth() + 1).toString() : now.getMonth() + 1; 		//当前月 
     var nowYear = now.getFullYear(); 		  //当前年 
+    //处理送货地址
+    let address_list = JSON.parse(JSON.stringify(getApp().globalData.address_list));
+    let all_obj = {
+      name: '全部',
+      id: ''
+    }
+    address_list.unshift(all_obj);
     this.setData({
-      date: nowYear + '-' + nowMonth + '-' + nowDay
+      date: nowYear + '-' + nowMonth + '-' + nowDay,
+      address_list: address_list
     })
     //获取头部列表
     this.storeOrderTotal();
@@ -67,15 +75,8 @@ Page({
       type: this.data.active_index
     }
     resource.storeOrderTotal(arg).then(res => {
-      let address_list = res.data.address_list;
-      let all_obj = {
-        name: '全部',
-        id: ''
-      }
-      address_list.unshift(all_obj)
       this.setData({
-        up_menu_list: res.data.list,
-        address_list: address_list
+        up_menu_list: res.data.list
       })
     });
   },
@@ -134,7 +135,7 @@ Page({
       let arr = data.data;
       arr.map(item => {
         this.data.address_list.map(iii => {
-          if(item.address_type == iii.id){
+          if (item.address_type == iii.id) {
             item.address_type_str = iii.name
           }
         })

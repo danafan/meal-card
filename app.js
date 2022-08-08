@@ -5,7 +5,7 @@ App({
       user_type:1
     },                                              //用户信息
     token:"",
-    address_list:[],                                             //送餐地址列表
+    address_list:[],                                //送餐地址列表
     car_info:{},                                    //用户购物车内容（下单跳转到确认订单时使用）
     lunch_date:'11:00:00',                          //商家午餐和晚餐的截止时间
     dinner_date:'17:00:00', 
