@@ -18,6 +18,11 @@ Page({
       code: this.data.code
     }
     resource.getOrderInfo(arg).then(res => {
+      getApp().globalData.address_list.map(item => {
+        if(res.data.address_type == item.id){
+          res.data.address_type_str = item.name;
+        }
+      });
       this.setData({
         order_info:res.data,
         menu_list:res.data.list

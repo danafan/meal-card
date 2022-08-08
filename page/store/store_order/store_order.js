@@ -35,7 +35,7 @@ Page({
         if (res.date) {
           this.setData({
             page: 1,
-            order_list:[],
+            order_list: [],
             total_number: 0,
             date: res.date
           })
@@ -51,7 +51,7 @@ Page({
   checkType(e) {
     this.setData({
       page: 1,
-      order_list:[],
+      order_list: [],
       total_number: 0,
       active_index: e.target.dataset.index
     })
@@ -83,7 +83,7 @@ Page({
   checkStatus(e) {
     this.setData({
       page: 1,
-      order_list:[],
+      order_list: [],
       total_number: 0,
       status_index: e.target.dataset.index
     })
@@ -94,7 +94,7 @@ Page({
   bindPickerChange(e) {
     this.setData({
       page: 1,
-      order_list:[],
+      order_list: [],
       total_number: 0,
       index: e.detail.value,
       address_id: this.data.address_list[e.detail.value].id
@@ -119,8 +119,8 @@ Page({
       day: this.data.date,
       type: this.data.active_index,
       package_status: this.data.status_index,
-      page:this.data.page,
-      pagesize:10
+      page: this.data.page,
+      pagesize: 10
     }
     if (this.data.index != 0) {
       arg.address_type = this.data.address_id;
@@ -130,9 +130,18 @@ Page({
       if (data.length == 0) {
         return;
       };
+      //处理送餐地址
+      let arr = data.data;
+      arr.map(item => {
+        this.data.address_list.map(iii => {
+          if(item.address_type == iii.id){
+            item.address_type_str = iii.name
+          }
+        })
+      })
       this.setData({
         total_number: data.total,
-        order_list: this.data.order_list.concat(Array.from(data.data))
+        order_list: this.data.order_list.concat(Array.from(arr))
       });
       if (data.last_page == this.data.page) {
         this.setData({
@@ -160,7 +169,7 @@ Page({
       let index = v.target.dataset.index;
       new_order_list.splice(index, 1);
       this.setData({
-        total_number:this.data.total_number - 1,
+        total_number: this.data.total_number - 1,
         order_list: new_order_list
       })
     });

@@ -25,8 +25,17 @@ Page({
       status: this.data.active_index
     }
     resource.userOrderList(arg).then(res => {
+      //处理送餐地址
+      let arr = res.data;
+      arr.map(item => {
+        getApp().globalData.address_list.map(iii => {
+          if(item.address_type == iii.id){
+            item.address_type_str = iii.name
+          }
+        })
+      })
       this.setData({
-        order_list: res.data
+        order_list: arr
       })
     });
   },
