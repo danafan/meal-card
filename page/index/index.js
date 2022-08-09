@@ -1,7 +1,7 @@
 const resource = require('../../utils/api.js').API;
 Page({
   data: {
-    user_type: 2,    //1:用户；商家
+    user_type: '',    //1:用户；商家
   },
   onLoad() {
     //钉钉获取用户信息
