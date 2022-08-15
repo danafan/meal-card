@@ -19,9 +19,17 @@ Component({
     index: 0,                //选中的下标
   },
   props: {
+    last_address_index:0,       //上次选中的地址下标
     show_address: true,         //是否显示送餐地址
     is_check_address: true,     //是否可切换送餐地址
     is_check: true,             //是否可切换送餐日期和哪一餐
+  },
+  didUpdate(prevProps,prevData) {
+    this.setData({
+      address_index: this.props.last_address_index,
+      address_list:getApp().globalData.address_list,
+      address_name: getApp().globalData.address_list[this.props.last_address_index].name,
+    })
   },
   didMount() {
     let date = new Date();
@@ -40,6 +48,7 @@ Component({
     this.setData({
       index:meal_index,
       meal_name:this.data.meal_list[meal_index].name,
+      address_index: this.data.address_index,
       address_list:getApp().globalData.address_list,
       address_name: getApp().globalData.address_list[this.data.address_index].name,
       current_date: current_date,

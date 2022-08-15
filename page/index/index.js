@@ -1,13 +1,15 @@
 const resource = require('../../utils/api.js').API;
 Page({
   data: {
-    user_type: '',    //1:用户；商家
+    user_type: '',    //1:用户；2:商家
   },
   onLoad() {
     //钉钉获取用户信息
     this.getDingInfo();
     //获取送餐地址
     this.ajaxAddress();
+    return;
+    
     const updateManager = dd.getUpdateManager();
     updateManager.onCheckForUpdate(function(res) {
       if (res.hasUpdate) {
@@ -48,6 +50,27 @@ Page({
       this.setData({
         user_type: res.user_type
       })
+      if(res.user_type == '1'){
+        this.getNotice();
+      }
+    })
+  },
+  getNotice(){
+    resource.getNotice().then(res => {
+      console.log(res.data)
+      // if(res.data){
+      //   dd.confirm({
+      //   title: '更新提示',
+      //   content: `新版本${ret.version}已经准备好，是否更新并重启应用？`,
+      //   confirmButtonText: '现在更新',
+      //   cancelButtonText: '再等等',
+      //   success: function(res) {
+      //     if (res.confirm) {
+      //       updateManager.applyUpdate()
+      //     }
+      //   }
+      // })
+      // }
     })
   },
   //获取送餐地址

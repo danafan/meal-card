@@ -7,6 +7,7 @@ Page({
     total_price: 0,        //购物车总金额
     arg: {},               //顶部传回来的数据
     no_click: false,       //去结算按钮是否可点击
+    index:0
   },
   //切换顶部选项
   onChange(arg) {
@@ -32,7 +33,6 @@ Page({
     }
     resource.userMenuList(req).then(res => {
       let data = res.data;
-
       if (data.length == 0) {
         this.setData({
           menu_list: [],
@@ -50,7 +50,20 @@ Page({
         car_list: [],
         total_price: 0
       })
+      //找到上次选择的地址id
+      this.filterAddress(data.last_address_id);
     });
+  },
+  //找到上次选择的地址id
+  filterAddress(id){
+    getApp().globalData.address_list.map((item,index) => {
+      if(item.id == id){
+        getApp().globalData.address_index = index;
+        this.setData({
+          index:index
+        })
+      };
+    })
   },
   //点击某一个菜品的加或减
   checkFn(id, type, clear) {

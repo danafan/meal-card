@@ -9,10 +9,18 @@ Page({
     page: 1,             //页码
     month: "",           //月账单所需参数
     date: "",            //日账单所需参数
+    type_list: [{
+      id: '0',
+      name: '全部'
+    }, {
+      id: '1',
+      name: '个人'
+    }],
+    type_index: 0,
     data_list: [],       //列表数据
     isLoad: true,
-    collection: "",
-    num: "",
+    collection: 0,
+    num: 0,
     amount: "",      //点击退款的标题（钱数）
     id: "",          //点击退款的ID
   },
@@ -34,8 +42,8 @@ Page({
       dateType: this.data.dateType == '1' ? '2' : '1',
       page: 1,
       data_list: [],
-      collection: "",
-      num: ""
+      collection: 0,
+      num: 0
     })
     //获取列表
     this.getData();
@@ -52,10 +60,22 @@ Page({
       })
     }
     this.setData({
-      collection: "",
-      num: "",
+      collection: 0,
+      num: 0,
       data_list: [],
       page: 1
+    })
+    //获取列表
+    this.getData();
+  },
+  //切换个人或全部
+  changeType(e) {
+    this.setData({
+      type_index: e.detail.value,
+      page: 1,
+      data_list: [],
+      collection: 0,
+      num: 0
     })
     //获取列表
     this.getData();
@@ -75,7 +95,8 @@ Page({
   getData() {
     let arg = {
       page: this.data.page,
-      type: this.data.dateType
+      type: this.data.dateType,
+      view_type:this.data.type_list[this.data.type_index].id
     }
     if (this.data.dateType == '1') {
       arg.month = this.data.month

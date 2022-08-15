@@ -7,6 +7,12 @@
   </view>
   <view class="fixed_container">
     <date-picker userType="2" dateType="{{dateType}}" collection="{{collection}}" num="{{num}}" onCheckDate="checkDate" month="{{month}}" date="{{date}}"></date-picker>
+    <view class="view_type_box">
+      <picker onChange="changeType" value="{{type_index}}" range="{{type_list}}" range-key="name">
+        <view>{{type_list[type_index].name}}</view>
+      </picker>
+      <image class="down_arrow" mode="scaleToFill" src="../../../images/down_arrow.png"/>
+    </view>
   </view>
   <scroll-view scroll-y="{{true}}" class="list_content" onScrollToLower="loadMore">
     <bill-item userType="2" a:for="{{data_list}}" itemInfo="{{item}}" a:key="*this" onRefundFun="refundFun"></bill-item>

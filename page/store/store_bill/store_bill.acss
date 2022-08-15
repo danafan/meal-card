@@ -36,7 +36,24 @@
 }
 
 .fixed_container {
+  padding-right: 30rpx;
   background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.view_type_box{
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  color:#333333;
+}
+.down_arrow{
+  margin-left: 8rpx;
+  width: 16rpx;
+  height: 12rpx;
 }
 
 .dialog_container {

@@ -1,5 +1,4 @@
 <view class="store_order">
-  <scroll-view scroll-y="{{true}}" onScrollToLower="loadMore">
     <view class="top_content">
       <view class="check_date" onTap="openDatePicker">
         <view >{{date.split('-')[0]}}年{{date.split('-')[1]}}月{{date.split('-')[2]}}日</view>
@@ -10,13 +9,6 @@
         <view class="status_item already {{active_index == '2'?'active_item':''}}" data-index="2" onTap="checkType">晚餐</view>
       </view>
     </view>
-    <view class="order_info" a:if="{{up_menu_list.length > 0}}">
-      <view class="item_row" a:for="{{up_menu_list}}">
-        <view class="lable">{{item.dishes_name}}</view>
-        <view class="value">{{item.num}}份</view>
-      </view>
-    </view>
-    <view class="empty_list" a:else>暂无数据</view>
     <view class="list_top">
       <view class="address_row">
         <picker onChange="bindPickerChange" value="{{index}}" range="{{address_list}}" range-key="name">
@@ -25,14 +17,15 @@
             <image class="down_arrow" mode="scaleToFill" src="../../../images/down_arrow.png"/>
           </view>
         </picker>
-        <view class="total_num">合计：{{total_number}}盒</view>
+        <view class="total_num">合计：{{total_number}}盒/{{total_price}}元</view>
       </view>
       <view class="status_row">
-        <view class="status_item not {{status_index == '0'?'active_item':''}}" data-index="0" onTap="checkStatus">未打包</view>
-        <view class="status_item already {{status_index == '1'?'active_item':''}}" data-index="1" onTap="checkStatus">已打包</view>
+        <view class="status_item not {{status_index == '0'?'active_item':''}}" data-index="0" onTap="checkStatus">待确认</view>
+        <view class="status_item {{status_index == '1'?'active_item':''}}" data-index="1" onTap="checkStatus">已确认</view>
+        <view class="status_item already {{status_index == '2'?'active_item':''}}" data-index="2" onTap="checkStatus">已取消</view>
       </view>
     </view>
-    <scroll-view scroll-y="{{true}}" class="list_content" a:if="{{order_list.length > 0}}">
+    <scroll-view scroll-y="{{true}}" onScrollToLower="loadMore" class="list_content" a:if="{{order_list.length > 0}}">
       <view class="order_info" a:for="{{order_list}}">
         <view class="item_row">
           <view class="lable">订餐人</view>
@@ -50,15 +43,16 @@
           <view class="lable">备注</view>
           <view class="value">{{item.remark}}</view>
         </view>
-        <view class="button_row" a:if="{{item.package_status == 0}}">
-          <view class="get_code" data-id="{{item.order_id}}" data-index="{{index}}" onTap="setPackage">确认打包</view>
+        <view class="item_row">
+          <view class="lable">合计</view>
+          <view class="value">¥{{item.order_amount}}</view>
+        </view>
+        <view class="button_row">
+          <view class="get_code" data-id="{{item.order_id}}" data-index="{{index}}" onTap="cancelOrder" a:if="{{item.status == 0}}">退款</view>
+          <view class="get_code confirm" data-id="{{item.order_id}}" data-index="{{index}}" onTap="setPackage" a:if="{{item.package_status == 0 && item.status == 0}}">确认打包</view>
         </view>
       </view>
     </scroll-view>
-    <view class="empty_div" a:if="{{order_list.length == 0}}">
-    <empty result_type="0" toast_text="暂无订单"></empty>
+    <empty result_type="0" toast_text="暂无订单" a:else></empty>
   </view>
-  </scroll-view>
-  
-  
 </view>

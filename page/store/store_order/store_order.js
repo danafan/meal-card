@@ -12,6 +12,7 @@ Page({
     isLoad: true,
     order_list: [],
     total_number: 0,        //总数
+    total_price: 0,          //总金额
   },
   onLoad() {
     var now = new Date(); 				    //当前日期  
@@ -29,8 +30,6 @@ Page({
       date: nowYear + '-' + nowMonth + '-' + nowDay,
       address_list: address_list
     })
-    //获取头部列表
-    this.storeOrderTotal();
     //获取底部列表接口
     this.storeOrderDishesList();
   },
@@ -47,8 +46,6 @@ Page({
             total_number: 0,
             date: res.date
           })
-          //获取头部列表
-          this.storeOrderTotal();
           //获取底部列表接口
           this.storeOrderDishesList()
         }
@@ -63,22 +60,8 @@ Page({
       total_number: 0,
       active_index: e.target.dataset.index
     })
-    //获取头部列表
-    this.storeOrderTotal();
     //获取底部列表接口
     this.storeOrderDishesList()
-  },
-  //获取头部列表
-  storeOrderTotal() {
-    let arg = {
-      day: this.data.date,
-      type: this.data.active_index
-    }
-    resource.storeOrderTotal(arg).then(res => {
-      this.setData({
-        up_menu_list: res.data.list
-      })
-    });
   },
   //切换状态
   checkStatus(e) {
@@ -141,7 +124,8 @@ Page({
         })
       })
       this.setData({
-        total_number: data.total,
+        total_number: data.total_num,
+        total_price: data.total_amount,
         order_list: this.data.order_list.concat(Array.from(arr))
       });
       if (data.last_page == this.data.page) {
@@ -166,13 +150,47 @@ Page({
         content: '打包成功',
         duration: 2000
       });
-      let new_order_list = JSON.parse(JSON.stringify(this.data.order_list));
-      let index = v.target.dataset.index;
-      new_order_list.splice(index, 1);
       this.setData({
-        total_number: this.data.total_number - 1,
-        order_list: new_order_list
-      })
+        page: 1,
+        order_list:[]
+      });
+      //获取底部列表接口
+      this.storeOrderDishesList()
+      // let new_order_list = JSON.parse(JSON.stringify(this.data.order_list));
+      // let index = v.target.dataset.index;
+      // new_order_list.splice(index, 1);
+      // this.setData({
+      //   total_number: this.data.total_number - 1,
+      //   total_price:this.data.total_price - new_order_list[index].order_amount,
+      //   order_list: new_order_list
+      // })
+    });
+  },
+  //退款
+  cancelOrder(v) {
+    let arg = {
+      order_id: v.target.dataset.id
+    }
+    resource.storeCancelOrder(arg).then(res => {
+      dd.showToast({
+        type: 'none',
+        content: '已退款',
+        duration: 2000
+      });
+      this.setData({
+        page: 1,
+        order_list:[]
+      });
+      //获取底部列表接口
+      this.storeOrderDishesList()
+      // let new_order_list = JSON.parse(JSON.stringify(this.data.order_list));
+      // let index = v.target.dataset.index;
+      // new_order_list.splice(index, 1);
+      // this.setData({
+      //   total_number: this.data.total_number - 1,
+      //   total_price: this.data.total_price - new_order_list[index].order_amount,
+      //   order_list: new_order_list
+      // })
     });
   }
 });
