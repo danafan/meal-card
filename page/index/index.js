@@ -8,8 +8,9 @@ Page({
     this.getDingInfo();
     //获取送餐地址
     this.ajaxAddress();
-    return;
-    
+
+    // return;
+
     const updateManager = dd.getUpdateManager();
     updateManager.onCheckForUpdate(function(res) {
       if (res.hasUpdate) {
@@ -50,27 +51,21 @@ Page({
       this.setData({
         user_type: res.user_type
       })
-      if(res.user_type == '1'){
+      if (res.user_type == '1') {
         this.getNotice();
       }
     })
   },
-  getNotice(){
+  //获取公告
+  getNotice() {
     resource.getNotice().then(res => {
-      console.log(res.data)
-      // if(res.data){
-      //   dd.confirm({
-      //   title: '更新提示',
-      //   content: `新版本${ret.version}已经准备好，是否更新并重启应用？`,
-      //   confirmButtonText: '现在更新',
-      //   cancelButtonText: '再等等',
-      //   success: function(res) {
-      //     if (res.confirm) {
-      //       updateManager.applyUpdate()
-      //     }
-      //   }
-      // })
-      // }
+      if (res.data) {
+        dd.alert({
+          title: res.data.notice_title,
+          content: res.data.content,
+          buttonText: '我知道了'
+        });
+      }
     })
   },
   //获取送餐地址
