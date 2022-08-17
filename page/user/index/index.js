@@ -18,14 +18,13 @@ Page({
     this.createdSocket();
   },
   //页面被关闭
-  onHide() {
+  onUnload() {
     //断开一分钟
     clearInterval(this.data.set_interval);
     //断开三秒
     clearInterval(this.data.send_interval);
     //断开websocket
     dd.closeSocket();
-
   },
   //创建wbesocket链接
   createdSocket() {
@@ -43,10 +42,16 @@ Page({
         this.socketOpen();
       },
       fail: (err) => {
+        // dd.alert({
+        //   title: '亲',
+        //   content: JSON.parse(JSON.stringify(err)),
+        //   buttonText: '我知道了',
+         
+        // });
         //连接失败
         dd.showToast({
           type: 'none',
-          content: '正在重连',
+          content: '正在重连49',
           duration: 1000,
           success: () => {
             //创建websocket链接并监听支付结果
@@ -104,7 +109,7 @@ Page({
           fail: (err) => {  //发送失败
             dd.showToast({
               type: 'none',
-              content: '正在重连',
+              content: '正在重连107',
               duration: 1000,
               success: () => {
                 //断开三秒

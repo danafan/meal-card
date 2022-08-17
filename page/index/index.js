@@ -137,13 +137,14 @@ Page({
     dd.scan({
       type: 'qr',
       success: (res) => {
+        let code = res.code;
         let arg = {
-          code: res.code
+          code: code
         }
         resource.getOrderInfo(arg).then(res => {
           if (res.code == 1) {
             dd.navigateTo({
-              url: '/page/store/confirm_order/confirm_order?code=' + res.code
+              url: '/page/store/confirm_order/confirm_order?code=' + code
             })
           }
         })
