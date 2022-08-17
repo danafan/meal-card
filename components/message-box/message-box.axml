@@ -1,6 +1,6 @@
 <view class="message_box">
   <view class="message_content">
-    <view class="top_content">{{message_text}}</view>
+    <view class="content_top">{{message_text}}</view>
     <view class="button_box">
       <view class="button_item" data-type="0" onTap="tapFn">否</view>
       <view class="line"></view>

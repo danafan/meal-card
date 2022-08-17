@@ -1,5 +1,5 @@
 <view class="choose_menu_container">
-  <page-top is_check_stop_date="false" last_address_index="{{index}}" onChange="onChange" stop_date="{{stop_date}}"></page-top>
+  <page-top is_check_stop_date="false" last_address_index="{{arg.address_index}}" onChange="onChange" stop_date="{{stop_date}}"></page-top>
   <scroll-view scroll-y="{{true}}" class="menu_list" a:if="{{menu_list.length > 0}}">
     <menu-item type="add_menu" item="{{item}}" a:for="{{menu_list}}" onCheckFn="checkFn"></menu-item>
   </scroll-view>

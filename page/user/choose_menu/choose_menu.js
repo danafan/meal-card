@@ -7,23 +7,20 @@ Page({
     total_price: 0,        //购物车总金额
     arg: {},               //顶部传回来的数据
     no_click: false,       //去结算按钮是否可点击
-    index:0
   },
   //切换顶部选项
   onChange(arg) {
+     //判断去结算按钮是否置灰
+    let current_date = arg.day + ' ' + arg.end_time;
     this.setData({
-      arg: arg
+      arg: arg,
+      no_click: new Date().getTime() > Date.parse(current_date.replace(/-/g, '/'))
     })
     //判断是否请求
     if (arg.is_request == '1') {
       //获取菜单列表
       this.userMenuList(arg);
     }
-    //判断去结算按钮是否置灰
-    let current_date = arg.day + ' ' + arg.end_time;
-    this.setData({
-      no_click: new Date().getTime() > Date.parse(current_date.replace(/-/g, '/'))
-    })
   },
   //获取菜单列表
   userMenuList(arg) {
@@ -58,9 +55,12 @@ Page({
   filterAddress(id){
     getApp().globalData.address_list.map((item,index) => {
       if(item.id == id){
-        getApp().globalData.address_index = index;
+        let arg = this.data.arg;
+        arg.address_index = index;
+        arg.address_text = item.name;
+        arg.address_type = item.id;
         this.setData({
-          index:index
+          arg:arg
         })
       };
     })
@@ -194,7 +194,7 @@ Page({
         });
       } else {
         let car_info = this.data.arg;
-        car_info.total_price = this.data.total_price
+        car_info.total_price = this.data.total_price;
         //将当前页面的内容保存到公共区域
         getApp().globalData.car_info = {
           info: car_info,

@@ -34,9 +34,9 @@
 }
 
 .status_item {
-   background: #ffffff;
+  background: #ffffff;
   border: 1rpx solid #FF9C3D;
-  width: 50%;
+  flex: 1;
   text-align: center;
   height: 76rpx;
   line-height: 76rpx;
@@ -52,7 +52,7 @@
   border-radius: 0 38rpx 38rpx 0;
 }
 
-.active_item{
+.active_item {
   background: #FF9C3D;
   color: #ffffff;
 }

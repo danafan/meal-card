@@ -2,8 +2,12 @@ const resource = require('../../utils/api.js').API;
 Page({
   data: {
     user_type: '',    //1:用户；2:商家
+    query: {},         //用来判断是否有is_empty，有就是不获取公告
   },
-  onLoad() {
+  onLoad(query) {
+    this.setData({
+      query: query
+    })
     //钉钉获取用户信息
     this.getDingInfo();
     //获取送餐地址
@@ -51,7 +55,7 @@ Page({
       this.setData({
         user_type: res.user_type
       })
-      if (res.user_type == '1') {
+      if (res.user_type == '1' && !this.data.query.is_empty) {
         this.getNotice();
       }
     })
@@ -133,9 +137,17 @@ Page({
     dd.scan({
       type: 'qr',
       success: (res) => {
-        dd.navigateTo({
-          url: '/page/store/confirm_order/confirm_order?code=' + res.code
+        let arg = {
+          code: res.code
+        }
+        resource.getOrderInfo(arg).then(res => {
+          if (res.code == 1) {
+            dd.navigateTo({
+              url: '/page/store/confirm_order/confirm_order?code=' + res.code
+            })
+          }
         })
+
       }
     })
 

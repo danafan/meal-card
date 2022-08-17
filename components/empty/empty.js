@@ -1,3 +1,4 @@
+const resource = require('../../utils/api.js').API;
 Component({
   mixins: [],
   data: {},
@@ -23,8 +24,15 @@ Component({
       dd.scan({
         type: 'qr',
         success: (res) => {
-          dd.redirectTo({
-            url: '/page/store/confirm_order/confirm_order?code=' + res.code
+          let arg = {
+            code: res.code
+          }
+          resource.getOrderInfo(arg).then(res => {
+            if (res.code == 1) {
+              dd.navigateTo({
+                url: '/page/store/confirm_order/confirm_order?code=' + res.code
+              })
+            }
           })
         }
       })
@@ -32,7 +40,7 @@ Component({
     //返回首页
     goIndex() {
       dd.redirectTo({
-        url: '/page/index/index'
+        url: '/page/index/index?is_empty=1'
       })
     }
   },

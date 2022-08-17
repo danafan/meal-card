@@ -6,28 +6,28 @@ Component({
     address_name: "",         //选中的地址名称
     current_date: "",        //当前日期
     set_date: "",            //送餐日期
-    meal_list:[{
-      id:'1',
-      name:'午餐'
-    },{
-      id:'2',
-      name:'晚餐'
+    meal_list: [{
+      id: '1',
+      name: '午餐'
+    }, {
+      id: '2',
+      name: '晚餐'
     }],                                             //哪一餐列表
-    meal_name:"",                                   //选中的哪一餐名称
-    lunch_date:'',
-    dinner_date:'', 
+    meal_name: "",                                   //选中的哪一餐名称
+    lunch_date: '',
+    dinner_date: '',
     index: 0,                //选中的下标
   },
   props: {
-    last_address_index:0,       //上次选中的地址下标
+    last_address_index: 0,       //上次选中的地址下标
     show_address: true,         //是否显示送餐地址
     is_check_address: true,     //是否可切换送餐地址
     is_check: true,             //是否可切换送餐日期和哪一餐
   },
-  didUpdate(prevProps,prevData) {
+  didUpdate(prevProps, prevData) {
     this.setData({
       address_index: this.props.last_address_index,
-      address_list:getApp().globalData.address_list,
+      address_list: getApp().globalData.address_list,
       address_name: getApp().globalData.address_list[this.props.last_address_index].name,
     })
   },
@@ -44,17 +44,17 @@ Component({
     }
     let current_date = year + "-" + month + "-" + day;
     let time = current_date + ' ' + getApp().globalData.lunch_date;
-    let meal_index = new Date().getTime() > Date.parse(time.replace(/-/g, '/'))?1:0;
+    let meal_index = new Date().getTime() > Date.parse(time.replace(/-/g, '/')) ? 1 : 0;
     this.setData({
-      index:meal_index,
-      meal_name:this.data.meal_list[meal_index].name,
+      index: meal_index,
+      meal_name: this.data.meal_list[meal_index].name,
       address_index: this.data.address_index,
-      address_list:getApp().globalData.address_list,
+      address_list: getApp().globalData.address_list,
       address_name: getApp().globalData.address_list[this.data.address_index].name,
       current_date: current_date,
       set_date: current_date,
-      lunch_date:getApp().globalData.lunch_date,                          
-      dinner_date:getApp().globalData.dinner_date, 
+      lunch_date: getApp().globalData.lunch_date,
+      dinner_date: getApp().globalData.dinner_date,
     })
     //监听切换
     this.onChange('1');
@@ -66,12 +66,12 @@ Component({
         return;
       }
       let index = e.detail.value;
-      this.setData({
-        address_index: index,
-        address_name: this.data.address_list[index].name
-      });
+      // this.setData({
+      //   address_index: index,
+      //   address_name: this.data.address_list[index].name
+      // });
       //监听切换
-      this.onChange('0');
+      this.onChange('0', index);
     },
     //切换送餐日期
     checkSetFn() {
@@ -106,15 +106,16 @@ Component({
       this.onChange('1');
     },
     //监听切换
-    onChange(type) {  //1:发送请求；2:不请求
+    onChange(type, index) {  //1:发送请求；2:不请求
+      let i = index ? index : this.data.address_index;
       let arg = {
         is_request: type,
-        address_index: this.data.address_index,
-        address_type: this.data.address_list[this.data.address_index].id,
-        address_text: this.data.address_list[this.data.address_index].name,
+        address_index: i,
+        address_type: this.data.address_list[i].id,
+        address_text: this.data.address_list[i].name,
         day: this.data.set_date,
         type: this.data.meal_list[this.data.index].id,
-        end_time:this.data.index == 0?this.data.lunch_date:this.data.dinner_date,
+        end_time: this.data.index == 0 ? this.data.lunch_date : this.data.dinner_date,
         type_text: this.data.meal_name
       }
       this.props.onChange(arg)
