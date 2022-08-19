@@ -40,6 +40,10 @@ Page({
       active_index: e.target.dataset.index
     })
     if (this.data.active_index == '0') {
+      this.setData({
+        search_value: "",
+        number: 0
+      })
       //获取未上架菜品列表
       this.offDishesList();
     } else {
@@ -81,7 +85,7 @@ Page({
       return item.dishes_name.indexOf(this.data.search_value) > -1;
     });
     this.setData({
-      show_menu_list:arr
+      show_menu_list: arr
     })
   },
   //获取未上架菜品列表
@@ -178,6 +182,10 @@ Page({
           dishes_ids: this.data.dishes_ids.join(',')
         }
         resource.addMenu(arg).then(res => {
+          this.setData({
+            search_value: "",
+            number: 0
+          })
           //获取列表
           this.offDishesList();
           dd.showToast({
