@@ -3,9 +3,9 @@ Page({
   data: {
     active_index: '0',     //选中的菜单类型
     search_value: "",      //输入的搜索内容
-    page: 1,               //页码
-    isLoad: true,
+    show_menu_list: [],         //显示的菜单
     menu_list: [],         //菜单
+    number: 0,              //已选中的上架数量
     up_menu_list: [],      //已上架列表
     timer: null,           //防抖计时器
     show_message: false,   //保存弹窗
@@ -55,6 +55,14 @@ Page({
     //处理搜索框输入请求
     this.debounce();
   },
+  //清空搜索内容
+  clearValue() {
+    this.setData({
+      search_value: ''
+    })
+    //处理搜索框输入请求
+    this.debounce();
+  },
   //处理搜索框输入请求
   debounce() {
     if (this.data.timer) {
@@ -62,50 +70,31 @@ Page({
     };
     this.setData({
       timer: setTimeout(() => {
-        this.setData({
-          page: 1,
-          isLoad: true,
-          menu_list: [],
-        })
-        //获取列表
-        this.offDishesList();
+        //过滤
+        this.filterMenu();
       }, 1000)
     })
   },
-  //上拉加载
-  loadMore(e) {
-    if (this.data.isLoad == false) {
-      return;
-    }
-    this.setData({
-      page: this.data.page + 1
+  //过滤
+  filterMenu() {
+    let dd = this.data.menu_list.filter(item => {
+      return item.dishes_name.indexOf(this.data.search_value) > -1;
     });
-    //获取列表
-    this.offDishesList()
+    this.setData({
+      show_menu_list:dd
+    })
   },
   //获取未上架菜品列表
   offDishesList() {
     let arg = {
       day: this.data.day,
-      type: this.data.type,
-      name: this.data.search_value,
-      page: this.data.page,
-      pagesize: 10
+      type: this.data.type
     }
     resource.offDishesList(arg).then(res => {
-      let data = res.data;
       this.setData({
-        menu_list: this.data.menu_list.concat(Array.from(data.data))
+        show_menu_list: res.data,
+        menu_list: res.data
       })
-      if (data.last_page == this.data.page) {
-        this.setData({
-          isLoad: false
-        })
-      } else {
-        this.setData({
-          isLoad: true
-        })
-      }
     });
   },
   //获取已上架的菜单列表
@@ -130,12 +119,18 @@ Page({
   //切换菜单列表选中状态
   onChecked(id) {
     let new_menu_list = JSON.parse(JSON.stringify(this.data.menu_list));
+    let number = 0;
     new_menu_list.map(item => {
       if (item.dishes_id == id) {
         item.is_checked = !item.is_checked;
+        if (item.is_checked) {
+          number += 1;
+        }
       }
     })
     this.setData({
+      number: number,
+      show_menu_list: new_menu_list,
       menu_list: new_menu_list
     })
   },
@@ -183,11 +178,6 @@ Page({
           dishes_ids: this.data.dishes_ids.join(',')
         }
         resource.addMenu(arg).then(res => {
-          this.setData({
-            page: 1,
-            isLoad: true,
-            menu_list: [],
-          })
           //获取列表
           this.offDishesList();
           dd.showToast({
