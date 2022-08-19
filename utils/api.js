@@ -2,8 +2,8 @@ let app = getApp();
 const GET = 'GET';
 const POST = 'POST';
 
-// const baseUrl = "https://house.92nu.com/user/";       //正式
-const baseUrl = "https://testsample.92nu.com/user/";     //测试
+const baseUrl = "https://house.92nu.com/user/";       //正式
+// const baseUrl = "https://testsample.92nu.com/user/";     //测试
 
 function request(method, url, data) {
   var data = data ? data : {};
