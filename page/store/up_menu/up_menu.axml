@@ -19,7 +19,7 @@
       <menu-item type="down_menu" item="{{item}}" a:for="{{up_menu_list}}" onShelves="onShelves"></menu-item>
     </scroll-view>
   </scroll-view>
-  <empty result_type="0" toast_text="{{active_index == '0'?'您还没有上传菜品哦':'还没有上架的菜品哦'}}" a:if="{{(active_index == '0' && show_menu_list.length == 0) || (active_index == '1' && up_menu_list.length == 0)}}"></empty>
+  <empty result_type="0" toast_text="{{active_index == '0'?'暂无数据':'还没有上架的菜品哦'}}" a:if="{{(active_index == '0' && show_menu_list.length == 0) || (active_index == '1' && up_menu_list.length == 0)}}"></empty>
   <view class="bottom_box" a:if="{{active_index == '0' && show_menu_list.length > 0}}">
     <view class="save" onTap="save">上架({{number}})</view>
   </view>
