@@ -77,11 +77,11 @@ Page({
   },
   //过滤
   filterMenu() {
-    let dd = this.data.menu_list.filter(item => {
+    let arr = this.data.menu_list.filter(item => {
       return item.dishes_name.indexOf(this.data.search_value) > -1;
     });
     this.setData({
-      show_menu_list:dd
+      show_menu_list:arr
     })
   },
   //获取未上架菜品列表
@@ -119,20 +119,20 @@ Page({
   //切换菜单列表选中状态
   onChecked(id) {
     let new_menu_list = JSON.parse(JSON.stringify(this.data.menu_list));
-    let number = 0;
     new_menu_list.map(item => {
       if (item.dishes_id == id) {
         item.is_checked = !item.is_checked;
-        if (item.is_checked) {
-          number += 1;
-        }
       }
     })
+    let arr = new_menu_list.filter(item => {
+      return item.is_checked == true;
+    })
     this.setData({
-      number: number,
-      show_menu_list: new_menu_list,
+      number: arr.length,
       menu_list: new_menu_list
     })
+    //过滤
+    this.filterMenu();
   },
   //下架
   onShelves(v) {
