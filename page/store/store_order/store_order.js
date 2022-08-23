@@ -14,7 +14,7 @@ Page({
     total_number: 0,        //总数
     total_price: 0,          //总金额
     show_message: false,
-    order_id:""
+    order_id: ""
   },
   onLoad() {
     var now = new Date(); 				    //当前日期  
@@ -52,7 +52,7 @@ Page({
             date: res.date
           })
           //获取头部列表
-    this.storeOrderTotal();
+          this.storeOrderTotal();
           //获取底部列表接口
           this.storeOrderDishesList()
         }
@@ -82,8 +82,6 @@ Page({
       total_price: 0,
       status_index: e.target.dataset.index
     })
-    //获取头部列表
-    this.storeOrderTotal();
     //获取底部列表接口
     this.storeOrderDishesList()
   },
@@ -97,8 +95,6 @@ Page({
       index: e.detail.value,
       address_id: this.data.address_list[e.detail.value].id
     });
-    //获取头部列表
-    this.storeOrderTotal();
     //获取底部列表接口
     this.storeOrderDishesList()
   },
@@ -202,7 +198,7 @@ Page({
         });
         this.setData({
           page: 1,
-          show_message:false,
+          show_message: false,
           order_list: []
         });
         //获取底部列表接口
