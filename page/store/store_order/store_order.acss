@@ -122,6 +122,38 @@
   width: 100%;
 }
 
+.order_info {
+  border-bottom: 1rpx solid #E8E8E8;
+  background: #ffffff;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.empty_list {
+  width: 100%;
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.item_row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 32rpx;
+  padding-top: 16rpx;
+  padding-bottom: 16rpx;
+}
+
+.lable {
+  color: #666666;
+}
+
+.value {
+  color: #333333;
+}
+
 .button_row {
   padding-bottom: 30rpx;
   width: 100%;

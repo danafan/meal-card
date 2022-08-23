@@ -79,6 +79,7 @@ const API = {
   getMenuInfo: (data) => request(GET, 'store/get_menu_info', data),             //已上架的菜单列表
   addMenu: (data) => request(POST, 'store/add_menu', data),                     //上架菜品
   shelvesMenu: (data) => request(POST, 'store/off_dishes', data),               //下架菜品
+  storeOrderTotal: (data) => request(GET, 'store/order_total', data),           //商家订单页头部列表
   storeOrderDishesList: (data) => request(GET, 'store/order_dishes_list', data),//商家订单页底部列表
   storeCancelOrder: (data) => request(POST, 'store/cancel', data),        //商家取消订单
   userMenuList: (data) => request(GET, 'meal/get_menu', data),                  //用户获取菜单

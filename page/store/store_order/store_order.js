@@ -32,6 +32,8 @@ Page({
       date: nowYear + '-' + nowMonth + '-' + nowDay,
       address_list: address_list
     })
+    //获取头部列表
+    this.storeOrderTotal();
     //获取底部列表接口
     this.storeOrderDishesList();
   },
@@ -49,6 +51,8 @@ Page({
             total_price: 0,
             date: res.date
           })
+          //获取头部列表
+    this.storeOrderTotal();
           //获取底部列表接口
           this.storeOrderDishesList()
         }
@@ -64,6 +68,8 @@ Page({
       total_price: 0,
       active_index: e.target.dataset.index
     })
+    //获取头部列表
+    this.storeOrderTotal();
     //获取底部列表接口
     this.storeOrderDishesList()
   },
@@ -76,6 +82,8 @@ Page({
       total_price: 0,
       status_index: e.target.dataset.index
     })
+    //获取头部列表
+    this.storeOrderTotal();
     //获取底部列表接口
     this.storeOrderDishesList()
   },
@@ -89,8 +97,22 @@ Page({
       index: e.detail.value,
       address_id: this.data.address_list[e.detail.value].id
     });
+    //获取头部列表
+    this.storeOrderTotal();
     //获取底部列表接口
     this.storeOrderDishesList()
+  },
+  //获取头部列表
+  storeOrderTotal() {
+    let arg = {
+      day: this.data.date,
+      type: this.data.active_index
+    }
+    resource.storeOrderTotal(arg).then(res => {
+      this.setData({
+        up_menu_list: res.data.list
+      })
+    });
   },
   //上拉加载
   loadMore(e) {

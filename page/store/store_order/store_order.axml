@@ -24,6 +24,13 @@
       <view class="status_item {{status_index == '1'?'active_item':''}}" data-index="1" onTap="checkStatus">已打包</view>
       <view class="status_item already {{status_index == '2'?'active_item':''}}" data-index="2" onTap="checkStatus">已退款</view>
     </view>
+    <view class="order_info" a:if="{{up_menu_list.length > 0}}">
+      <view class="item_row" a:for="{{up_menu_list}}">
+        <view class="lable">{{item.dishes_name}}</view>
+        <view class="value">{{item.num}}份</view>
+      </view>
+    </view>
+    <view class="empty_list" a:else>暂无数据</view>
   </view>
   <scroll-view scroll-y="{{true}}" onScrollToLower="loadMore" class="list_content" a:if="{{order_list.length > 0}}">
     <view class="order_info" a:for="{{order_list}}">
