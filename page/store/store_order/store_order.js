@@ -1,24 +1,24 @@
 const resource = require('../../../utils/api.js').API;
 Page({
   data: {
-    date: "",        //当前日期
-    active_index: '1',  //当前选中状态下标
-    up_menu_list: [],    //头部列表
-    address_list: [], //地址列表
-    index: 0,                //选中的地址下标
-    address_id: "",            //选中的地址下标ID
-    status_index: '0',       //打包状态选项
-    page: 1,                        //页码
+    date: "",                   //当前日期
+    active_index: '1',          //当前选中状态下标
+    up_menu_list: [],           //头部列表
+    address_list: [],           //地址列表
+    index: 0,                   //选中的地址下标
+    address_id: "",             //选中的地址下标ID
+    status_index: '0',          //打包状态选项
+    page: 1,                    //页码
     isLoad: true,
     order_list: [],
-    total_number: 0,        //总数
-    total_price: 0,          //总金额
+    total_number: 0,            //总数
+    total_price: 0,             //总金额
     show_message: false,
     order_id: ""
   },
   onLoad() {
-    var now = new Date(); 				    //当前日期  
-    var nowDay = now.getDate();      //当前日
+    var now = new Date(); 				        //当前日期  
+    var nowDay = now.getDate();           //当前日
     var nowMonth = now.getMonth() + 1 < 10 ? '0' + (now.getMonth() + 1).toString() : now.getMonth() + 1; 		//当前月 
     var nowYear = now.getFullYear(); 		  //当前年 
     //处理送货地址
