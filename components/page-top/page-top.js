@@ -66,10 +66,6 @@ Component({
         return;
       }
       let index = e.detail.value;
-      // this.setData({
-      //   address_index: index,
-      //   address_name: this.data.address_list[index].name
-      // });
       //监听切换
       this.onChange('0', index);
     },
@@ -107,7 +103,7 @@ Component({
     },
     //监听切换
     onChange(type, index) {  //1:发送请求；2:不请求
-      let i = index ? index : this.data.address_index;
+      let i = index || index == 0 ? index : this.data.address_index;
       let arg = {
         is_request: type,
         address_index: i,

@@ -61,7 +61,7 @@
         </view>
       </view>
     </scroll-view>
-    <empty result_type="0" toast_text="暂无订单" a:else></empty>
   </scroll-view>
+  <empty result_type="0" toast_text="暂无订单" a:if="{{order_list.length == 0}}"></empty>
   <message-box message_text="确认退款?" onTapFn="onTapFn" a:if="{{show_message}}"></message-box>
 </view>
