@@ -13,7 +13,7 @@ Page({
     //获取送餐地址
     this.ajaxAddress();
 
-    return;
+    // return;
 
     const updateManager = dd.getUpdateManager();
     updateManager.onCheckForUpdate(function(res) {

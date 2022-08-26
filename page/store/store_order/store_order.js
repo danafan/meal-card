@@ -82,6 +82,8 @@ Page({
       total_price: 0,
       status_index: e.target.dataset.index
     })
+    //获取头部列表
+    this.storeOrderTotal();
     //获取底部列表接口
     this.storeOrderDishesList()
   },
@@ -95,6 +97,8 @@ Page({
       index: e.detail.value,
       address_id: this.data.address_list[e.detail.value].id
     });
+    //获取头部列表
+    this.storeOrderTotal();
     //获取底部列表接口
     this.storeOrderDishesList()
   },
@@ -180,6 +184,8 @@ Page({
         page: 1,
         order_list: []
       });
+      //获取头部列表
+      this.storeOrderTotal();
       //获取底部列表接口
       this.storeOrderDishesList()
     });
@@ -201,6 +207,8 @@ Page({
           show_message: false,
           order_list: []
         });
+        //获取头部列表
+        this.storeOrderTotal();
         //获取底部列表接口
         this.storeOrderDishesList()
       });
