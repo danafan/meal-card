@@ -2,8 +2,8 @@ let app = getApp();
 const GET = 'GET';
 const POST = 'POST';
 
-const baseUrl = "https://house.92nu.com/user/";       //正式
-// const baseUrl = "https://testsample.92nu.com/user/";     //测试
+// const baseUrl = "https://house.92nu.com/user/";       //正式
+const baseUrl = "https://testsample.92nu.com/user/";     //测试
 
 function request(method, url, data) {
   var data = data ? data : {};
@@ -61,7 +61,7 @@ function request(method, url, data) {
 const API = {
   uploadUrl: baseUrl.split('/user/')[0],      //上传图片地址
   getUserInfo: (data) => request(GET, 'login/login', data),                     //获取用户信息
-  getNotice: (data) => request(GET, 'login/get_notice', data),                //获取用户公告
+  getNotice: (data) => request(GET, 'login/get_notice', data),                  //获取用户公告
   ajaxAddress: (data) => request(GET, 'store/ajax_address', data),              //获取送餐地址列表
   getCardInfo: (data) => request(GET, 'card/getcardinfo', data),                //获取餐卡信息
   getQrCode: (data) => request(GET, 'card/getpaymentcode', data),               //获取付款码
@@ -70,6 +70,7 @@ const API = {
   getStoreRecord: (data) => request(GET, 'store/getstorerecord', data),         //商家账单
   getRefundReason: (data) => request(GET, 'store/getrefundreason', data),       //获取退款原因
   refundMoney: (data) => request(POST, 'store/refund', data),                   //退款
+  getStoreList: (data) => request(GET, 'meal/get_store_list', data),            //选择商家列表
   getMenuList: (data) => request(GET, 'store/dishes_list', data),               //获取所有菜品列表
   offDishesList: (data) => request(GET, 'store/off_dishes_list', data),         //获取未上架菜品列表
   createMenu: (data) => request(POST, 'store/add_dishes', data),                //创建菜品
@@ -81,7 +82,7 @@ const API = {
   shelvesMenu: (data) => request(POST, 'store/off_dishes', data),               //下架菜品
   storeOrderTotal: (data) => request(GET, 'store/order_total', data),           //商家订单页头部列表
   storeOrderDishesList: (data) => request(GET, 'store/order_dishes_list', data),//商家订单页底部列表
-  storeCancelOrder: (data) => request(POST, 'store/cancel', data),        //商家取消订单
+  storeCancelOrder: (data) => request(POST, 'store/cancel', data),              //商家取消订单
   userMenuList: (data) => request(GET, 'meal/get_menu', data),                  //用户获取菜单
   userCreateOrder: (data) => request(POST, 'meal/order', data),                 //用户下单
   userOrderList: (data) => request(GET, 'meal/get_order_list', data),           //用户订单列表

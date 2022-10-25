@@ -14,7 +14,9 @@
     "page/user/paybal_results/paybal_results",
     "page/user/take_food_code/take_food_code",
     "page/store/create_menu/create_menu",
-    "page/store/confirm_order/confirm_order"
+    "page/store/confirm_order/confirm_order",
+    "page/user/choose_store/choose_store"
+    
   ],
   "window": {
     "defaultTitle": "餐卡",

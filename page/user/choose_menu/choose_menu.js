@@ -1,12 +1,18 @@
 const resource = require('../../../utils/api.js').API;
 Page({
   data: {
+    store_id:"",
     menu_list: [],         //菜单列表
     showModel: false,      //购物车弹窗
     car_list: [],          //购物车菜单
     total_price: 0,        //购物车总金额
     arg: {},               //顶部传回来的数据
     no_click: false,       //去结算按钮是否可点击
+  },
+  onLoad(e) {
+    this.setData({
+      store_id: e.store_id
+    })
   },
   //切换顶部选项
   onChange(arg) {
@@ -26,7 +32,8 @@ Page({
   userMenuList(arg) {
     let req = {
       day: arg.day,
-      type: arg.type
+      type: arg.type,
+      store_id:this.data.store_id
     }
     resource.userMenuList(req).then(res => {
       let data = res.data;
