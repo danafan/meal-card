@@ -95,10 +95,13 @@ Page({
               return total + item.num
             }, 0)
             //菜品数量限制
-            if (total_number == getApp().globalData.limit_num) {
+            let current_store_arr = getApp().globalData.store_config.filter(item => {
+              return item.store_id == this.data.store_id;
+            })
+            if (total_number == current_store_arr[0].limit_num) {
               dd.showToast({
                 type: 'none',
-                content: `最多只能选${getApp().globalData.limit_num}个菜哦～`,
+                content: `最多只能选${current_store_arr[0].limit_num}个菜哦～`,
                 duration: 2000,
               });
               is_add = false;
@@ -208,8 +211,8 @@ Page({
           list: this.data.car_list
         };
         dd.navigateTo({
-          url: '/page/user/confirm_order/confirm_order'
-        })
+          url: '/page/user/confirm_order/confirm_order?store_id=' + this.data.store_id
+         })
       }
     }
   }

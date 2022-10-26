@@ -1,17 +1,20 @@
 const resource = require('../../../utils/api.js').API;
 Page({
   data: {
+    store_id:"",
     car_info: {},
     car_lists: [],
     remark: "",              //备注
     show_message: false,
 
   },
-  onLoad() {
+  onLoad(e) {
+    console.log(e)
     let order_info = getApp().globalData.car_info;
     this.setData({
       car_info: order_info.info,
-      car_lists: order_info.list
+      car_lists: order_info.list,
+      store_id:e.store_id
     })
   },
   //监听备注输入
@@ -33,6 +36,7 @@ Page({
         ids_list.push(item.dishes_id + '_' + item.num);
       })
       let arg = {
+        store_id:this.data.store_id,
         day: this.data.car_info.day,
         type: this.data.car_info.type,
         address_type: this.data.car_info.address_type,

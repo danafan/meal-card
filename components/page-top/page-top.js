@@ -19,6 +19,7 @@ Component({
     index: 0,                //选中的下标
   },
   props: {
+    store_id: "",                  //当前选中的商家ID
     last_address_index: 0,       //上次选中的地址下标
     show_address: true,         //是否显示送餐地址
     is_check_address: true,     //是否可切换送餐地址
@@ -42,9 +43,14 @@ Component({
     if (day < 10) {
       day = "0" + day;
     }
+    //获取当前选中的店铺信息
+    let current_store_arr = getApp().globalData.store_config.filter(item => {
+      return item.store_id == this.props.store_id;
+    })
     let current_date = year + "-" + month + "-" + day;
-    let time = current_date + ' ' + getApp().globalData.lunch_date;
+    let time = current_date + ' ' +  current_store_arr[0].lunch;
     let meal_index = new Date().getTime() > Date.parse(time.replace(/-/g, '/')) ? 1 : 0;
+    
     this.setData({
       index: meal_index,
       meal_name: this.data.meal_list[meal_index].name,
@@ -53,8 +59,8 @@ Component({
       address_name: getApp().globalData.address_list[this.data.address_index].name,
       current_date: current_date,
       set_date: current_date,
-      lunch_date: getApp().globalData.lunch_date,
-      dinner_date: getApp().globalData.dinner_date,
+      lunch_date: current_store_arr[0].lunch,
+      dinner_date: current_store_arr[0].dinner,
     })
     //监听切换
     this.onChange('1');

@@ -5,7 +5,8 @@
     <view class="search_button" onTap="userMenuList">搜索</view>
   </view>
   <view class="store_item" a:for="{{store_list}}" data-id="{{item.store_id}}" onTap="chooseMenu">
-    <image class="store_img" src="../../../images/db_store.png"/>
+    <image class="store_img" src="../../../images/db_store.png" a:if="{{item.image == 'db'}}"/>
+    <image class="store_img" src="../../../images/xb_store.png" a:if="{{item.image == 'xb'}}"/>
     <view class="store_content">
       <view class="store_name">{{item.store_name}}</view>
       <view class="bottom_row">
