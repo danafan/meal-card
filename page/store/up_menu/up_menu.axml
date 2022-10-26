@@ -1,6 +1,6 @@
 <view class="up_menu">
   <scroll-view scroll-y="{{true}}" class="scroll_content">
-    <page-top show_address="{{false}}" onChange="onChange"></page-top>
+    <page-top show_address="{{false}}" store_id="{{store_id}}" onChange="onChange"></page-top>
     <view class="menu_type_box">
       <view class="type_row">
         <view class="type_item not {{active_index == '0'?'active_item':''}}" data-index="0" onTap="checkType">待上架</view>

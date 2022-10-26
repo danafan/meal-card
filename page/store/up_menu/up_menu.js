@@ -1,6 +1,7 @@
 const resource = require('../../../utils/api.js').API;
 Page({
   data: {
+    store_id:"",
     active_index: '0',     //选中的菜单类型
     search_value: "",      //输入的搜索内容
     show_menu_list: [],         //显示的菜单
@@ -16,6 +17,11 @@ Page({
     dishes_ids: [],        //批量上架选中的菜品ID列表
     dishes_id: "",         //单个下架选中的菜品ID
 
+  },
+  onLoad(e) {
+    this.setData({
+      store_id: e.store_id
+    })
   },
   //切换顶部筛选条件
   onChange(v) {

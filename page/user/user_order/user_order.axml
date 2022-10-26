@@ -13,6 +13,10 @@
   <scroll-view scroll-y="{{true}}" class="list_content" a:if="{{order_list.length > 0}}">
     <view class="order_item" a:for="{{order_list}}">
       <view class="item_row">
+        <view class="lable">商家</view>
+        <view class="value">{{item.store_name}}</view>
+      </view>
+      <view class="item_row">
         <view class="lable">送餐地址</view>
         <view class="value">{{item.address_type_str}}</view>
       </view>

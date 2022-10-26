@@ -13,7 +13,6 @@ Page({
     //获取送餐地址
     this.ajaxAddress();
 
-    // return;
 
     const updateManager = dd.getUpdateManager();
     updateManager.onCheckForUpdate(function(res) {
@@ -108,7 +107,7 @@ Page({
       })
     } else {
       dd.navigateTo({
-        url: '/page/store/up_menu/up_menu'
+        url: '/page/store/up_menu/up_menu?store_id=' + getApp().globalData.user_info.store_id
       })
     }
   },
