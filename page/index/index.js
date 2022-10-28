@@ -14,24 +14,27 @@ Page({
     this.ajaxAddress();
 
 
-    const updateManager = dd.getUpdateManager();
-    updateManager.onCheckForUpdate(function(res) {
-      if (res.hasUpdate) {
-        updateManager.onUpdateReady(function(ret) {
-          dd.confirm({
-            title: '更新提示',
-            content: `新版本${ret.version}已经准备好，是否更新并重启应用？`,
-            confirmButtonText: '现在更新',
-            cancelButtonText: '再等等',
-            success: function(res) {
-              if (res.confirm) {
-                updateManager.applyUpdate()
-              }
-            }
-          })
-        })
-      }
-    })
+    // const updateManager = dd.getUpdateManager();
+    // updateManager.onCheckForUpdate(function(res) {
+    //   if (res.hasUpdate) {
+    //     updateManager.onUpdateReady(function(ret) {
+    //       dd.confirm({
+    //         title: '更新提示',
+    //         content: `新版本${ret.version}已经准备好，是否更新并重启应用？`,
+    //         confirmButtonText: '现在更新',
+    //         cancelButtonText: '再等等',
+    //         success: function(res) {
+    //           if (res.confirm) {
+    //             updateManager.applyUpdate()
+    //           }
+    //         }
+    //       })
+    //     })
+    //   }
+    // })
+
+
+
   },
   //钉钉获取用户信息
   getDingInfo() {
@@ -48,7 +51,6 @@ Page({
     }).then(res => {
       getApp().globalData.user_info = res.data;
       getApp().globalData.token = res.token;
-      getApp().globalData.store_config = res.config;
       this.setData({
         user_type: res.user_type
       })

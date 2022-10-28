@@ -21,6 +21,25 @@ Page({
     //获取列表
     this.getMenuList()
   },
+  //设置默认
+  onGetData(arg) {
+    resource.setDefaultDishes(arg).then(res => {
+      let arr = JSON.parse(JSON.stringify(this.data.menu_list));
+      arr.map(item => {
+        if (item.dishes_id == arg.id) {
+          item.is_default = arg.status;
+        }
+      })
+      this.setData({
+        menu_list: arr
+      })
+      dd.showToast({
+        type: 'none',
+        content: '操作成功！',
+        duration: 2000
+      });
+    });
+  },
   //上拉加载
   loadMore(e) {
     if (this.data.isLoad == false) {
@@ -57,7 +76,7 @@ Page({
   //点击某一条的编辑
   onEdit(id) {
     let arg = {
-      id:id
+      id: id
     }
     resource.menuDetail(arg).then(res => {
       dd.navigateTo({

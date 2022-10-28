@@ -2,6 +2,7 @@ const resource = require('../../../utils/api.js').API;
 Page({
   data: {
     store_id:"",
+    store_info:{},         //当前店铺信息
     menu_list: [],         //菜单列表
     showModel: false,      //购物车弹窗
     car_list: [],          //购物车菜单
@@ -13,8 +14,22 @@ Page({
     this.setData({
       store_id: e.store_id
     })
+    //获取商家配置信息
+    this.getStoreConfig();
   },
-  //切换顶部选项
+  //获取商家配置信息
+  getStoreConfig(){
+    let arg = {
+      store_id:this.data.store_id
+    }
+    resource.getStoreConfig(arg).then(res => {
+      let data = res.data;
+      this.setData({
+        store_info:data
+      })
+    });
+  },
+  //顶部加载完成或切换顶部选项
   onChange(arg) {
      //判断去结算按钮是否置灰
     let current_date = arg.day + ' ' + arg.end_time;
@@ -94,14 +109,11 @@ Page({
             let total_number = car_list.reduce((total, item) => {
               return total + item.num
             }, 0)
-            //菜品数量限制
-            let current_store_arr = getApp().globalData.store_config.filter(item => {
-              return item.store_id == this.data.store_id;
-            })
-            if (total_number == current_store_arr[0].limit_num) {
+            
+            if (total_number == this.data.store_info.limit_num) {
               dd.showToast({
                 type: 'none',
-                content: `最多只能选${current_store_arr[0].limit_num}个菜哦～`,
+                content: `最多只能选${this.data.store_info.limit_num}个菜哦～`,
                 duration: 2000,
               });
               is_add = false;
@@ -196,10 +208,10 @@ Page({
         return total + item.num * item.dishes_price
       }, 0)
       //最低消费限制
-      if (total_price < getApp().globalData.min_price) {
+      if (total_price < this.data.store_info.min_limit_money) {
         dd.showToast({
           type: 'none',
-          content: `最低消费不少于${getApp().globalData.min_price}元～`,
+          content: `最低消费不少于${this.data.store_info.min_limit_money}元～`,
           duration: 2000,
         });
       } else {

@@ -1,6 +1,6 @@
 <view class="menu_management">
   <scroll-view scroll-y="{{true}}" class="menu_list" a:if="{{menu_list.length > 0}}" onScrollToLower="loadMore">
-    <menu-item type="menu_management" item="{{item}}" a:for="{{menu_list}}" onEdit="onEdit" onDelete="onDelete"></menu-item>
+    <menu-item type="menu_management" item="{{item}}" a:for="{{menu_list}}" onGetData="onGetData" onEdit="onEdit" onDelete="onDelete"></menu-item>
   </scroll-view>
   <empty result_type="0" toast_text="您还没有上传菜品哦" a:else></empty>
   <view class="bottom_box">

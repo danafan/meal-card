@@ -10,6 +10,15 @@ Component({
   didUpdate() { },
   didUnmount() { },
   methods: {
+    //商家设置默认菜品
+    setDefaultDishes(e) {
+      let status = e.target.dataset.status;
+      let arg = {
+        id: this.props.item.dishes_id,
+        status: status
+      }
+      this.props.onGetData(arg);
+    },
     //用户点击菜品加减
     checkMenu(v) {
       let type = v.target.dataset.type;

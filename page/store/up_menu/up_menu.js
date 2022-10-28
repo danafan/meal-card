@@ -2,6 +2,7 @@ const resource = require('../../../utils/api.js').API;
 Page({
   data: {
     store_id:"",
+    store_info:{},
     active_index: '0',     //选中的菜单类型
     search_value: "",      //输入的搜索内容
     show_menu_list: [],         //显示的菜单
@@ -22,6 +23,20 @@ Page({
     this.setData({
       store_id: e.store_id
     })
+  //获取商家配置信息
+    this.getStoreConfig();
+  },
+  //获取商家配置信息
+  getStoreConfig(){
+    let arg = {
+      store_id:this.data.store_id
+    }
+    resource.getStoreConfig(arg).then(res => {
+      let data = res.data;
+      this.setData({
+        store_info:data
+      })
+    });
   },
   //切换顶部筛选条件
   onChange(v) {

@@ -71,7 +71,9 @@ const API = {
   getRefundReason: (data) => request(GET, 'store/getrefundreason', data),       //获取退款原因
   refundMoney: (data) => request(POST, 'store/refund', data),                   //退款
   getStoreList: (data) => request(GET, 'meal/get_store_list', data),            //选择商家列表
+  getStoreConfig: (data) => request(GET, 'meal/get_store_config', data),        //获取商家配置信息
   getMenuList: (data) => request(GET, 'store/dishes_list', data),               //获取所有菜品列表
+  setDefaultDishes: (data) => request(POST, 'store/set_default_dishes', data),   //设置默认菜品
   offDishesList: (data) => request(GET, 'store/off_dishes_list', data),         //获取未上架菜品列表
   createMenu: (data) => request(POST, 'store/add_dishes', data),                //创建菜品
   menuDetail: (data) => request(GET, 'store/edit_dishes', data),                //菜品详情
@@ -88,7 +90,7 @@ const API = {
   userOrderList: (data) => request(GET, 'meal/get_order_list', data),           //用户订单列表
   getMealCode: (data) => request(GET, 'meal/get_meal_code', data),              //用户获取取餐码
   setPackage: (data) => request(POST, 'store/package', data),                   //确认打包
-  getOrderInfo: (data) => request(GET, 'store/get_order_info', data),            //商家获取订单详情
+  getOrderInfo: (data) => request(GET, 'store/get_order_info', data),           //商家获取订单详情
   receiveMeal: (data) => request(POST, 'store/receive_meal', data),             //商家扫码核销
 
 };

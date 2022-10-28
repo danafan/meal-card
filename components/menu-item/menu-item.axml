@@ -1,24 +1,31 @@
-<view class="menu_item" onTap="changeMenu">
-  <image class="check_icon" src="../../../images/is_check_icon.png" a:if="{{item.is_checked && type == 'up_menu'}}"/>
-  <image class="check_icon" src="../../../images/un_check_icon.png" a:if="{{!item.is_checked && type == 'up_menu'}}"/>
-  <image class="menu_img" src="{{item.domain + item.image}}"/>
-  <view class="menu_content">
-    <view class="menu_name">{{item.dishes_name}}</view>
-    <view class="menu_price">¥ {{item.dishes_price}}</view>
+<view class="menu_item_container">
+  <view class="menu_item" onTap="changeMenu">
+    <image class="check_icon" src="../../../images/is_check_icon.png" a:if="{{item.is_checked && type == 'up_menu'}}"/>
+    <image class="check_icon" src="../../../images/un_check_icon.png" a:if="{{!item.is_checked && type == 'up_menu'}}"/>
+    <image class="menu_img" src="{{item.domain + item.image}}"/>
+    <view class="menu_content">
+      <view class="menu_name">{{item.dishes_name}}</view>
+      <view class="menu_price">¥ {{item.dishes_price}}</view>
+    </view>
+    <!-- 用户点餐 -->
+    <view class="check_menu_row" a:if="{{type == 'add_menu'}}">
+      <image class="change_icon" src="../../../images/reduce_menu.png" data-type="1" onTap="checkMenu" a:if="{{item.num > 0}}"/>
+      <view class="menu_num" a:if="{{item.num > 0}}">{{item.num}}</view>
+      <image class="change_icon" src="../../../images/add_menu.png" data-type="2" onTap="checkMenu"/>
+    </view>
+    <!-- 商家菜品管理 -->
+    <view class="edit_delete" a:if="{{type == 'menu_management'}}">
+      <image class="edit_menu_icon" src="../../../images/edit_menu_icon.png" onTap="onEdit"/>
+      <image class="delete_menu_icon" src="../../../images/delete_menu_icon.png" onTap="onDelete"/>
+    </view>
+    <!-- 商家下架 -->
+    <view class="down_menu" a:if="{{type == 'down_menu'}}">
+      <view class="down_button" onTap="downMenu">下架</view>
+    </view>
   </view>
-  <!-- 用户点餐 -->
-  <view class="check_menu_row" a:if="{{type == 'add_menu'}}">
-    <image class="change_icon" src="../../../images/reduce_menu.png" data-type="1" onTap="checkMenu" a:if="{{item.num > 0}}"/>
-    <view class="menu_num" a:if="{{item.num > 0}}">{{item.num}}</view>
-    <image class="change_icon" src="../../../images/add_menu.png" data-type="2" onTap="checkMenu"/>
-  </view>
-  <!-- 商家菜品管理 -->
-  <view class="edit_delete" a:if="{{type == 'menu_management'}}">
-    <image class="edit_menu_icon" src="../../../images/edit_menu_icon.png" onTap="onEdit"/>
-    <image class="delete_menu_icon" src="../../../images/delete_menu_icon.png" onTap="onDelete"/>
-  </view>
-  <!-- 商家下架 -->
-  <view class="down_menu" a:if="{{type == 'down_menu'}}">
-    <view class="down_button" onTap="downMenu">下架</view>
+  <view class="default_row" a:if="{{type == 'menu_management'}}">
+    <image class="default_icon" src="../../../images/default_icon.png" data-status="1" a:if="{{item.is_default == 0}}" onTap="setDefaultDishes"/>
+    <image class="default_icon" src="../../../images/default_active.png" data-status="0" a:if="{{item.is_default == 1}}" onTap="setDefaultDishes"/>
+    <view class="default_text">设为默认菜品</view>
   </view>
 </view>
