@@ -35,22 +35,22 @@ Component({
     })
   },
   didMount() {
-    let date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    if (month < 10) {
-      month = "0" + month;
-    }
-    if (day < 10) {
-      day = "0" + day;
-    }
-
+    // let date = new Date();
+    // var year = date.getFullYear();
+    // var month = date.getMonth() + 1;
+    // var day = date.getDate();
+    // if (month < 10) {
+    //   month = "0" + month;
+    // }
+    // if (day < 10) {
+    //   day = "0" + day;
+    // }
+    
     let store_date = this.props.store_info.date;      //当前最近的可点餐日期（用户用）
-    let time = current_date + ' ' + this.props.store_info.lunch;
-    let meal_index = this.props.page_type == '1' ? (this.props.store_info.type == 2 ? 1 : 0) : 0; //午餐和晚餐下标
+    // let meal_index = this.props.page_type == '1' ? (this.props.store_info.type == 2 ? 1 : 0) : 0; //午餐和晚餐下标
+    let meal_index = this.props.store_info.type - 1; //午餐和晚餐下标
 
-    let current_date = year + "-" + month + "-" + day;    //当前日期（商家用）
+    // let current_date = year + "-" + month + "-" + day;    //当前日期（商家用）
 
     this.setData({
       index: meal_index,
@@ -58,8 +58,10 @@ Component({
       address_index: this.data.address_index,
       address_list: getApp().globalData.address_list,
       address_name: getApp().globalData.address_list[this.data.address_index].name,
-      current_date: this.props.page_type == '1' ? store_date : current_date,
-      set_date: this.props.page_type == '1' ? store_date : current_date,
+      // current_date: this.props.page_type == '1' ? store_date : current_date,
+      // set_date: this.props.page_type == '1' ? store_date : current_date,
+      current_date: store_date,
+      set_date: store_date,
       lunch_date: this.props.store_info.lunch,
       dinner_date: this.props.store_info.dinner,
     })
