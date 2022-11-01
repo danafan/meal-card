@@ -18,6 +18,6 @@
       </picker>
       <view class="value" a:else>{{meal_list[index]}}</view>
     </view>
-    <view class="page_top_toast">截止订餐时间：（午餐）送餐日期前{{store_info.lunch_ahead_days}}天{{lunch_date}}；（晚餐）送餐日期前{{store_info.dinner_ahead_days}}天{{dinner_date}}</view>
+    <view class="page_top_toast">截止订餐时间：（午餐）送餐日期{{store_info.lunch_ahead_days==0?'当':'前'+store_info.lunch_ahead_days}}天{{lunch_date}}；（晚餐）送餐日期{{store_info.dinner_ahead_days==0?'当':'前'+store_info.dinner_ahead_days}}天{{dinner_date}}</view>
   </view>
 </view>

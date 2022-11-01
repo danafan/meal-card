@@ -72,6 +72,12 @@
   color: #333333;
   font-weight: 500;
 }
+.page_top_toast{
+  padding-top: 15rpx;
+  font-size: 22rpx;
+  line-height: 28rpx;
+  color: #FF4C3D;
+}
 .bottom_row{
   display: flex;
   font-size: 28rpx;

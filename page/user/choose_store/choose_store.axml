@@ -8,7 +8,10 @@
     <image class="store_img" src="../../../images/db_store.png" a:if="{{item.image == 'db'}}"/>
     <image class="store_img" src="../../../images/xb_store.png" a:if="{{item.image == 'xb'}}"/>
     <view class="store_content">
-      <view class="store_name">{{item.store_name}}</view>
+      <view>
+        <view class="store_name">{{item.store_name}}</view>
+        <view class="page_top_toast">截止订餐时间：（午餐）送餐日期{{item.config.lunch_ahead_days==0?'当':'前'+item.config.lunch_ahead_days}}天{{item.config.lunch}}；（晚餐）送餐日期{{item.config.dinner_ahead_days==0?'当':'前'+item.config.dinner_ahead_days}}天{{item.config.dinner}}</view>
+      </view>
       <view class="bottom_row">
         <view class="margin_right">人均 ¥ {{item.per_capita}}</view>
         <view>月售{{item.num}}</view>
