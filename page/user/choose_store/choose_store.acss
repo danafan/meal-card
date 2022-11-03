@@ -74,7 +74,7 @@
 }
 .page_top_toast{
   padding-top: 15rpx;
-  font-size: 22rpx;
+  font-size: 24rpx;
   line-height: 28rpx;
   color: #FF4C3D;
 }

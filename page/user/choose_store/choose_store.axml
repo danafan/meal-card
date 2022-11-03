@@ -10,7 +10,7 @@
     <view class="store_content">
       <view>
         <view class="store_name">{{item.store_name}}</view>
-        <view class="page_top_toast">截止订餐时间：（午餐）送餐日期{{item.config.lunch_ahead_days==0?'当':'前'+item.config.lunch_ahead_days}}天{{item.config.lunch}}；（晚餐）送餐日期{{item.config.dinner_ahead_days==0?'当':'前'+item.config.dinner_ahead_days}}天{{item.config.dinner}}</view>
+        <view class="page_top_toast">{{item.config.lunch_ahead_days==0?'当':'前'+item.config.lunch_ahead_days}}天可订</view>
       </view>
       <view class="bottom_row">
         <view class="margin_right">人均 ¥ {{item.per_capita}}</view>

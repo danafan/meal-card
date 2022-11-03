@@ -4,8 +4,8 @@ Component({
     address_list: [],             // 所有地址列表
     address_index: 0,             //选中的地址下标
     address_name: "",             //选中的地址名称
-    current_date: "",             //当前日期
-    set_date: "",                 //送餐日期
+    default_date: "",             //商家默认日期
+    set_date: "",                 //选中的日期
     meal_list: [{
       id: '1',
       name: '午餐'
@@ -35,22 +35,8 @@ Component({
     })
   },
   didMount() {
-    // let date = new Date();
-    // var year = date.getFullYear();
-    // var month = date.getMonth() + 1;
-    // var day = date.getDate();
-    // if (month < 10) {
-    //   month = "0" + month;
-    // }
-    // if (day < 10) {
-    //   day = "0" + day;
-    // }
-    
-    let store_date = this.props.store_info.date;      //当前最近的可点餐日期（用户用）
-    // let meal_index = this.props.page_type == '1' ? (this.props.store_info.type == 2 ? 1 : 0) : 0; //午餐和晚餐下标
+    let default_date = this.props.store_info.date;      //当前店铺送餐日期
     let meal_index = this.props.store_info.type - 1; //午餐和晚餐下标
-
-    // let current_date = year + "-" + month + "-" + day;    //当前日期（商家用）
 
     this.setData({
       index: meal_index,
@@ -58,10 +44,8 @@ Component({
       address_index: this.data.address_index,
       address_list: getApp().globalData.address_list,
       address_name: getApp().globalData.address_list[this.data.address_index].name,
-      // current_date: this.props.page_type == '1' ? store_date : current_date,
-      // set_date: this.props.page_type == '1' ? store_date : current_date,
-      current_date: store_date,
-      set_date: store_date,
+      default_date: default_date,
+      set_date: default_date,
       lunch_date: this.props.store_info.lunch,
       dinner_date: this.props.store_info.dinner,
     })
@@ -85,12 +69,12 @@ Component({
       }
       dd.datePicker({
         format: 'yyyy-MM-dd',
-        currentDate: this.data.current_date,
+        currentDate: this.data.set_date,
         success: (res) => {
           if (res.date) {
-            var select_date = new Date(res.date).valueOf();
-            var current_date = new Date(this.data.current_date).valueOf();
-            if (select_date > current_date) {
+            var current_date = new Date(res.date).valueOf();
+            var default_date = new Date(this.data.default_date).valueOf();
+            if (current_date >= default_date) {
               this.setData({
                 set_date: res.date
               })

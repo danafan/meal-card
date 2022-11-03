@@ -10,6 +10,13 @@ Component({
   didUpdate() { },
   didUnmount() { },
   methods: {
+    //图片放大
+    viewImage() {
+      let urls = [this.props.item.domain + this.props.item.image];
+      dd.previewImage({
+        urls: urls
+      });
+    },
     //商家设置默认菜品
     setDefaultDishes(e) {
       let status = e.target.dataset.status;
