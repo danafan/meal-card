@@ -1,6 +1,7 @@
 App({
   globalData: {
-    wsUrl:"ws://119.3.36.232:9777",                 //websocket链接地址
+    // wsUrl:"ws://119.3.36.232:9777",                 //websocket链接地址
+    wsUrl:"ws://101.132.136.202:9777",                 //websocket链接地址
     user_info:{
       user_type:1
     },                                              //用户信息
