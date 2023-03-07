@@ -5,8 +5,22 @@ Page({
     store_list: [],        //商家列表
   },
   onLoad() {
+    //获取公告
+    this.getNotice();
     //获取菜单列表
     this.userMenuList();
+  },
+  //获取公告
+  getNotice() {
+    resource.getNotice().then(res => {
+      if (res.data) {
+        dd.alert({
+          title: res.data.notice_title,
+          content: res.data.content,
+          buttonText: '我知道了'
+        });
+      }
+    })
   },
   //监听搜索的内容
   changeSearch(v) {

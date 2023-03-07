@@ -2,7 +2,7 @@ const resource = require('../../utils/api.js').API;
 Page({
   data: {
     user_type: '',    //1:用户；2:商家
-    query: {},         //用来判断是否有is_empty，有就是不获取公告
+    query: {},        //用来判断是否有is_empty，有就是不获取公告
   },
   onLoad(query) {
     this.setData({
@@ -47,16 +47,17 @@ Page({
   //获取用户信息
   getUserinfo(authCode) {
     resource.getUserInfo({
-      code: authCode
+      code: authCode,
+      corp_id:5         //公司id 1:德儿（默认） 5: DSA336
     }).then(res => {
       getApp().globalData.user_info = res.data;
       getApp().globalData.token = res.token;
       this.setData({
         user_type: res.user_type
       })
-      if (res.user_type == '1' && !this.data.query.is_empty) {
-        this.getNotice();
-      }
+      // if (res.user_type == '1' && !this.data.query.is_empty) {
+      //   this.getNotice();
+      // }
     })
   },
   //获取公告
