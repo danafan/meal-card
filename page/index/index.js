@@ -10,28 +10,27 @@ Page({
     })
     //钉钉获取用户信息
     this.getDingInfo();
-    //获取送餐地址
-    this.ajaxAddress();
+    
 
 
-    const updateManager = dd.getUpdateManager();
-    updateManager.onCheckForUpdate(function(res) {
-      if (res.hasUpdate) {
-        updateManager.onUpdateReady(function(ret) {
-          dd.confirm({
-            title: '更新提示',
-            content: `新版本${ret.version}已经准备好，是否更新并重启应用？`,
-            confirmButtonText: '现在更新',
-            cancelButtonText: '再等等',
-            success: function(res) {
-              if (res.confirm) {
-                updateManager.applyUpdate()
-              }
-            }
-          })
-        })
-      }
-    })
+    // const updateManager = dd.getUpdateManager();
+    // updateManager.onCheckForUpdate(function(res) {
+    //   if (res.hasUpdate) {
+    //     updateManager.onUpdateReady(function(ret) {
+    //       dd.confirm({
+    //         title: '更新提示',
+    //         content: `新版本${ret.version}已经准备好，是否更新并重启应用？`,
+    //         confirmButtonText: '现在更新',
+    //         cancelButtonText: '再等等',
+    //         success: function(res) {
+    //           if (res.confirm) {
+    //             updateManager.applyUpdate()
+    //           }
+    //         }
+    //       })
+    //     })
+    //   }
+    // })
 
 
 
@@ -48,16 +47,15 @@ Page({
   getUserinfo(authCode) {
     resource.getUserInfo({
       code: authCode,
-      corp_id:5         //公司id 1:德儿（默认） 5: DSA336
+      corp_id:1         //公司id 1:德儿（默认） 5: DSA336
     }).then(res => {
       getApp().globalData.user_info = res.data;
       getApp().globalData.token = res.token;
+        //获取送餐地址
+        this.ajaxAddress();
       this.setData({
         user_type: res.user_type
       })
-      // if (res.user_type == '1' && !this.data.query.is_empty) {
-      //   this.getNotice();
-      // }
     })
   },
   //获取公告

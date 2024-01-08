@@ -9,8 +9,8 @@ Page({
 
   },
   onLoad(e) {
-    console.log(e)
     let order_info = getApp().globalData.car_info;
+    console.log(order_info)
     this.setData({
       car_info: order_info.info,
       car_lists: order_info.list,
